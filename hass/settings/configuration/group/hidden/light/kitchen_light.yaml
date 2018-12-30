@@ -1,0 +1,6 @@
+kitchen_light:
+  name: Свет (кухня)
+  control: hidden
+  entities:
+    - light.kitchen
+    - switch.kitchen_mini_light

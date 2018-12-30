@@ -1,0 +1,7 @@
+bath_motion:
+  name: Движение (ванна)
+  control: hidden
+  entities:
+    - binary_sensor.motion_sensor_158d0000f9546b
+    - binary_sensor.motion_sensor_158d000165fed5
+    - binary_sensor.motion_sensor_158d0001537e21

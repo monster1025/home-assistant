@@ -1,0 +1,9 @@
+#################################
+#          LIGHT BUTTONS        #
+#################################
+kitchen_led_controller:
+  module: kitchen_led_controller
+  class: KitchenLedController
+  watch_entity: light.kitchen
+  global_dependencies:
+    - globals

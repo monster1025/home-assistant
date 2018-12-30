@@ -1,0 +1,12 @@
+host: !secret base_localname
+port: 8086
+database: hass
+max_retries: 3
+default_measurement: state
+
+include:
+  domains:
+    - sensor
+    - binary_sensor
+    - switch
+

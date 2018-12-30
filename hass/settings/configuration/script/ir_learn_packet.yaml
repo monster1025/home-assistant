@@ -1,0 +1,6 @@
+ir_learn_packet:
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "home/remote/rm2/learn/learn"
+        payload: "test"

@@ -1,0 +1,3 @@
+# освещенность
+sensor.lux_outside:
+  friendly_name: Освещенность(Улица)

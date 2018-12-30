@@ -1,0 +1,8 @@
+reports_control:
+  name: Настройки отчетов
+  entities:
+    - input_boolean.security_sensors_report
+    - input_boolean.battery_report
+    - input_boolean.water_counters_report
+    - input_boolean.work_presence_report
+    - input_boolean.lock_report

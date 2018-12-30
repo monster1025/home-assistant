@@ -1,0 +1,12 @@
+#Кнопки
+binary_sensor.switch_158d000102f7e6:
+  friendly_name: Прихожая
+binary_sensor.switch_158d00012d5720:
+  friendly_name: Кухня
+binary_sensor.switch_158d0001256810:
+  friendly_name: Ванна
+binary_sensor.switch_158d00013f81a9:
+  friendly_name: Гостиная
+
+binary_sensor.wall_switch_158d000183a5f0:
+  friendly_name: Выключатель

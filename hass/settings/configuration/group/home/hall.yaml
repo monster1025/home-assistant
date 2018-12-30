@@ -1,0 +1,5 @@
+﻿hall:
+  name: Прихожая
+  control: hidden
+  entities:
+    - light.hall

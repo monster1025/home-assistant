@@ -1,0 +1,26 @@
+﻿- alias: "Office welcome"
+  trigger:
+      platform: mqtt
+      topic: work/presence/office/enter_time
+  action:
+    - event: office_enter
+      event_data_template:
+        payload: '{{ trigger.payload }}'
+
+- alias: "Work leave reminder"
+  trigger:
+      platform: mqtt
+      topic: work/presence/office/leave_reminder_event
+  action:
+    - event: office_leave_reminder
+      event_data_template:
+        payload: '{{ trigger.payload }}'
+
+- alias: "Work leave report"
+  trigger:
+    platform: mqtt
+    topic: work/presence/office/leave_event
+  action:
+   - event: office_leave
+     event_data_template:
+       payload: '{{ trigger.payload }}'

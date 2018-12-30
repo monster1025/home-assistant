@@ -1,0 +1,14 @@
+#################################
+#           CLIMATE             #
+#################################
+mainroom_climate:
+  module: climate
+  class: Climate
+  constraint: input_boolean.mainroom_climate_control
+  target_temp: input_number.mainroom_temperature
+  temp_sensor: sensor.temperature_158d0001149b3c #mainroom temp sensor
+  ha_panel: alarm_control_panel.ha_alarm
+  door_window: group.mainroom_door_window
+  color_entity: light.gateway_light_f0b429aa1463
+  global_dependencies:
+    - globals

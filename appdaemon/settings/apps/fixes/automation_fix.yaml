@@ -1,0 +1,6 @@
+#################################   
+#             FIXES             #    
+#################################    
+automation_fix:    
+  module: automation_fix   
+  class: AutomationFix

@@ -1,0 +1,5 @@
+bath_light:
+  name: Свет (ванна)
+  control: hidden
+  entities:
+    - light.bath

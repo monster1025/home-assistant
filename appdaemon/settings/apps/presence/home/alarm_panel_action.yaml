@@ -1,0 +1,9 @@
+#################################
+#        HOME PRESENSE          #
+#################################
+alarm_panel_action:
+  module: alarm_panel_action
+  class: AlarmPanelAction
+  ha_panel: alarm_control_panel.ha_alarm
+  global_dependencies:
+    - globals

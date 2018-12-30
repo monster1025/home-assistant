@@ -1,0 +1,4 @@
+- platform: telegram
+  name: telegram_monster
+  chat_id: !secret telegram_monster_chat
+  parse_mode: html

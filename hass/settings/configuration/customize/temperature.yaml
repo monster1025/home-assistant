@@ -1,0 +1,15 @@
+#Балкон
+sensor.temperature_158d000117d37a:
+  friendly_name: Температура(Балкон)
+
+#Гостиная
+sensor.temperature_158d0001149b3c:
+  friendly_name: Температура(Гостиная)
+
+#Ванна
+sensor.temperature_158d00012d9ad7:
+  friendly_name: Температура(Ванна)
+
+#Улица
+sensor.temperature_158d000149c128:
+  friendly_name: Температура(Улица)

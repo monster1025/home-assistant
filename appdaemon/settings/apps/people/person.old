@@ -1,0 +1,48 @@
+import appdaemon.plugins.hass.hassapi as hass
+import globals
+#
+# Person
+# Script that creates persons with their properties.
+#
+# Args:
+#
+# None
+#
+# Release Notes
+#
+# Version 1.0:
+#   Initial Version
+
+class Person(hass.Hass):
+  view_name = 'group.persons'
+  view_friendly_name = 'Люди'
+  tags = []
+  def initialize(self):
+    self.log('args: {}'.format(self.args))
+    self.listen_event_handle_list = []
+    self.add_person()
+    # self.listen_event_handle_list.append(self.listen_event(self.event_detected, "click"))
+    
+  def event_detected(self, event_name, data, kwargs):
+    self.log("ButtonClicked: {}".format(data["entity_id"]))
+    #self.check_batteries({"force": 1})
+
+  def add_person(self):
+    view = self.get_state(self.view_name, attribute = 'all')
+    self.log(view)
+    if (view == None):
+      self.set_state(self.view_name, state="on",attributes={"view": False, "hidden": False, "assumed_state": "on", "friendly_name": self.view_friendly_name,"entity_id": []})
+
+    # attributes = {}
+    # attributes['unit_of_measurement'] = sensor['unit']
+    # attributes['description'] = 'Created and updated from appdaemon (narodmon)'
+    # if 'friendly_name' in self.args:
+    #     attributes['friendly_name'] = self.args['friendly_name']
+
+    # self.set_state(self.args['entity'], state = sensor['value'], attributes = attributes)
+
+
+  def terminate(self):
+    if self.listen_event_handle_list != None:
+      for listen_event_handle in self.listen_event_handle_list:
+        self.cancel_listen_event(listen_event_handle)

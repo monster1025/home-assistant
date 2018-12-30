@@ -1,0 +1,67 @@
+- platform: template
+  sensors:
+    power_main_total:
+      unit_of_measurement: 'kWh'
+      value_template: "{{ states('sensor.power_total') | float + 4733.6 | round(2) }}"
+      #4733.6 - разница показаний.
+
+- platform: modbus
+  scan_interval: 30
+  registers:
+    - name: power_total
+      slave: 1
+      register: 0
+      count: 2
+      precision: 2
+      scale: 0.01
+      unit_of_measurement: 'kWh'
+    # - name: power_export
+    #   slave: 1
+    #   register: 8
+    #   count: 2
+    #   precision: 2
+    #   scale: 0.01
+    #   unit_of_measurement: 'kWh'
+    # - name: power_import
+    #   slave: 1
+    #   register: 10
+    #   count: 2
+    #   precision: 2
+    #   scale: 0.01
+    #   unit_of_measurement: 'kWh'
+    - name: power_voltage
+      slave: 1
+      register: 12
+      precision: 1
+      scale: 0.1
+      unit_of_measurement: 'V'
+    - name: power_current
+      slave: 1
+      register: 13
+      precision: 2
+      scale: 0.01
+      unit_of_measurement: 'A'
+    - name: power_active_power
+      slave: 1
+      register: 14
+      precision: 3
+      scale: 0.001
+      unit_of_measurement: 'KW'
+    - name: power_reactive_power
+      slave: 1
+      register: 15
+      precision: 3
+      scale: 0.001
+      unit_of_measurement: 'Kvar'
+    - name: power_power_factor
+      slave: 1
+      register: 16
+      precision: 3
+      scale: 0.001
+      unit_of_measurement: '%'
+    - name: power_frequency
+      slave: 1
+      register: 17
+      precision: 2
+      scale: 0.01
+      unit_of_measurement: 'Hz'

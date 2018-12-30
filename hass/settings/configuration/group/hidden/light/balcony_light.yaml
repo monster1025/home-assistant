@@ -1,0 +1,5 @@
+balcony_light:
+  name: Свет (балкон)
+  control: hidden
+  entities:
+    - light.balcony

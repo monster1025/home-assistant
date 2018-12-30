@@ -1,0 +1,9 @@
+#################################
+#        WORK PRESENSE          #
+#################################
+work_presence:
+  module: work
+  class: WorkPresence
+  constraint: input_boolean.work_presence_report
+  global_dependencies:
+    - globals

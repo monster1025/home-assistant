@@ -1,0 +1,26 @@
+﻿light.yeelight_rgb_34ce008fe328:
+  friendly_name: Цветная1
+
+light.yeelight_rgb_286c071065c7:
+  friendly_name: Цветная2
+
+light.yeelight_white_34ce0087ff33:
+  friendly_name: Лампа3
+
+light.yeelight_white_f0b4290e5444:
+  friendly_name: Лампа4
+
+light.yeelight_white_f0b429a8f6df:
+  friendly_name: Лампа5
+
+light.hall:
+  friendly_name: Люстра
+
+light.kitchen:
+  friendly_name: Люстра
+
+light.bath:
+  friendly_name: Свет
+
+light.balcony:
+  friendly_name: Свет

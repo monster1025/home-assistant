@@ -1,0 +1,7 @@
+buttons:
+  name: Кнопки
+  entities:
+    - binary_sensor.switch_158d000102f7e6
+    - binary_sensor.switch_158d00012d5720
+    - binary_sensor.switch_158d0001256810
+    - binary_sensor.switch_158d00013f81a9

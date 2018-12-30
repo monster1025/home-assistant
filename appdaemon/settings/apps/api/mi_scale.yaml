@@ -1,0 +1,10 @@
+#################################
+#             SCALE             #
+#################################
+mi_scale:
+  module: mi_scale
+  class: MiScale
+  sensor: sensor.xiaomi_scale
+  friendly_name: "Весы"
+  global_dependencies:
+    - globals

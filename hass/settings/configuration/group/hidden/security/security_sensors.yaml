@@ -1,0 +1,21 @@
+security_sensors:
+  name: Безопасность
+  entities:
+    - binary_sensor.motion_sensor_158d0000e7c7ad
+    - binary_sensor.motion_sensor_158d0002044548
+    - binary_sensor.motion_sensor_158d0000fbc664
+    - binary_sensor.motion_sensor_158d0001535c97
+    - binary_sensor.motion_sensor_158d0000f9546b
+    - binary_sensor.motion_sensor_158d000165fed5
+    - binary_sensor.motion_sensor_158d0001537e21
+    - binary_sensor.motion_sensor_158d0000f6b2fa
+    - binary_sensor.motion_sensor_158d0001e50ce4
+    - binary_sensor.motion_sensor_158d0001e80f0d
+    - binary_sensor.door_window_sensor_158d0001130141
+    - binary_sensor.door_window_sensor_158d000111a469
+    - binary_sensor.door_window_sensor_158d00010f7e19
+    - binary_sensor.door_window_sensor_158d0001e74660
+    - binary_sensor.door_window_sensor_158d0001b77b1b
+    - binary_sensor.door_window_sensor_158d0001c0e46d
+    - binary_sensor.door_window_sensor_158d0002254373
+    - binary_sensor.smoke_sensor_158d00023115ad

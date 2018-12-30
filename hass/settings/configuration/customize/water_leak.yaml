@@ -1,0 +1,13 @@
+#Протечка
+binary_sensor.water_leak_sensor_158d0001d594fa:
+  friendly_name: Раковина(Кухня)
+binary_sensor.water_leak_sensor_158d0001c34960:
+  friendly_name: Стояк
+binary_sensor.water_leak_sensor_158d0002150c07:
+  friendly_name: Ванна
+binary_sensor.water_leak_sensor_158d0002112b98:
+  friendly_name: Посудомойка
+binary_sensor.water_leak_sensor_158d0002113158:
+  friendly_name: Стиралка
+binary_sensor.water_leak_sensor_158d00023a48f0:
+  friendly_name: Туалет

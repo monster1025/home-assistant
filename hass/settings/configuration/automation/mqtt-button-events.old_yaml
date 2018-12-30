@@ -1,0 +1,76 @@
+#####################################################
+#                  MAINROOM                         #
+#####################################################
+- alias: button_living_click
+  trigger:
+      platform: mqtt
+      topic: home/switch/mainroom/status
+      payload: 'click'
+  action:
+    event: button_mainroom_click
+    
+- alias: button_living_double_click
+  trigger:
+      platform: mqtt
+      topic: home/switch/mainroom/status
+      payload: 'double_click'
+  action:
+    event: button_mainroom_double_click
+
+#####################################################
+#                  BATH                             #
+#####################################################
+- alias: button_bath_click
+  trigger:
+      platform: mqtt
+      topic: home/switch/bath/status
+      payload: 'click'
+  action:
+    event: button_bath_click
+    
+- alias: button_bath_double_click
+  trigger:
+      platform: mqtt
+      topic: home/switch/bath/status
+      payload: 'double_click'
+  action:
+    event: button_bath_double_click
+
+
+#####################################################
+#                  HALL                             #
+#####################################################
+- alias: button_hall_click
+  trigger:
+      platform: mqtt
+      topic: home/switch/hall/status
+      payload: 'click'
+  action:
+    event: button_hall_click
+    
+- alias: button_hall_double_click
+  trigger:
+      platform: mqtt
+      topic: home/switch/hall/status
+      payload: 'double_click'
+  action:
+    event: button_hall_double_click
+
+#####################################################
+#                 KITCHEN                           #
+#####################################################
+- alias: button_kitchen_click
+  trigger:
+      platform: mqtt
+      topic: home/switch/kitchen/status
+      payload: 'click'
+  action:
+    event: button_kitchen_click
+    
+- alias: button_kitchen_double_click
+  trigger:
+      platform: mqtt
+      topic: home/switch/kitchen/status
+      payload: 'double_click'
+  action:
+    event: button_kitchen_double_click

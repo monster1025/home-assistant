@@ -1,0 +1,13 @@
+#################################
+#          LIGHT CONTROL        #
+#################################
+light_control_bath:
+  module: lightcontrol_bath
+  class: LightControlBath
+  sensor: group.bath_motion
+  door_sensor: binary_sensor.door_window_sensor_158d000111a469 #TODO: make it group
+  control_entity: group.bath_light
+  timeout: 60
+  constraint: input_boolean.bath_light_control
+  global_dependencies:
+    - globals

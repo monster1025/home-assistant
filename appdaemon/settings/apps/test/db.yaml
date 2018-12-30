@@ -1,0 +1,9 @@
+db:
+ module: db
+ class: Db
+ connectionstring: !secret mysql_url
+ entity_id: sensor.power_total
+ 
+ debug: true
+ global_dependencies:
+  - automation

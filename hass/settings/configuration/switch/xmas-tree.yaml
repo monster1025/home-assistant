@@ -1,0 +1,5 @@
+- platform: xiaomi_miio
+  name: wifi_socket
+  host: !secret wifi_socket_ip
+  token: !secret wifi_socket_key
+  model: chuangmi.plug.m1

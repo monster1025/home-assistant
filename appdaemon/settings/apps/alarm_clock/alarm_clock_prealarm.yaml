@@ -1,0 +1,7 @@
+alarm_clock_prealarm:
+  module: alarm_clock_prealarm
+  class: AlarmclockPrealarm
+  sensor: group.bath_motion #bath motion sensor
+  entity: group.mainroom_color
+  global_dependencies:
+    - globals

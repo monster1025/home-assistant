@@ -1,0 +1,5 @@
+- platform: synology
+  url: !secret syno_url
+  username: admin
+  password: !secret syno_pass
+  verify_ssl: False

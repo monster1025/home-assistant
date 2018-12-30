@@ -1,0 +1,62 @@
+homeassistant:
+  name: Home
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  elevation: 124
+  unit_system: metric
+  time_zone: !secret timezone
+  customize: !include_dir_merge_named configuration/customize
+  customize_domain: !include customize_domain.yaml
+  packages: !include_dir_named packages/
+
+http:
+  api_password: !secret ha_password
+  base_url: !secret base_url
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 172.19.0.0/24
+
+# Enables the frontend
+frontend:
+lovelace:
+  mode: yaml
+    
+# Enables configuration UI
+config:
+discovery:
+
+# Enables support for tracking state changes over time
+recorder: !include configuration/recorder.yaml
+history:
+logbook:
+
+# Components
+automation: !include_dir_merge_list configuration/automation
+apple_tv: !include_dir_merge_list configuration/appletv
+alarm_control_panel: !include_dir_merge_list configuration/alarm_control_panel
+binary_sensor: !include_dir_merge_list configuration/binary_sensor
+camera: !include_dir_merge_list configuration/camera
+#climate: !include_dir_merge_list configuration/climate
+group: !include_dir_merge_named configuration/group
+input_boolean: !include_dir_merge_named configuration/input/input_boolean
+input_datetime: !include_dir_merge_named configuration/input/input_datetime
+#input_number: !include_dir_merge_named configuration/input/input_number
+light: !include_dir_merge_list configuration/light
+notify: !include_dir_merge_list configuration/notify
+media_player: !include_dir_merge_list configuration/media_player
+script: !include_dir_merge_named configuration/script
+sensor: !include_dir_merge_list configuration/sensor
+switch: !include_dir_merge_list configuration/switch
+tts: !include_dir_merge_list configuration/tts
+
+#one item
+influxdb: !include configuration/influxdb.yaml
+mqtt: !include configuration/mqtt/mqtt.yaml
+telegram_bot: !include configuration/bot/telegram_bot.yaml
+vacuum: !include configuration/xiaomi_aqara/vacuum.yaml
+xiaomi_aqara: !include configuration/xiaomi_aqara/xiaomi_aqara.yaml
+nest: !include configuration/nest/nest.yaml
+homekit: !include configuration/homekit/homekit.yaml
+
+#power meter
+modbus: !include configuration/modbus.yaml

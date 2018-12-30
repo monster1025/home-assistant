@@ -1,0 +1,12 @@
+discovery: true
+broker: !secret mqtt_ip
+port: 1883
+client_id: !secret mqtt_clientid
+username: !secret mqtt_user
+password: !secret mqtt_password
+birth_message:
+  topic: 'hass/status'
+  payload: 'online'
+will_message:
+  topic: 'hass/status'
+  payload: 'offline'

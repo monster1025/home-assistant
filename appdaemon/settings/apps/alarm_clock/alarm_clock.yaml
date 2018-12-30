@@ -1,0 +1,22 @@
+#################################
+#          ALARM CLOCK          #
+#################################
+alarmclock_weekdays:
+  module: alarm_clock
+  class: AlarmClock
+  state: input_boolean.alarmclock_weekdays
+  time: input_datetime.alarmclock_weekdays
+  days: mon,tue,wed,thu,fri
+  prealarm_delta: 15
+  global_dependencies:
+    - globals
+    
+alarmclock_weekend:
+  module: alarm_clock
+  class: AlarmClock
+  state: input_boolean.alarmclock_weekend
+  time: input_datetime.alarmclock_weekend
+  days: sat,sun
+  prealarm_delta: 15
+  global_dependencies:
+    - globals

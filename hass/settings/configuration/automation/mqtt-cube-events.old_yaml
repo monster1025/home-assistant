@@ -1,0 +1,39 @@
+- alias: cube_flip90
+  trigger:
+      platform: mqtt
+      topic: 'home/cube/mainroom/status'
+      payload: 'flip90'
+  action:
+    - event: cube_flip90
+
+- alias: cube_flip180
+  trigger:
+      platform: mqtt
+      topic: 'home/cube/mainroom/status'
+      payload: 'flip180'
+  action:
+    - event: cube_flip180
+
+- alias: cube_shake_air
+  trigger:
+      platform: mqtt
+      topic: 'home/cube/mainroom/status'
+      payload: 'shake_air'
+  action:
+    - event: cube_shake_air
+
+- alias: cube_move
+  trigger:
+      platform: mqtt
+      topic: 'home/cube/mainroom/status'
+      payload: 'move'
+  action:
+    - event: cube_move
+
+- alias: cube_tap_twice
+  trigger:
+      platform: mqtt
+      topic: 'home/cube/mainroom/status'
+      payload: 'tap_twice'
+  action:
+    - event: cube_tap_twice

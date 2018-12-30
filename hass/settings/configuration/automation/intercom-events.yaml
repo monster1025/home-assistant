@@ -1,0 +1,8 @@
+- alias: Domofon event
+  trigger:
+    platform: mqtt
+    topic: home/domofon/domofon/calltime
+  action:
+    - event: domofon_call
+      event_data_template:
+        payload: '{{ trigger.payload }}'

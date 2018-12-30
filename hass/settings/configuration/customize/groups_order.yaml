@@ -1,0 +1,63 @@
+
+group.default_view:
+  order: 1
+group.sensors:
+  order: 2
+group.alarmclock:
+  order: 3
+group.settings:
+  order: 4
+group.system:
+  order: 5
+
+#default_view
+group.home:
+  order: 11
+group.mainroom:
+  order: 12
+group.bath:
+  order: 13
+group.hall:
+  order: 14
+group.balcony:
+  order: 15
+group.outside:
+  order: 16
+
+#sensors
+group.motion_sensors:
+  order: 21
+group.water_leak:
+  order: 22
+group.smoke:
+  order: 23
+group.doors:
+  order: 24
+group.water_counters:
+  order: 25
+group.tags:
+  order: 26
+group.presence:
+  order: 27
+group.power:
+  order: 28
+
+#alarmclock
+group.alarmclock_weekdays:
+  order: 31
+group.alarmclock_weekend:
+  order: 32
+
+#settings
+group.light_control:
+  order: 41
+group.automation_control:
+  order: 42
+group.reports_control:
+  order: 43
+group.tag_control:
+  order: 44
+
+#system
+group.os:
+  order: 51

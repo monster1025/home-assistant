@@ -1,0 +1,50 @@
+#################################
+#   MOS.RU DATA RETRIEVER       #
+#################################
+mosru_client:
+  class: MosruClient
+  module: mosru
+  properties:
+    login: !secret mosru_login
+    pwd: !secret mosru_pwd
+    token: !secret mosru_token
+    paycode: !secret mosru_paycode
+    flat_id: !secret mosru_flat_id
+  global_dependencies:
+    - globals
+
+epd_sensor:
+  class: EpdBalanceSensor
+  module: mosru
+  entity_ids:
+    epd_balance: sensor.epd_balance
+  app: mosru_client
+  dependencies:
+    - mosru_client
+  global_dependencies:
+    - globals
+
+water_sensor:
+  class: WaterCounterSensor
+  module: mosru
+  entity_ids:
+    hot: sensor.counter_mosru_hot
+    cold: sensor.counter_mosru_cold
+  app: mosru_client
+  dependencies:
+    - mosru_client
+  global_dependencies:
+    - globals
+
+water_sender:
+  class: WaterCounterSender
+  module: mosru
+  entity_ids:
+    hot: sensor.counter_hot
+    cold: sensor.counter_cold
+  app: mosru_client
+  dependencies:
+    - mosru_client
+  global_dependencies:
+    - globals
+

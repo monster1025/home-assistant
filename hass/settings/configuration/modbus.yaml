@@ -1,0 +1,3 @@
+type: tcp
+host: !secret modbus_host
+port: !secret modbus_port

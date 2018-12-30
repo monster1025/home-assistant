@@ -1,0 +1,8 @@
+alarm_clock_action:
+  module: alarm_clock_action
+  class: AlarmclockAction
+  sensor: group.bath_motion #bath motion sensor
+  gw_mac: !secret aqara1_mac
+  ringtone: 20
+  global_dependencies:
+    - globals

@@ -1,0 +1,6 @@
+- platform: polling
+  api_key: !secret telegram_key
+  allowed_chat_ids:
+    - !secret telegram_group_chat
+    - !secret telegram_monster_chat
+  proxy_url: !secret proxy_url

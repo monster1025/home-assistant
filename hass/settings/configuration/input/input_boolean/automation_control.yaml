@@ -1,0 +1,49 @@
+presence_control:
+  name: Контроль присутствия (действия по уходу и приходу)
+  icon: mdi:account-off
+  initial: on
+
+water_leak_control:
+  name: Контроль протечек
+  icon: mdi:water-off
+  initial: on
+
+water_control:
+  name: Контроль подачи воды
+  icon: mdi:water-pump
+  initial: on  
+
+security_sensors_report:
+  name: Охрана периметра при отсутствии
+  icon: mdi:access-point
+  initial: on
+
+battery_report:
+  name: Отчет о состоянии батарей датчиков
+  icon: mdi:battery-charging-wireless-10
+  initial: on
+
+water_counters_report:
+  name: Отчет о поверке счетчиков
+  icon: mdi:alert-octagon
+  initial: on
+
+work_presence_report:
+  name: Отчет 'пора домой'
+  icon: mdi:account-alert
+  initial: on
+
+guest_mode:
+  name: Гостевой режим
+  icon: mdi:account-switch
+  initial: off
+
+mainroom_climate_control:
+  name: Контроль климата
+  icon: mdi:account-switch
+  initial: on
+
+lock_report:
+  name: Отчет замка
+  icon: mdi:lock-alert
+  initial: on

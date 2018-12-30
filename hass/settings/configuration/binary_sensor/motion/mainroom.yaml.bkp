@@ -1,0 +1,6 @@
+- platform: mqtt
+  state_topic: "home/motion/mainroom/status"
+  name: "motion_sensor_158d0000f6b2fa"
+  payload_on: "motion"
+  payload_off: "no_motion"
+  device_class: motion

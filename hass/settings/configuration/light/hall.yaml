@@ -1,0 +1,7 @@
+﻿- platform: mqtt
+  name: hall
+  state_topic: stat/balcony/POWER
+  command_topic: cmnd/balcony/POWER
+  payload_on: 'ON'
+  payload_off: 'OFF'
+  optimistic: false

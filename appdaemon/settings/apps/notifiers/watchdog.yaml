@@ -1,0 +1,11 @@
+#################################
+#  SENSOR BATTERY LOW REMINDER  #
+#################################
+watchdog_sensor_power_active_power:
+  class: Watchdog
+  module: watchdog
+  entity: sensor.power_active_power
+  update_interval: 60
+  timeout: 360
+  global_dependencies:
+    - globals

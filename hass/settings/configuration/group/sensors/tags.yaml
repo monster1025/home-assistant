@@ -1,0 +1,8 @@
+tags:
+  name: Метки
+  entities:
+  - sensor.tag_mamik_band
+  - sensor.tag_monster_nut
+  - sensor.tag_nut_blue
+  - sensor.tag_nut_white
+  - sensor.tag_nut_guest

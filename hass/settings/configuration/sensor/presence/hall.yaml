@@ -1,0 +1,3 @@
+# - platform: mqtt
+#   state_topic: 'home/presence/controller/hall'
+#   name: 'presence_hall'

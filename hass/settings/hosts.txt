@@ -1,0 +1,8 @@
+192.168.1.6	mqtt.local
+192.168.1.6	hass.local
+192.168.1.6 homeassistant
+192.168.1.56	mainbulb1.local
+192.168.1.52	mainbulb2.local
+192.168.1.54	mainbulb3.local
+192.168.1.163	mainbulb4.local
+192.168.1.53	mainbulb5.local

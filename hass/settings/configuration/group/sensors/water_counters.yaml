@@ -1,0 +1,8 @@
+water_counters:
+  name: Счетчики воды
+  entities:
+    - sensor.epd_balance
+    - sensor.counter_cold
+    - sensor.counter_hot
+    - sensor.counter_mosru_cold
+    - sensor.counter_mosru_hot

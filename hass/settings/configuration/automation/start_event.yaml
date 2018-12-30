@@ -1,0 +1,10 @@
+#####################################################
+#                  MAINROOM                         #
+#####################################################
+- alias: ha_start
+  initial_state: 'on'
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    event: ha_started

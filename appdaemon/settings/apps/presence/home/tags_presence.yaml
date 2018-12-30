@@ -1,0 +1,15 @@
+#################################
+#        HOME PRESENSE          #
+#################################
+tags_presence:
+  module: tags_presence
+  class: TagsPresence
+  tag_prefix: sensor.tag_
+  sensor_prefix: sensor.presence_
+  constraint_prefix: input_boolean.tag_
+  rooms:
+    - hall
+    - balcony
+    - kitchen
+  global_dependencies:
+    - globals

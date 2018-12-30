@@ -1,0 +1,15 @@
+power:
+  name: Электропитание
+  entities:
+    - sensor.power_mosenergosbyt_balance
+    - sensor.power_main_total
+    - sensor.power_mosenergosbyt_total
+    - sensor.power_total
+    - sensor.power_voltage
+    - sensor.power_current
+    - sensor.power_frequency
+    - sensor.power_active_power
+    - sensor.power_reactive_power
+    - sensor.power_power_factor
+    - sensor.power_import
+    - sensor.power_export

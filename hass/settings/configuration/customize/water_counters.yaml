@@ -1,0 +1,5 @@
+#счетчики
+sensor.counter_cold:
+  friendly_name: Холодная(счетчик)
+sensor.counter_hot:
+  friendly_name: Горячая(счетчик)

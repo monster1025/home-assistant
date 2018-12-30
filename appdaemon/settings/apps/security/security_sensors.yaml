@@ -1,0 +1,9 @@
+security_sensors:
+  module: security_sensors
+  class: SecuritySensorsReport
+  sensor: group.security_sensors
+  constraint: input_boolean.security_sensors_report
+  ha_panel: alarm_control_panel.ha_alarm
+  notify: telegram
+  global_dependencies:
+    - globals

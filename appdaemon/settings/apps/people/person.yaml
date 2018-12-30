@@ -1,0 +1,49 @@
+danil:
+  module: person
+  class: Person
+  priority: 10
+  properties:
+    at_home_sensor: binary_sensor.danil_home
+    device_trackers:
+      - sensor.tag_monster_nut
+    notifiers:
+      - telegram_monster
+    presence_input_select: input_select.danil_presence_status
+
+  dependencies:
+    - automation
+  global_dependencies:
+    - globals
+
+sveta:
+  module: person
+  class: Person
+  priority: 10
+  properties:
+    at_home_sensor: binary_sensor.sveta_home
+    device_trackers:
+      - sensor.tag_nut_guest
+    notifiers:
+      - telegram_sveta
+    presence_input_select: input_select.sveta_presence_status
+  dependencies:
+    - automation
+  global_dependencies:
+    - globals
+
+mama:
+  module: person
+  class: Person
+  priority: 10
+  properties:
+    at_home_sensor: binary_sensor.mama_home
+    device_trackers:
+      - sensor.tag_mamik_band
+      - sensor.tag_nut_blue
+    notifiers:
+      - telegram_mama
+    presence_input_select: input_select.mama_presence_status
+  dependencies:
+    - automation
+  global_dependencies:
+    - globals

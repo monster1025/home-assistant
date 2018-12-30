@@ -1,0 +1,59 @@
+- alias: cube_flip90
+  trigger:
+    platform: event
+    event_type: cube_action
+    event_data:
+      entity_id: binary_sensor.cube_158d00011065e3
+      click_type: flip90
+  action:
+    event: cube_flip90
+
+- alias: cube_flip180
+  trigger:
+    platform: event
+    event_type: cube_action
+    event_data:
+      entity_id: binary_sensor.cube_158d00011065e3
+      click_type: flip180
+  action:
+    event: cube_flip180
+
+- alias: cube_shake_air
+  trigger:
+    platform: event
+    event_type: cube_action
+    event_data:
+      entity_id: binary_sensor.cube_158d00011065e3
+      click_type: shake_air
+  action:
+    event: cube_shake_air
+
+- alias: cube_move
+  trigger:
+    platform: event
+    event_type: cube_action
+    event_data:
+      entity_id: binary_sensor.cube_158d00011065e3
+      click_type: move
+  action:
+    event: cube_move
+
+- alias: cube_swing
+  trigger:
+    platform: event
+    event_type: cube_action
+    event_data:
+      entity_id: binary_sensor.cube_158d00011065e3
+      click_type: swing
+  action:
+    event: cube_swing
+
+- alias: cube_tap_twice
+  trigger:
+    platform: event
+    event_type: cube_action
+    event_data:
+      entity_id: binary_sensor.cube_158d00011065e3
+      click_type: tap_twice
+  action:
+    event: cube_tap_twice

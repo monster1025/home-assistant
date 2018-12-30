@@ -1,0 +1,5 @@
+hall_light:
+  name: Свет (прихожая)
+  control: hidden
+  entities:
+    - light.hall

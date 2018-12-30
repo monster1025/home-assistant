@@ -1,0 +1,13 @@
+#################################
+#         WATER LEAK            #
+#################################
+water_leak:
+  module: water_leak
+  class: WaterLeak
+  constraint: input_boolean.water_leak_control
+  sensor: group.water_leak
+  valve: switch.water_valve
+  notify: telegram
+  gw_mac: !secret aqara1_mac
+  global_dependencies:
+    - globals

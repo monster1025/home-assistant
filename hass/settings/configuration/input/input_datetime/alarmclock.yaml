@@ -1,0 +1,9 @@
+alarmclock_weekdays:
+  name: Время
+  has_date: false
+  has_time: true
+
+alarmclock_weekend:
+  name: Время
+  has_date: false
+  has_time: true

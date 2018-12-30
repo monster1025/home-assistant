@@ -1,0 +1,4 @@
+- platform: xiaomi_miio
+  host: !secret powerstrip_ip
+  token: !secret powerstrip_key
+  model: zimi.powerstrip.v2

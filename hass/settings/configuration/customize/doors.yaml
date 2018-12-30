@@ -1,0 +1,17 @@
+#Датчики открытия дверей
+binary_sensor.door_window_sensor_158d0001130141:
+  friendly_name: Входная дверь
+binary_sensor.door_window_sensor_158d00010f7e19:
+  friendly_name: Дверь(Балкон)
+binary_sensor.door_window_sensor_158d000111a469:
+  friendly_name: Дверь(Ванна)
+binary_sensor.door_window_sensor_158d0002254373:
+  friendly_name: Дверь(Гостиная)
+binary_sensor.door_window_sensor_158d0001b77b1b:
+  friendly_name: Дверь(Кухня)
+binary_sensor.door_window_sensor_158d0001c0e46d:
+  friendly_name: Окно 1
+binary_sensor.door_window_sensor_158d0001e74660:
+  friendly_name: Окно(Кухня)
+binary_sensor.door_window_sensor_158d0001f34374:
+  friendly_name: Звонок

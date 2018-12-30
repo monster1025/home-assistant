@@ -1,0 +1,14 @@
+switch.water_valve:
+  friendly_name: Подача воды
+switch.kitchen_mini_light:
+  friendly_name: Подсветка
+switch.domofon_mode:
+  friendly_name: Открытие домофона
+switch.domofon_open:
+  friendly_name: Открыть домофон
+switch.yolka:
+  friendly_name: Ёлка
+switch.xiaomi_miio_switch:
+  friendly_name: Удлиннитель
+switch.wifi_socket:
+  friendly_name: Гирлянда-окно

@@ -1,0 +1,15 @@
+#################################
+#  SENSOR BATTERY LOW REMINDER  #
+#################################
+watchdog_power:
+  class: PowerWatchdog
+  module: power
+  entity: sensor.power_active_power
+  ha_panel: alarm_control_panel.ha_alarm
+  thresold: 0.6
+  water_devices:
+    - switch.plug_158d0001a68c64 # Посудомойка
+    - switch.plug_158d0001a4cfb4 # стиралка
+
+  global_dependencies:
+    - globals

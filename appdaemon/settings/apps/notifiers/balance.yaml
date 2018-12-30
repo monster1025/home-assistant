@@ -1,0 +1,15 @@
+#################################
+#  SENSOR BATTERY LOW REMINDER  #
+#################################
+balance_low_report:
+  class: Balance
+  module: balance
+  entity_ids:
+    mosenergosbyt_balance: sensor.power_mosenergosbyt_balance
+    epd_balance: sensor.epd_balance
+
+  always_send: 0
+  threshold: -100
+  notify: telegram_monster
+  global_dependencies:
+    - globals

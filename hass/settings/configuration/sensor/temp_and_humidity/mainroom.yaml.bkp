@@ -1,0 +1,10 @@
+- platform: mqtt
+  state_topic: 'home/sensor_ht/mainroom/temperature'
+  name: 'temperature_158d0001149b3c'
+  unit_of_measurement: '°C'
+  value_template: '{{ float(value_json) / 100 }}'
+- platform: mqtt
+  state_topic: 'home/sensor_ht/mainroom/humidity'
+  name: 'humidity_158d0001149b3c'
+  unit_of_measurement: '%'
+  value_template: '{{ float(value_json) / 100 }}'

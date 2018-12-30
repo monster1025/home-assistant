@@ -1,0 +1,15 @@
+tag_mamik_band:
+  name: tag_mamik_band
+  initial: on
+tag_monster_nut:
+  name: tag_monster_nut
+  initial: on
+tag_nut_blue:
+  name: tag_nut_blue
+  initial: on
+tag_nut_white:
+  name: tag_nut_white
+  initial: on
+tag_nut_guest:
+  name: tag_nut_guest
+  initial: on

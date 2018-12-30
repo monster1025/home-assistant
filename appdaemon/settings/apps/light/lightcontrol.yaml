@@ -1,0 +1,43 @@
+#################################
+#          LIGHT CONTROL        #
+#################################
+light_control_mainroom:
+  module: lightcontrol
+  class: LightControl
+  sensor: group.mainroom_motion
+  control_entity: group.mainroom_light
+  timeout: 60
+  constraint: input_boolean.mainroom_light_control
+  global_dependencies:
+    - globals
+
+light_control_kitchen:
+  module: lightcontrol
+  class: LightControl
+  sensor: group.kitchen_motion
+  control_entity: group.kitchen_light
+  timeout: 300
+  constraint: input_boolean.kitchen_light_control
+  global_dependencies:
+    - globals
+
+light_control_hall:
+  module: lightcontrol
+  class: LightControl
+  sensor: group.hall_motion
+  control_entity: group.hall_light
+  timeout: 120
+  constraint: input_boolean.hall_light_control
+  global_dependencies:
+    - globals
+    
+light_control_balcony:
+  module: lightcontrol
+  class: LightControl
+  sensor: group.balcony_door_window
+  control_entity: group.balcony_light
+  timeout: 3
+  constraint: input_boolean.balcony_light_control
+  after_sundown: True
+  global_dependencies:
+    - globals

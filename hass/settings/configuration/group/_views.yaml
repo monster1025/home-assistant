@@ -1,0 +1,60 @@
+﻿default_view:
+  view: yes
+  name: Статус
+  icon: mdi:home
+  entities:
+    - group.home
+    - group.mainroom
+    - group.kitchen
+    - group.bath
+    - group.hall
+    - group.balcony
+    - group.outside
+
+sensors:
+  view: yes
+  name: Датчики
+  icon: mdi:nfc
+  entities:
+    - group.motion_sensors
+    - group.water_leak
+    - group.smoke
+    - group.doors
+    - group.water_counters
+    - group.tags
+    - group.presence
+    - group.power
+
+cameras:
+  view: yes
+  name: Камеры
+  icon: mdi:cctv
+  entities:
+    - camera.entrance
+
+alarmclock:
+  view: yes
+  name: Будильники
+  icon: mdi:alarm
+  entities:
+    - group.alarmclock_weekdays
+    - group.alarmclock_weekend
+
+settings:
+  view: yes
+  name: Настройки
+  icon: mdi:settings
+  entities:
+    - group.light_control
+    - group.automation_control
+    - group.reports_control
+    - group.tag_control
+    - group.persons
+
+system:
+  view: yes
+  name: Информация
+  icon: mdi:monitor-multiple
+  entities:
+    - group.os
+    - group.network

@@ -1,0 +1,4 @@
+- platform: telegram
+  name: telegram
+  chat_id: !secret telegram_group_chat
+  parse_mode: html

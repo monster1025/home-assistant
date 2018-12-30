@@ -1,0 +1,7 @@
+mainroom_motion:
+  name: Движение (гостиная)
+  control: hidden
+  entities:
+    - binary_sensor.motion_sensor_158d0000f6b2fa
+    - binary_sensor.motion_sensor_158d0001e50ce4
+    - binary_sensor.motion_sensor_158d0001e80f0d

@@ -1,0 +1,9 @@
+#################################
+#              TAGS             #
+#################################
+tags:
+  module: tags
+  class: TagsList
+  secrets_file: /conf/secrets.yaml
+  global_dependencies:
+    - globals

@@ -1,0 +1,41 @@
+- platform: mqtt
+  state_topic: "home/nest/nest/y1"
+  name: "nest_y1"
+  payload_on: "1"
+  payload_off: "0"
+  device_class: power
+
+- platform: mqtt
+  state_topic: "home/nest/nest/y2"
+  name: "nest_y2"
+  payload_on: "1"
+  payload_off: "0"
+  device_class: power
+
+- platform: mqtt
+  state_topic: "home/nest/nest/w1"
+  name: "nest_w1"
+  payload_on: "1"
+  payload_off: "0"
+  device_class: power
+
+- platform: mqtt
+  state_topic: "home/nest/nest/w2"
+  name: "nest_w2"
+  payload_on: "1"
+  payload_off: "0"
+  device_class: power
+
+- platform: mqtt
+  state_topic: "home/nest/nest/s"
+  name: "nest_s"
+  payload_on: "1"
+  payload_off: "0"
+  device_class: power
+
+- platform: mqtt
+  state_topic: "home/nest/nest/g"
+  name: "nest_g"
+  payload_on: "1"
+  payload_off: "0"
+  device_class: power

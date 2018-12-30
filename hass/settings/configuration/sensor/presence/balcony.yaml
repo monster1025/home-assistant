@@ -1,0 +1,3 @@
+# - platform: mqtt
+#   state_topic: 'home/presence/controller/balcony'
+#   name: 'presence_balcony'

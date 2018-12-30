@@ -1,0 +1,6 @@
+- platform: mqtt_room
+  device_id: !secret tag_nut_white
+  name: tag_nut_white
+  state_topic: home/presence
+  timeout: 15
+  away_timeout: 120

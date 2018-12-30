@@ -1,0 +1,7 @@
+﻿- platform: mqtt
+  name: bath
+  state_topic: "stat/bathlight/POWER"
+  command_topic: "cmnd/bathlight/POWER"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false

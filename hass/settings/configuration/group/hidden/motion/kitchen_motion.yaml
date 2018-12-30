@@ -1,0 +1,6 @@
+kitchen_motion:
+  name: Движение (кухня)
+  control: hidden
+  entities:
+    - binary_sensor.motion_sensor_158d0000fbc664
+    - binary_sensor.motion_sensor_158d0001535c97

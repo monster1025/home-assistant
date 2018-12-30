@@ -1,0 +1,4 @@
+- name: appletv4
+  host: !secret atv4_ip
+  login_id: !secret atv4_login
+  credentials: !secret atv4_credentials

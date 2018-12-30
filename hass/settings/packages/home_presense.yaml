@@ -1,0 +1,28 @@
+---
+input_select:
+  danil_presence_status:
+    name: Danil
+    options:
+      - 'Away'
+      - 'Extended Away'
+      - 'Home'
+      - 'Just Arrived'
+      - 'Just Left'
+
+  sveta_presence_status:
+    name: Sveta
+    options:
+      - 'Away'
+      - 'Extended Away'
+      - 'Home'
+      - 'Just Arrived'
+      - 'Just Left'
+
+  mama_presence_status:
+    name: Mama
+    options:
+      - 'Away'
+      - 'Extended Away'
+      - 'Home'
+      - 'Just Arrived'
+      - 'Just Left'

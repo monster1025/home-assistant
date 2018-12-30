@@ -1,0 +1,7 @@
+﻿- platform: mqtt
+  name: "kitchen"
+  state_topic: "stat/kitchen/POWER"
+  command_topic: "cmnd/kitchen/POWER"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false

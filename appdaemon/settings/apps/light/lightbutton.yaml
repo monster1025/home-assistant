@@ -1,0 +1,46 @@
+#################################
+#          LIGHT BUTTONS        #
+#################################
+light_button_main:
+  module: lightbutton
+  class: LightButton
+  sensor: binary_sensor.switch_158d00013f81a9
+  entities: light.yeelight_rgb_34ce008fe328,light.yeelight_rgb_286c071065c7,light.yeelight_white_34ce0087ff33,light.yeelight_white_f0b4290e5444,light.yeelight_white_f0b429a8f6df
+  global_dependencies:
+    - globals
+
+light_button_hall:
+  module: lightbutton
+  class: LightButton
+  sensor: binary_sensor.switch_158d000102f7e6
+  entities: group.hall_light
+  control_input: input_boolean.hall_light_control
+  global_dependencies:
+    - globals
+
+light_button_bath:
+  module: lightbutton
+  class: LightButton
+  sensor: binary_sensor.switch_158d0001256810
+  entities: group.bath_light
+  control_input: input_boolean.bath_light_control
+  global_dependencies:
+    - globals
+
+light_button_kitchen:
+  module: lightbutton
+  class: LightButton
+  sensor: binary_sensor.switch_158d00012d5720
+  entities: group.kitchen_light
+  control_input: input_boolean.kitchen_light_control
+  global_dependencies:
+    - globals
+
+light_button_balcony:
+  module: lightbutton
+  class: LightButton
+  sensor: binary_sensor.wall_switch_158d000183a5fe
+  entities: group.balcony_light
+  control_input: input_boolean.balcony_light_control
+  global_dependencies:
+    - globals

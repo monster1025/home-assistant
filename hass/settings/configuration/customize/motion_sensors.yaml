@@ -1,0 +1,22 @@
+#Движение
+binary_sensor.motion_sensor_158d0000fbc664:
+  friendly_name: Кухня
+binary_sensor.motion_sensor_158d0001535c97:
+  friendly_name: Кухня2
+binary_sensor.motion_sensor_158d0000e7c7ad:
+  friendly_name: Прихожая
+binary_sensor.motion_sensor_158d0002044548:
+  friendly_name: Прихожая2
+binary_sensor.motion_sensor_158d0000f9546b:
+  friendly_name: Ванна
+binary_sensor.motion_sensor_158d000165fed5:
+  friendly_name: Ванна2
+binary_sensor.motion_sensor_158d0001537e21:
+  friendly_name: Ванна3
+
+binary_sensor.motion_sensor_158d0000f6b2fa:
+  friendly_name: Гостиная(Тумба)
+binary_sensor.motion_sensor_158d0001e80f0d:
+  friendly_name: Гостиниая(Диван)
+binary_sensor.motion_sensor_158d0001e50ce4:
+  friendly_name: Гостиная(Кровать)

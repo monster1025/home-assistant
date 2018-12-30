@@ -1,0 +1,8 @@
+light_control:
+  name: Контроль света
+  entities:
+    - input_boolean.mainroom_light_control
+    - input_boolean.hall_light_control
+    - input_boolean.bath_light_control
+    - input_boolean.kitchen_light_control
+    - input_boolean.balcony_light_control

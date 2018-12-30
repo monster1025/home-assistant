@@ -1,0 +1,11 @@
+lock:
+  module: lock
+  class: Lock
+  constraint: input_boolean.lock_report
+  user_65536: Данил (указ)
+  user_65537: Данил (сред)
+  user_65538: Света (указ)
+  user_65539: Мама (указ)
+  notify: telegram
+  global_dependencies:
+    - globals

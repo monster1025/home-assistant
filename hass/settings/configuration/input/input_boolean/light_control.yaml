@@ -1,0 +1,15 @@
+mainroom_light_control:
+  name: Контроль света в гостиной
+  initial: off
+hall_light_control:
+  name: Контроль света в прихожей
+  initial: on
+bath_light_control:
+  name: Контроль света в ванной
+  initial: on
+kitchen_light_control:
+  name: Контроль света на кухне
+  initial: on
+balcony_light_control:
+  name: Контроль света на балконе
+  initial: on

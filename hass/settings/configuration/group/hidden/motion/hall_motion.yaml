@@ -1,0 +1,6 @@
+hall_motion:
+  name: Движение (прихожая)
+  control: hidden
+  entities:
+    - binary_sensor.motion_sensor_158d0000e7c7ad
+    - binary_sensor.motion_sensor_158d0002044548

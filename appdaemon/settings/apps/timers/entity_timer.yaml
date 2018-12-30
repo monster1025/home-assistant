@@ -1,0 +1,35 @@
+led_timer:
+  module: entity_timer
+  class: EntityTimer
+  on_time: "09:00:00"
+  off_time: "22:00:00"
+  entity: switch.ledstrip
+  global_dependencies:
+    - globals
+
+led_window_timer:
+  module: entity_timer
+  class: EntityTimer
+  on_time: "09:00:00"
+  off_time: "23:00:00"
+  entity: switch.wifi_socket
+  global_dependencies:
+    - globals
+
+xmas_tree_timer:
+  module: entity_timer
+  class: EntityTimer
+  on_time: "09:00:00"
+  off_time: "23:00:00"
+  entity: switch.broadlink_switch
+  global_dependencies:
+    - globals
+
+# tv_timer:
+#   module: entity_timer
+#   class: EntityTimer
+#   on_time: "09:00:00"
+#   off_time: "22:30:00"
+#   entity: switch.plug_158d0001104a0c
+#   global_dependencies:
+#     - globals

@@ -1,0 +1,7 @@
+﻿- platform: mqtt
+  name: "balcony"
+  state_topic: "stat/balcony_light/POWER"
+  command_topic: "cmnd/balcony_light/POWER"
+  payload_on: "ON"
+  payload_off: "OFF"
+  optimistic: false

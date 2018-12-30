@@ -1,0 +1,6 @@
+alarmclock_weekdays:
+  name: Будильник (будни)
+  control: hidden
+  entities:
+    - input_boolean.alarmclock_weekdays
+    - input_datetime.alarmclock_weekdays

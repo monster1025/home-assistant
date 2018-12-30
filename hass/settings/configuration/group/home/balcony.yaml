@@ -1,0 +1,7 @@
+﻿balcony:
+  name: Балкон
+  control: hidden
+  entities:
+    - light.balcony
+    - sensor.temperature_158d000117d37a
+    - sensor.humidity_158d000117d37a

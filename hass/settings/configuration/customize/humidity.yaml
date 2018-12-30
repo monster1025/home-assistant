@@ -1,0 +1,15 @@
+﻿#Балкон
+sensor.humidity_158d000117d37a:
+  friendly_name: Влажность(Балкон)
+
+#Гостиная
+sensor.humidity_158d0001149b3c:
+  friendly_name: Влажность(Гостиная)
+
+#Ванна
+sensor.humidity_158d00012d9ad7:
+  friendly_name: Влажность(Ванна)
+  
+#Улица
+sensor.humidity_158d000149c128:
+  friendly_name: Влажность(Улица)
