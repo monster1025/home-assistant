@@ -3,7 +3,7 @@ services:
   mosquitto:
     image: "monster1025/alpine86-mosquitto:latest"
     container_name: mosquitto
-    env_file: ./mosquitto/mqtt.env
+    env_file: ./mosquitto/settings/mqtt.env
     ports:
       - "1883:1883"
     restart: always
@@ -11,7 +11,7 @@ services:
   mysql:
     image: mariadb
     container_name: mysql
-    env_file: ./mysql/mysql.env
+    env_file: ./mysql/settings/mysql.env
     ports:
       - "3306:3306/tcp"
     restart: unless-stopped
@@ -111,7 +111,7 @@ services:
     container_name: broadlink
     links:
       - "mosquitto"
-    env_file: ./broadlink/broadlink.env
+    env_file: ./broadlink/settings/broadlink.env
     restart: always
     logging:
       driver: json-file
