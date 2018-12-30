@@ -73,14 +73,21 @@ services:
     links:
       - "hass"
       - "appdaemon"
+    env_file: ./nginx/settings/nginx.env
     volumes:
-        - /srv/homeassistant/hosts.txt:/etc/hosts:ro
-    volumes:
+        - ./hass/settings/hosts.txt:/etc/hosts:ro
+        - ./nginx/settings/site-confs:/etc/nginx/conf.d.source:ro
         - /srv/ssl:/config/keys
-        - ./nginx-config/site-confs:/etc/nginx/conf.d
     ports:
         - "80:80"
         - "443:443"
+    command: |
+      /bin/bash -c "cp -R /etc/nginx/conf.d.source/* /etc/nginx/conf.d && \
+                    sed -i \"s/%DOMAIN%/$$HASS_DOMAIN/g\" /etc/nginx/conf.d/*.conf && \
+                    sed -i \"s/%PASS%/$$HASS_PASSWORD/g\" /etc/nginx/conf.d/*.conf && \
+                    sed -i \"s/%SERVER_IP%/$$SERVER_IP/g\" /etc/nginx/conf.d/*.conf && \
+                    cat /etc/nginx/conf.d/*.conf && \
+                    nginx -g 'daemon off;'"
     logging:
       driver: json-file
       options:
@@ -117,9 +124,10 @@ services:
       driver: json-file
       options:
         max-size: 50m  
-###########################
-#       GRAFANA           #
-###########################
+
+  ###########################
+  #       GRAFANA           #
+  ###########################
   grafana:
     image: grafana/grafana
     container_name: grafana
