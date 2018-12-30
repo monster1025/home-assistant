@@ -8,6 +8,7 @@ lint:
 
 update_secrets_sample:
 	@echo "Masking passwords..."
+	#hass
 	@cat hass/settings/secrets.yaml | sed "s/\:.*/\: xxxxxxxxx/g" > hass/settings/secrets.yaml.sample #mask passwords
 	@sed -i "s/latitude:.*/latitude: 1.0/g" hass/settings/secrets.yaml.sample #must be a number
 	@sed -i "s/longitude:.*/longitude: 1.0/g" hass/settings/secrets.yaml.sample #must be a number
@@ -17,6 +18,9 @@ update_secrets_sample:
 	@sed -i "s/powerstrip_key:.*/powerstrip_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/g" hass/settings/secrets.yaml.sample #len 32
 	@sed -i "s/telegram_chat:.*/telegram_chat: 0/g" hass/settings/secrets.yaml.sample #must be a number
 	@sed -i "s/timezone:.*/timezone: Europe\/London/g" hass/settings/secrets.yaml.sample #must be valid
+	#broadlink
+	@find . -name *.env | xargs -I{} cp {} {}.sample
+	@find . -name *.env.sample | xargs -I{} sed -i "s/\=.*/\=xxxxxxxxx/g" {}
 
 commit: update_secrets_sample
 	git add .
