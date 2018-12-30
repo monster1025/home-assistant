@@ -68,7 +68,6 @@ services:
   nginx:
     image: nginx
     hostname: nginx
-    restart: always
     container_name: nginx
     links:
       - "hass"
@@ -86,8 +85,8 @@ services:
                     sed -i \"s/%DOMAIN%/$$HASS_DOMAIN/g\" /etc/nginx/conf.d/*.conf && \
                     sed -i \"s/%PASS%/$$HASS_PASSWORD/g\" /etc/nginx/conf.d/*.conf && \
                     sed -i \"s/%SERVER_IP%/$$SERVER_IP/g\" /etc/nginx/conf.d/*.conf && \
-                    cat /etc/nginx/conf.d/*.conf && \
                     nginx -g 'daemon off;'"
+    restart: always
     logging:
       driver: json-file
       options:
