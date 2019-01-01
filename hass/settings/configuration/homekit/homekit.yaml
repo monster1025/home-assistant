@@ -16,3 +16,4 @@ filter:
     - sensor.temperature_158d000149c128
   exclude_entities:
     - switch.plug_158d00010dd98d
+    - switch.xiaomi_miio_switch

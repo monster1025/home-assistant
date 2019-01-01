@@ -264,6 +264,9 @@ class MosruEpd(MosruBase):
         if epd != []:
           break
         epd = self._api.get_epd(self._flat_id, date_str, False)
+      if len(epd) == 0:
+        self.log('epd not found for date: {}'.format(date_str))
+        continue
       epd_first = epd[0]
       data[date_str] = epd_first
       # epd_total = epd_first['amount']
