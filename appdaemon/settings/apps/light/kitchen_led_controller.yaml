@@ -5,5 +5,17 @@ kitchen_led_controller:
   module: kitchen_led_controller
   class: KitchenLedController
   watch_entity: light.kitchen
+  topic: home/kitchen-led/kitchen-led/state/set
+  global_dependencies:
+    - globals
+
+#################################
+#          LIGHT BUTTONS        #
+#################################
+kitchen_mini_light_controller:
+  module: kitchen_led_controller
+  class: KitchenLedController
+  watch_entity: light.kitchen
+  topic: home/plug/kitchen-mini-light/status/set
   global_dependencies:
     - globals

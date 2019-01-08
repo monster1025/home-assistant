@@ -1,4 +1,0 @@
-# - platform: template
-#   sensors:
-#     lux_outside:
-#       value_template: '{{0}}'

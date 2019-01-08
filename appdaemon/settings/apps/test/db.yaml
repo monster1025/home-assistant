@@ -1,8 +1,30 @@
-db:
+power_history:
  module: db
  class: Db
  connectionstring: !secret mysql_url
  entity_id: sensor.power_total
+ 
+ debug: true
+ global_dependencies:
+  - automation
+
+
+
+counter_hot_history:
+ module: db
+ class: Db
+ connectionstring: !secret mysql_url
+ entity_id: sensor.counter_hot
+ 
+ debug: true
+ global_dependencies:
+  - automation
+
+counter_cold_history:
+ module: db
+ class: Db
+ connectionstring: !secret mysql_url
+ entity_id: sensor.counter_cold
  
  debug: true
  global_dependencies:

@@ -1,0 +1,13 @@
+#################################################
+#               AirFresher                      #
+#################################################
+- platform: mqtt
+  state_topic: 'home/airfresher/airfresher/remain'
+  name: 'airfresher_remain'
+  # value_template: '{{ (value | float ) / 1000 }}'
+  unit_of_measurement: 'times'
+
+- platform: template
+  sensors:
+    airfresher_remain_percent:
+      value_template: "{{ ((100 / 1400) * (states('sensor.airfresher_remain') | int )) | round(2) }}"

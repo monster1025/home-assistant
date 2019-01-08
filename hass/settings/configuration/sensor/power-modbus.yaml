@@ -2,7 +2,7 @@
   sensors:
     power_main_total:
       unit_of_measurement: 'kWh'
-      value_template: "{{ states('sensor.power_total') | float + 4733.6 | round(2) }}"
+      value_template: "{{ (states('sensor.power_total') | float + 4733.6) | round(2) }}"
       #4733.6 - разница показаний.
 
 - platform: modbus

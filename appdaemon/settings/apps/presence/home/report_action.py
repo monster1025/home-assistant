@@ -48,4 +48,4 @@ class ReportByPresence(hass.Hass):
       message = "В доме остались работать следующие устройства:\n" + message
       self.notify(message, name = self.args['notify'])
     else:
-      self.notify("Все устройства в доме выключены.", name = self.args['notify'])    	
+      self.notify("Все устройства в доме выключены.", name = self.args['notify'])

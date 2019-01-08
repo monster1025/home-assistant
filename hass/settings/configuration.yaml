@@ -50,7 +50,6 @@ switch: !include_dir_merge_list configuration/switch
 tts: !include_dir_merge_list configuration/tts
 
 #one item
-influxdb: !include configuration/influxdb.yaml
 mqtt: !include configuration/mqtt/mqtt.yaml
 telegram_bot: !include configuration/bot/telegram_bot.yaml
 vacuum: !include configuration/xiaomi_aqara/vacuum.yaml

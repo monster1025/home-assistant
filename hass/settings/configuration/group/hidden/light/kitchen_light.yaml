@@ -3,4 +3,4 @@ kitchen_light:
   control: hidden
   entities:
     - light.kitchen
-    - switch.kitchen_mini_light
+    #- switch.kitchen_mini_light

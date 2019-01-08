@@ -6,6 +6,7 @@ lock:
   user_65537: Данил (сред)
   user_65538: Света (указ)
   user_65539: Мама (указ)
+  user_65540: Саня
   notify: telegram
   global_dependencies:
     - globals

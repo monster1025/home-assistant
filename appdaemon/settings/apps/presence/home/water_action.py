@@ -17,12 +17,16 @@ import appdaemon.plugins.hass.hassapi as hass
 class WaterValveControl(hass.Hass):
   standby_power_limit = 15
   timer = None
+  listen_event_handle_list = []
+  timers = []
+
   def initialize(self):
     if 'water_valve' not in self.args or 'water_devices' not in self.args or 'notify' not in self.args:
       self.error("Please provide water_valve, water_devices and notify in config!")
       return
-    self.listen_event(self.away_mode, "away_mode")
-    self.listen_event(self.return_home_mode, "return_home_mode")
+
+    self.listen_event_handle_list.append(self.listen_event(self.away_mode, "away_mode"))
+    self.listen_event_handle_list.append(self.listen_event(self.return_home_mode, "return_home_mode"))
     self.log(self.get_turned_on_devices())
 
   def return_home_mode(self, event_id, event_args, kwargs):
@@ -47,7 +51,7 @@ class WaterValveControl(hass.Hass):
         device_names += self.friendly_name(device)
       self.notify('В доме остались требующие воды устройства ({}), подача воды не будет отключена.'.format(device_names), name = self.args['notify'])
       self.cancel_current_timer()
-      self.timer = self.run_every(self.wait_when_device_is_done, self.datetime(), 5*60)
+      self.timers.append(self.run_every(self.wait_when_device_is_done, self.datetime(), 5*60))
     else:
       self.turn_off(self.args['water_valve'])
       for device in self.args['water_devices']:
@@ -83,7 +87,7 @@ class WaterValveControl(hass.Hass):
     return powered_on_devices
 
   def cancel_current_timer(self):
-    if self.timer != None:
+    for timer in self.timers:
       self.log('canceling timer')
-      self.cancel_timer(self.timer)
-    self.timer = None
+      self.cancel_timer(timer)
+    self.timers = []

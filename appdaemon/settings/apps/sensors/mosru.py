@@ -2,7 +2,8 @@ import globals
 import datetime as dt
 from automation import Automation, Base
 from datetime import datetime, tzinfo, timedelta
-from mos_lib import MosAPI, Watercounter, Water, EmpServerException
+from emp_mos_api.mos import MosAPI, Watercounter, Water, EmpServerException
+#from mos_lib import MosAPI, Watercounter, Water, EmpServerException
 
 class WaterCounterSender(Automation):
   timezone = '+03:00'
