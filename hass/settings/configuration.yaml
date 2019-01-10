@@ -59,3 +59,5 @@ homekit: !include configuration/homekit/homekit.yaml
 
 #power meter
 modbus: !include configuration/modbus.yaml
+
+mysensors: !include configuration/mysensors.yaml

@@ -2,8 +2,8 @@ import appdaemon.plugins.hass.hassapi as hass
 import globals
 import datetime
 #
-# Entity timer
-# Turn on and off this entities
+# Air Fresher controller
+# Fresh the air in toilet
 #
 # Args:
 #
@@ -29,8 +29,8 @@ class AirFresher(hass.Hass):
     if (old == "off" and new == "on"):
       self.log('Start freshing timer.')
       self.fresh_times = 0
-      newtime = self.datetime()+datetime.timedelta(minutes=3)
-      self.timers.append(self.run_every(self.timer_tick, newtime, 5*60))
+      newtime = self.datetime()+datetime.timedelta(minutes=5)
+      self.timers.append(self.run_every(self.timer_tick, newtime, 3*60))
 
   def timer_tick(self, args) -> None:
     self.fresh()
