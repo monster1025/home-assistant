@@ -41,7 +41,7 @@ class Doorbell(hass.Hass):
 
 
   def send_image(self):
-    self.call_service("camera/snapshot", entity_id="camera.entrance", filename="/config/www/camera_image.jpg")
+    self.call_service("camera/snapshot", entity_id="camera.enterance", filename="/config/www/camera_image.jpg")
     extra_data = {'photo': {'file':'/config/www/camera_image.jpg', 'capture': 'Фото звонившего.'}}
     self.notify("Фото звонившего", name = self.args['notify'], data=extra_data)
 

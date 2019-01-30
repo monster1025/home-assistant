@@ -17,6 +17,8 @@ import datetime
 class AirFresher(hass.Hass):
   timers = []
   fresh_times = 0
+  fresh_every_mins = 10
+  last_fresh_date = None
 
   def initialize(self):
     self.listen_state(self.light_change, 'group.bath_light')
@@ -27,20 +29,32 @@ class AirFresher(hass.Hass):
       self.cancel_timers()
 
     if (old == "off" and new == "on"):
-      self.log('Start freshing timer.')
-      self.fresh_times = 0
-      newtime = self.datetime()+datetime.timedelta(minutes=5)
-      self.timers.append(self.run_every(self.timer_tick, newtime, 3*60))
+      if self.last_fresh_date != None:
+        diff = (self.datetime()-self.last_fresh_date).seconds / 60 # * 24 * 60 * 60
+        if (diff < self.fresh_every_mins):
+          self.log("time passed from last fresh: {}".format(diff))
+          self.log('Already dreshed in {} mins.'.format(self.fresh_every_mins))
+          return
+      self.start_timer()
 
-  def timer_tick(self, args) -> None:
-    self.fresh()
+  def start_timer(self) -> None:
+      self.log('Start freshing timer.')
+      self.last_fresh_date = self.datetime()
+      self.fresh_times = 0
+      newtime = self.datetime()+datetime.timedelta(seconds=5)
+      self.timers.append(self.run_every(self.timer_tick, newtime, 4*60))
 
   def cancel_timers(self) -> None:
     for timer in self.timers:
       self.cancel_timer(timer)
     timers = []
 
+  def timer_tick(self, args) -> None:
+    self.fresh()
+
   def fresh(self):
+    self.log("current timer: {}".format(self.last_fresh_date))
+
     self.fresh_times = self.fresh_times + 1
     if (self.fresh_times > 5):
       self.log('Fresh max times is reached. Canceling timer.')

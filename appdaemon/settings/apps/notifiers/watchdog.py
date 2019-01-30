@@ -2,6 +2,7 @@ import appdaemon.plugins.hass.hassapi as hass
 from datetime import timedelta
 import datetime
 import globals
+import requests
 
 #
 # App to monitor entity update time.
@@ -41,3 +42,13 @@ class Watchdog(hass.Hass):
       friendly_name = self.friendly_name(entity)
       message = "Датчик {} ({}) не обновлялся в течении {} секунд.".format(friendly_name, entity, self.args['timeout'])
       self.notify(message, name = "telegram")
+      self.reboot_sensor()
+
+  def reboot_sensor(self):
+    if 'reboot' in self.args and self.args['reboot']:
+      host = self.args['host']
+      headers = {'Content-Type': 'application/json; charset=utf-8', 'Referer': 'http://{}/others.html'.format(host), 'X-Requested-With': 'XMLHttpRequest'}
+      data = 'msg={"CID":20003,"PL":{}}'
+      response = requests.post('http://{}/cmd'.format(host), headers=headers, data=data, auth=('admin', self.args['password']))
+      json = response.json()
+      self.log("reboot status: {}".format(json))

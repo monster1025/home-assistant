@@ -1,5 +1,5 @@
 - platform: yandextts
-  api_key: 'd511d71c-6589-4d9b-a096-645271e1d1cc'
+  api_key: !secret yandex_tts_key
   language: 'ru-RU'
   codec: mp3
   voice: oksana

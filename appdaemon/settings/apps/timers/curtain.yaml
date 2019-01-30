@@ -1,0 +1,8 @@
+curtain_timer:
+  module: curtain
+  class: Curtain
+  on_time: "07:45:00"
+  off_time: "21:00:00"
+  entity: cover.curtain_158d0002b0c46a
+  global_dependencies:
+    - globals

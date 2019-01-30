@@ -30,7 +30,7 @@ cameras:
   name: Камеры
   icon: mdi:cctv
   entities:
-    - camera.entrance
+    - camera.enterance
 
 alarmclock:
   view: yes

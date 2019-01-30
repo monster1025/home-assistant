@@ -7,5 +7,8 @@ watchdog_sensor_power_active_power:
   entity: sensor.power_active_power
   update_interval: 60
   timeout: 360
+  reboot: True
+  host: !secret modbus_host
+  password: !secret modbus_admin_pass
   global_dependencies:
     - globals

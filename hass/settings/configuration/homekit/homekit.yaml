@@ -5,6 +5,7 @@ filter:
     - switch
     - light
     - vacuum
+    - cover
   include_entities:
     - sensor.humidity_158d0001149b3c
     - sensor.humidity_158d000117d37a

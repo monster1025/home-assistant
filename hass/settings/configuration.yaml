@@ -9,6 +9,11 @@ homeassistant:
   customize_domain: !include customize_domain.yaml
   packages: !include_dir_named packages/
 
+api:
+
+alexa:
+  smart_home:
+
 http:
   api_password: !secret ha_password
   base_url: !secret base_url
