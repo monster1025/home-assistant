@@ -7,6 +7,6 @@
   optimistic: false
 
 - platform: xiaomi_miio
-  name: bath_led
+  name: "Свет2"
   host: !secret philips_downlight_ip
   token: !secret philips_downlight_token
