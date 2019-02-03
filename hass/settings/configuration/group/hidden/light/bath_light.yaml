@@ -3,3 +3,4 @@ bath_light:
   control: hidden
   entities:
     - light.bath
+    - light.philips_led

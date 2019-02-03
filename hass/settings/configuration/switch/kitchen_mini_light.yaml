@@ -1,5 +1,12 @@
-- platform: broadlink
-  host: 192.168.1.63
-  mac: 'B4430DCB6C07'
-  type: 'sp2'
-  friendly_name: 'kitchen_mini_light'
+- platform: mqtt
+  name: kitchen_mini_light
+  state_topic: "home/plug/kitchen-mini-light/status"
+  command_topic: "home/plug/kitchen-mini-light/status/set"
+  payload_on: "on"
+  payload_off: "off"
+
+# - platform: broadlink
+#   host: 192.168.1.63
+#   mac: 'B4430DCB6C07'
+#   type: 'sp2'
+#   friendly_name: 'kitchen_mini_light'
