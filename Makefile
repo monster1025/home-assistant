@@ -22,6 +22,8 @@ update_secrets_sample:
 	@find . -name *.env | xargs -I{} cp {} {}.sample
 	@find . -name *.env.sample | xargs -I{} sed -i "s/\=.*/\=xxxxxxxxx/g" {}
 
+	@cat zigbee2mqtt/settings/configuration.yaml | sed "s/\:.*/\: xxxxxxxxx/g" > zigbee2mqtt/settings/configuration.yaml.sample #mask passwords
+
 commit: update_secrets_sample
 	git add .
 	git commit -m "$(call ARGS,\"updating configuration\")"

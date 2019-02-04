@@ -17,7 +17,7 @@ import datetime
 class AirFresher(hass.Hass):
   timers = []
   fresh_times = 0
-  fresh_every_mins = 10
+  fresh_every_mins = 15
   last_fresh_date = None
 
   def initialize(self):

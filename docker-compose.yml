@@ -123,6 +123,19 @@ services:
       options:
         max-size: 50m  
 
+  zigbee2mqtt:
+    image: koenkk/zigbee2mqtt:latest-dev
+    container_name: zigbee2mqtt
+    volumes:
+      - ./zigbee2mqtt/settings:/app/data
+    devices:
+      - /dev/zigbee:/dev/ttyACM0
+    privileged: true
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: 50m  
   ###########################
   #       GRAFANA           #
   ###########################
