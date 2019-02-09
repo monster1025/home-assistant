@@ -1,0 +1,9 @@
+washer_hourly:
+  source: sensor.washer_consumed
+  cycle: hourly
+washer_dialy:
+  source: sensor.washer_consumed
+  cycle: daily
+washer_monthly:
+  source: sensor.washer_consumed
+  cycle: monthly

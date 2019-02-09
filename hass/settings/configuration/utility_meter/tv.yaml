@@ -1,0 +1,9 @@
+tv_hourly:
+  source: sensor.tv_consumed
+  cycle: hourly
+tv_dialy:
+  source: sensor.tv_consumed
+  cycle: daily
+tv_monthly:
+  source: sensor.tv_consumed
+  cycle: monthly

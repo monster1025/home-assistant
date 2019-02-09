@@ -1,6 +1,0 @@
-﻿outside:
-  name: Улица
-  control: hidden
-  entities:
-    - sensor.temperature_158d000149c128
-    - sensor.humidity_158d000149c128

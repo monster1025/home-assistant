@@ -1,8 +1,0 @@
-tag_control:
-  name: Метки
-  entities:
-    - input_boolean.tag_mamik_band
-    - input_boolean.tag_monster_nut
-    - input_boolean.tag_nut_blue
-    - input_boolean.tag_nut_white
-    - input_boolean.tag_nut_guest

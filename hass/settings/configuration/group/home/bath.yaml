@@ -1,9 +1,0 @@
-﻿bath:
-  name: Ванная
-  control: hidden
-  entities:
-    - sensor.temperature_158d00012d9ad7
-    - sensor.humidity_158d00012d9ad7
-    - light.bath
-    - light.philips_led
-    - sensor.airfresher_remain

@@ -1,0 +1,9 @@
+dishwasher_hourly:
+  source: sensor.dishwasher_consumed
+  cycle: hourly
+dishwasher_dialy:
+  source: sensor.dishwasher_consumed
+  cycle: daily
+dishwasher_monthly:
+  source: sensor.dishwasher_consumed
+  cycle: monthly

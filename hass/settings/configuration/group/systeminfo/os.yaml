@@ -1,8 +1,0 @@
-os:
-  name: ОС
-  entities:
-    - sensor.processor_use
-    - sensor.memory_free
-    - sensor.swap_use_percent
-    - sensor.disk_use_percent
-    - sensor.ssl_certificate_expiry

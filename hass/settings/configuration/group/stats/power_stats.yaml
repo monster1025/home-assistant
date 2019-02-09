@@ -1,6 +1,0 @@
-power_stats:
-  name: Статистика электропитания
-  entities:
-    - utility_meter.power_dialy
-    - utility_meter.power_monthly
-    - utility_meter.power_hourly

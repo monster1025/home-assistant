@@ -1,6 +1,0 @@
-alarmclock_weekend:
-  name: Будильник (выходные)
-  control: hidden
-  entities:
-    - input_boolean.alarmclock_weekend
-    - input_datetime.alarmclock_weekend

@@ -1,9 +1,0 @@
-automation_control:
-  name: Настройки автоматики
-  entities:
-    - input_boolean.presence_control
-    - input_boolean.water_control
-    - input_boolean.water_leak_control
-    - input_boolean.mainroom_climate_control
-    - switch.domofon_mode
-    

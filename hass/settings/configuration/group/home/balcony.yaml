@@ -1,8 +1,0 @@
-﻿balcony:
-  name: Балкон
-  control: hidden
-  entities:
-    - light.yeelight_white_286c07f12bed
-    - light.yeelight_white_f0b429a8d936
-    - sensor.temperature_158d000117d37a
-    - sensor.humidity_158d000117d37a

@@ -180,16 +180,73 @@ views:
         entities:
           - input_boolean.alarmclock_weekend
           - input_datetime.alarmclock_weekend
-
   - title: "Статистика"
     icon: mdi:chart-areaspline
-    cards: []
-
+    cards:
+      - type: entities
+        title: "Электроэнер\
+          гия"
+        show_header_toggle: true
+        entities:
+          - sensor.power_dialy
+          - sensor.power_monthly
+          - sensor.power_hourly
+      - type: entities
+        title: "Горячая вода"
+        show_header_toggle: true
+        entities:
+          - sensor.counter_hot_hourly
+          - sensor.counter_hot_dialy
+          - sensor.counter_hot_monthly
+      - type: entities
+        title: "Холодная вод\
+          а"
+        show_header_toggle: true
+        entities:
+          - sensor.counter_cold_hourly
+          - sensor.counter_cold_dialy
+          - sensor.counter_cold_monthly
+      - type: entities
+        title: "Посудомойка"
+        show_header_toggle: true
+        entities:
+          - sensor.dishwasher_dialy
+          - sensor.dishwasher_monthly
+          - sensor.dishwasher_hourly
+      - type: entities
+        title: "Стиралка"
+        show_header_toggle: true
+        entities:
+          - sensor.washer_dialy
+          - sensor.washer_monthly
+          - sensor.washer_hourly
+      - type: entities
+        title: "Телевизор"
+        show_header_toggle: true
+        entities:
+          - sensor.tv_dialy
+          - sensor.tv_monthly
+          - sensor.tv_hourly
+      - type: entities
+        title: "Термопот"
+        show_header_toggle: true
+        entities:
+          - sensor.thermopot_dialy
+          - sensor.thermopot_monthly
+          - sensor.thermopot_hourly
+      - type: entities
+        title: "Кондиционер"
+        show_header_toggle: true
+        entities:
+          - sensor.conditioner_dialy
+          - sensor.conditioner_monthly
+          - sensor.conditioner_hourly
   - title: "Настройки"
     icon: mdi:settings
     cards:
       - type: entities
-        title: "Контроль света"
+        title: "Контроль све\
+          та"
         show_header_toggle: true
         entities:
           - input_boolean.mainroom_light_control
@@ -198,7 +255,8 @@ views:
           - input_boolean.kitchen_light_control
           - input_boolean.balcony_light_control
       - type: entities
-        title: "Настройки автоматики"
+        title: "Настройки ав\
+          томатики"
         show_header_toggle: true
         entities:
           - input_boolean.presence_control
@@ -207,7 +265,8 @@ views:
           - input_boolean.mainroom_climate_control
           - switch.domofon_mode
       - type: entities
-        title: "Настройки отчетов"
+        title: "Настройки от\
+          четов"
         show_header_toggle: true
         entities:
           - input_boolean.security_sensors_report
