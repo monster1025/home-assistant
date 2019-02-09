@@ -1,0 +1,9 @@
+water_stats:
+  name: Статистика потребления воды
+  entities:
+    - utility_meter.counter_cold_hourly
+    - utility_meter.counter_cold_dialy
+    - utility_meter.counter_cold_monthly
+    - utility_meter.counter_hot_hourly
+    - utility_meter.counter_hot_dialy
+    - utility_meter.counter_hot_monthly

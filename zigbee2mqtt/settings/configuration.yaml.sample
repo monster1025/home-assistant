@@ -10,11 +10,13 @@ serial: xxxxxxxxx
   disable_led: xxxxxxxxx
 advanced: xxxxxxxxx
   cache_state: xxxxxxxxx
-  # log_level: xxxxxxxxx
 devices: xxxxxxxxx
   '0x00158d0001e065e8': xxxxxxxxx
     friendly_name: xxxxxxxxx
     retain: xxxxxxxxx
   '0x00158d0002a55439': xxxxxxxxx
+    friendly_name: xxxxxxxxx
+    retain: xxxxxxxxx
+  '0x00158d0001e50ce4': xxxxxxxxx
     friendly_name: xxxxxxxxx
     retain: xxxxxxxxx

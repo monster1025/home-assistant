@@ -1,0 +1,9 @@
+counter_cold_hourly:
+  source: sensor.counter_cold
+  cycle: hourly
+counter_cold_dialy:
+  source: sensor.counter_cold
+  cycle: daily
+counter_cold_monthly:
+  source: sensor.counter_cold
+  cycle: monthly

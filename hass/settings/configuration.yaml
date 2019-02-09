@@ -26,7 +26,8 @@ lovelace:
 # Enables configuration UI
 config:
 discovery:
-
+system_health:
+  
 # Enables support for tracking state changes over time
 recorder: !include configuration/recorder.yaml
 history:
@@ -64,3 +65,4 @@ homekit: !include configuration/homekit/homekit.yaml
 modbus: !include configuration/modbus.yaml
 
 mysensors: !include configuration/mysensors.yaml
+utility_meter: !include_dir_merge_list configuration/utility_meter

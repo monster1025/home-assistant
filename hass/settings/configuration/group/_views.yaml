@@ -40,6 +40,14 @@ alarmclock:
     - group.alarmclock_weekdays
     - group.alarmclock_weekend
 
+stats:
+  view: yes
+  name: Статистика
+  icon: mdi:chart-areaspline
+  entities:
+    - group.power_stats
+    - group.water_stats
+
 settings:
   view: yes
   name: Настройки

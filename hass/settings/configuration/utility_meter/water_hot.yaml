@@ -1,0 +1,9 @@
+counter_hot_hourly:
+  source: sensor.counter_hot
+  cycle: hourly
+counter_hot_dialy:
+  source: sensor.counter_hot
+  cycle: daily
+counter_hot_monthly:
+  source: sensor.counter_hot
+  cycle: monthly
