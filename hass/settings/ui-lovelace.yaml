@@ -74,7 +74,7 @@ views:
     cards:
       - type: entities
         title: "Движение"
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
           - binary_sensor.motion_sensor_158d0000e7c7ad
           - binary_sensor.motion_sensor_158d0002044548
@@ -88,7 +88,7 @@ views:
           - binary_sensor.motion_sensor_158d0001e80f0d
       - type: entities
         title: "Протечка"
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
           - binary_sensor.water_leak_sensor_158d0001d594fa
           - binary_sensor.water_leak_sensor_158d0001c34960
@@ -98,12 +98,12 @@ views:
           - binary_sensor.water_leak_sensor_158d00023a48f0
       - type: entities
         title: "Датчики дыма"
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
           - binary_sensor.smoke_sensor_158d00023115ad
       - type: entities
         title: "Двери"
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
           - binary_sensor.door_window_sensor_158d0001130141
           - binary_sensor.door_window_sensor_158d000111a469
@@ -113,9 +113,8 @@ views:
           - binary_sensor.door_window_sensor_158d0001c0e46d
           - binary_sensor.door_window_sensor_158d0001e74660
       - type: entities
-        title: "Счетчики вод\
-          ы"
-        show_header_toggle: true
+        title: "Счетчики воды"
+        show_header_toggle: false
         entities:
           - sensor.epd_balance
           - sensor.counter_cold
@@ -124,7 +123,7 @@ views:
           - sensor.counter_mosru_hot
       - type: entities
         title: "Метки"
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
           - sensor.tag_mamik_band
           - sensor.tag_monster_nut
@@ -132,17 +131,15 @@ views:
           - sensor.tag_nut_white
           - sensor.tag_nut_guest
       - type: entities
-        title: "Пристутстви\
-          е"
-        show_header_toggle: true
+        title: "Пристутствие"
+        show_header_toggle: false
         entities:
           - sensor.presence_hall
           - sensor.presence_kitchen
           - sensor.presence_balcony
       - type: entities
-        title: "Электропита\
-          ние"
-        show_header_toggle: true
+        title: "Электропитание"
+        show_header_toggle: false
         entities:
           - sensor.power_mosenergosbyt_balance
           - sensor.power_main_total
@@ -184,63 +181,69 @@ views:
     icon: mdi:chart-areaspline
     cards:
       - type: entities
-        title: "Электроэнер\
-          гия"
-        show_header_toggle: true
+        title: "Электроэнергия"
+        show_header_toggle: false
         entities:
+          - sensor.power_hourly
           - sensor.power_dialy
           - sensor.power_monthly
-          - sensor.power_hourly
+          - sensor.power_money_monthly
       - type: entities
         title: "Горячая вода"
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
           - sensor.counter_hot_hourly
           - sensor.counter_hot_dialy
           - sensor.counter_hot_monthly
+          - sensor.counter_hot_money_monthly
       - type: entities
-        title: "Холодная вод\
-          а"
-        show_header_toggle: true
+        title: "Холодная вода"
+        show_header_toggle: false
         entities:
           - sensor.counter_cold_hourly
           - sensor.counter_cold_dialy
           - sensor.counter_cold_monthly
+          - sensor.counter_cold_money_monthly
       - type: entities
         title: "Посудомойка"
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
+          - sensor.dishwasher_hourly
           - sensor.dishwasher_dialy
           - sensor.dishwasher_monthly
-          - sensor.dishwasher_hourly
+          - sensor.dishwasher_money_monthly
       - type: entities
         title: "Стиралка"
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
+          - sensor.washer_hourly
           - sensor.washer_dialy
           - sensor.washer_monthly
-          - sensor.washer_hourly
+          - sensor.washer_money_monthly
       - type: entities
         title: "Телевизор"
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
+          - sensor.tv_hourly
           - sensor.tv_dialy
           - sensor.tv_monthly
-          - sensor.tv_hourly
+          - sensor.tv_money_monthly
       - type: entities
         title: "Термопот"
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
-          - sensor.thermopot_dialy
-          - sensor.thermopot_monthly
-          - sensor.thermopot_hourly
+          - sensor.thermopot_hourly2
+          - sensor.thermopot_dialy2
+          - sensor.thermopot_monthly2
+          - sensor.thermopot_money_monthly
       - type: entities
         title: "Кондиционер"
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
+          - sensor.conditioner_hourly
           - sensor.conditioner_dialy
           - sensor.conditioner_monthly
-          - sensor.conditioner_hourly
+          - sensor.conditioner_money_monthly
   - title: "Настройки"
     icon: mdi:settings
     cards:
@@ -288,7 +291,7 @@ views:
     cards:
       - type: entities
         title: "ОС"
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
           - sensor.processor_use
           - sensor.memory_free
@@ -297,7 +300,7 @@ views:
           - sensor.ssl_certificate_expiry
       - type: entities
         title: "Сеть"
-        show_header_toggle: true
+        show_header_toggle: false
         entities:
           - sensor.speedtest_ping
           - sensor.speedtest_download

@@ -1,0 +1,22 @@
+- platform: template
+  sensors:
+    dishwasher_consumed:
+      friendly_name: "Посудомойка потреблено"
+      unit_of_measurement: 'kWh'
+      value_template: "{{ state_attr('switch.plug_158d0001a68c64', 'power_consumed') / 1000 }}"    
+    washer_consumed:
+      friendly_name: "Стиралка потреблено"
+      unit_of_measurement: 'kWh'
+      value_template: "{{ state_attr('switch.plug_158d0001a4cfb4', 'power_consumed') / 1000 }}"
+    tv_consumed:
+      friendly_name: "ТВ потреблено"
+      unit_of_measurement: 'kWh'
+      value_template: "{{ state_attr('switch.plug_158d0001104a0c', 'power_consumed') / 1000 }}"
+    thermopot_consumed2:
+      friendly_name: "Термопот потреблено"
+      unit_of_measurement: 'kWh'
+      value_template: "{{ state_attr('switch.plug_158d0001a68b18', 'power_consumed') / 1000 }}"
+    conditioner_consumed:
+      friendly_name: "Кондиционер потреблено"
+      unit_of_measurement: 'kWh'
+      value_template: "{{ state_attr('switch.plug_158d00010dd98d', 'power_consumed') / 1000 }}"
