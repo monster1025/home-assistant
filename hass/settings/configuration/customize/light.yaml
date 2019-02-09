@@ -24,3 +24,8 @@ light.bath:
 
 light.balcony:
   friendly_name: Свет
+
+light.yeelight_white_286c07f12bed:
+  friendly_name: Балкон1
+light.yeelight_white_f0b429a8d936:
+  friendly_name: Балкон2
