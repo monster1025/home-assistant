@@ -1,0 +1,14 @@
+- platform: template
+  sensors:
+    counter_hot_cost:
+      friendly_name: "Стимость куба горячей воды"
+      unit_of_measurement: 'Р'
+      value_template: "188.53"
+    counter_cold_cost:
+      friendly_name: "Стимость куба холодной воды"
+      unit_of_measurement: 'Р'
+      value_template: "38.06"
+    power_cost:
+      friendly_name: "Стоимость квт/ч"
+      unit_of_measurement: 'Р'
+      value_template: "4.37"

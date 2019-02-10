@@ -1,0 +1,5 @@
+power_theory:
+  module: power_theory
+  class: PowerTheory
+  global_dependencies:
+    - globals

@@ -185,65 +185,91 @@ views:
         show_header_toggle: false
         entities:
           - sensor.power_hourly
-          - sensor.power_dialy
+          - sensor.power_daily
           - sensor.power_monthly
+          - sensor.power_money_hourly
+          - sensor.power_money_daily
           - sensor.power_money_monthly
       - type: entities
         title: "Горячая вода"
         show_header_toggle: false
         entities:
           - sensor.counter_hot_hourly
-          - sensor.counter_hot_dialy
+          - sensor.counter_hot_daily
           - sensor.counter_hot_monthly
+          - sensor.counter_hot_money_hourly
+          - sensor.counter_hot_money_daily
           - sensor.counter_hot_money_monthly
       - type: entities
         title: "Холодная вода"
         show_header_toggle: false
         entities:
           - sensor.counter_cold_hourly
-          - sensor.counter_cold_dialy
+          - sensor.counter_cold_daily
           - sensor.counter_cold_monthly
+          - sensor.counter_cold_money_hourly
+          - sensor.counter_cold_money_daily
           - sensor.counter_cold_money_monthly
       - type: entities
         title: "Посудомойка"
         show_header_toggle: false
         entities:
           - sensor.dishwasher_hourly
-          - sensor.dishwasher_dialy
+          - sensor.dishwasher_daily
           - sensor.dishwasher_monthly
+          - sensor.dishwasher_money_hourly
+          - sensor.dishwasher_money_daily
           - sensor.dishwasher_money_monthly
       - type: entities
         title: "Стиралка"
         show_header_toggle: false
         entities:
           - sensor.washer_hourly
-          - sensor.washer_dialy
+          - sensor.washer_daily
           - sensor.washer_monthly
+          - sensor.washer_money_hourly
+          - sensor.washer_money_daily
           - sensor.washer_money_monthly
       - type: entities
         title: "Телевизор"
         show_header_toggle: false
         entities:
           - sensor.tv_hourly
-          - sensor.tv_dialy
+          - sensor.tv_daily
           - sensor.tv_monthly
+          - sensor.tv_money_hourly
+          - sensor.tv_money_daily
           - sensor.tv_money_monthly
       - type: entities
         title: "Термопот"
         show_header_toggle: false
         entities:
           - sensor.thermopot_hourly2
-          - sensor.thermopot_dialy2
+          - sensor.thermopot_daily2
           - sensor.thermopot_monthly2
+          - sensor.thermopot_money_hourly
+          - sensor.thermopot_money_daily
           - sensor.thermopot_money_monthly
       - type: entities
         title: "Кондиционер"
         show_header_toggle: false
         entities:
           - sensor.conditioner_hourly
-          - sensor.conditioner_dialy
+          - sensor.conditioner_daily
           - sensor.conditioner_monthly
+          - sensor.conditioner_money_hourly
+          - sensor.conditioner_money_daily
           - sensor.conditioner_money_monthly
+      - type: entities
+        title: "Теория трехтарифника"
+        show_header_toggle: false
+        entities:
+          - sensor.power_theory_t1
+          - sensor.power_theory_t2
+          - sensor.power_theory_t3
+          - sensor.power_money_t1_monthly
+          - sensor.power_money_t2_monthly
+          - sensor.power_money_t3_monthly      
   - title: "Настройки"
     icon: mdi:settings
     cards:

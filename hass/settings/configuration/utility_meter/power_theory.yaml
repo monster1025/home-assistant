@@ -1,0 +1,7 @@
+power_theory:
+  source: sensor.power_total
+  cycle: monthly
+  tariffs:
+    - t1
+    - t2
+    - t3

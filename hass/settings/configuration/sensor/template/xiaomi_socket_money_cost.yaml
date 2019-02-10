@@ -2,33 +2,113 @@
   sensors:
     counter_hot_money_monthly:
       friendly_name: "Горячая в мес"
-      unit_of_measurement: 'Р'
-      value_template: "{{ (states('sensor.counter_hot_monthly') | float * 188.53) | round(2) }}"    
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.counter_hot_monthly') | float * (states('sensor.counter_hot_cost') | float)) | round(2) }}"    
     counter_cold_money_monthly:
       friendly_name: "Холодная в мес"
-      unit_of_measurement: 'Р'
-      value_template: "{{ (states('sensor.counter_cold_monthly') | float * 38.06) | round(2) }}"    
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.counter_cold_monthly') | float * (states('sensor.counter_cold_cost') | float)) | round(2) }}"    
     power_money_monthly:
       friendly_name: "Электричество в мес"
-      unit_of_measurement: 'Р'
-      value_template: "{{ (states('sensor.power_monthly') | float * 4.37) | round(2) }}"    
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.power_monthly') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
     dishwasher_money_monthly:
       friendly_name: "Посудомойка в мес"
-      unit_of_measurement: 'Р'
-      value_template: "{{ (states('sensor.dishwasher_monthly') | float * 4.37) | round(2) }}"    
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.dishwasher_monthly') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
     washer_money_monthly:
       friendly_name: "Стиралка в мес"
-      unit_of_measurement: 'Р'
-      value_template: "{{ (states('sensor.washer_monthly') | float * 4.37) | round(2) }}"    
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.washer_monthly') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
     tv_money_monthly:
       friendly_name: "ТВ в мес"
-      unit_of_measurement: 'Р'
-      value_template: "{{ (states('sensor.tv_monthly') | float * 4.37) | round(2) }}"    
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.tv_monthly') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
     thermopot_money_monthly:
       friendly_name: "Термопот в мес"
-      unit_of_measurement: 'Р'
-      value_template: "{{ (states('sensor.thermopot_monthly') | float * 4.37) | round(2) }}"    
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.thermopot_monthly2') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
     conditioner_money_monthly:
       friendly_name: "Кондиционер в мес"
-      unit_of_measurement: 'Р'
-      value_template: "{{ (states('sensor.conditioner_monthly') | float * 4.37) | round(2) }}"    
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.conditioner_monthly') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
+    power_money_t1_monthly:
+      friendly_name: "Т1 в мес"
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.power_theory_t1') | float * 1.37) | round(2) }}"    
+    power_money_t2_monthly:
+      friendly_name: "Т2 в мес"
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.power_theory_t2') | float * 4.37) | round(2) }}"    
+    power_money_t3_monthly:
+      friendly_name: "Т3 в мес"
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.power_theory_t3') | float * 5.25) | round(2) }}"    
+
+
+
+    counter_hot_money_daily:
+      friendly_name: "Горячая в день"
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.counter_hot_daily') | float * (states('sensor.counter_hot_cost') | float)) | round(2) }}"    
+    counter_cold_money_daily:
+      friendly_name: "Холодная в день"
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.counter_cold_daily') | float * (states('sensor.counter_cold_cost') | float)) | round(2) }}"    
+    power_money_daily:
+      friendly_name: "Электричество в день"
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.power_daily') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
+    dishwasher_money_daily:
+      friendly_name: "Посудомойка в день"
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.dishwasher_daily') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
+    washer_money_daily:
+      friendly_name: "Стиралка в день"
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.washer_daily') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
+    tv_money_daily:
+      friendly_name: "ТВ в день"
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.tv_daily') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
+    thermopot_money_daily:
+      friendly_name: "Термопот в день"
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.thermopot_daily2') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
+    conditioner_money_daily:
+      friendly_name: "Кондиционер в день"
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.conditioner_daily') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
+
+    counter_hot_money_hourly:
+      friendly_name: "Горячая в час"
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.counter_hot_hourly') | float * (states('sensor.counter_hot_cost') | float)) | round(2) }}"    
+    counter_cold_money_hourly:
+      friendly_name: "Холодная в час"
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.counter_cold_hourly') | float * (states('sensor.counter_cold_cost') | float)) | round(2) }}"    
+    power_money_hourly:
+      friendly_name: "Электричество в час"
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.power_hourly') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
+    dishwasher_money_hourly:
+      friendly_name: "Посудомойка в час"
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.dishwasher_hourly') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
+    washer_money_hourly:
+      friendly_name: "Стиралка в час"
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.washer_hourly') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
+    tv_money_hourly:
+      friendly_name: "ТВ в час"
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.tv_hourly') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
+    thermopot_money_hourly:
+      friendly_name: "Термопот в час"
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.thermopot_hourly2') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
+    conditioner_money_hourly:
+      friendly_name: "Кондиционер в час"
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.conditioner_hourly') | float * (states('sensor.power_cost') | float)) | round(2) }}"    

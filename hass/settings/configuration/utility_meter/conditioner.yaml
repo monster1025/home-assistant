@@ -1,7 +1,7 @@
 conditioner_hourly:
   source: sensor.conditioner_consumed
   cycle: hourly
-conditioner_dialy:
+conditioner_daily:
   source: sensor.conditioner_consumed
   cycle: daily
 conditioner_monthly:

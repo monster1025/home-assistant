@@ -1,7 +1,7 @@
 tv_hourly:
   source: sensor.tv_consumed
   cycle: hourly
-tv_dialy:
+tv_daily:
   source: sensor.tv_consumed
   cycle: daily
 tv_monthly:

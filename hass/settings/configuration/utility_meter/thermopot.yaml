@@ -1,7 +1,7 @@
 thermopot_hourly2:
   source: sensor.thermopot_consumed2
   cycle: hourly
-thermopot_dialy2:
+thermopot_daily2:
   source: sensor.thermopot_consumed2
   cycle: daily
 thermopot_monthly2:

@@ -1,7 +1,7 @@
 power_hourly:
   source: sensor.power_total
   cycle: hourly
-power_dialy:
+power_daily:
   source: sensor.power_total
   cycle: daily
 power_monthly:
