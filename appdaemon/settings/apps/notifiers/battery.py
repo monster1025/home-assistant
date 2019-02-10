@@ -22,6 +22,7 @@ class Battery(hass.Hass):
     #self.check_batteries({"force": 1})
     time = datetime.time(10, 0, 0)
     self.run_daily(self.check_batteries, time)
+    # self.check_batteries(None)
     
   def check_batteries(self, kwargs):
     if 'constraint' in self.args and not self.constrain_input_boolean(self.args['constraint']):
@@ -30,17 +31,20 @@ class Battery(hass.Hass):
     devices = self.get_state()
     values = {}
     low = []
-    for device in devices:
+    for deviceName in devices:
+      device = devices[deviceName]
+      if device == None:
+        continue
       battery = None
-      if "attributes" in devices[device]:
-          if "battery" in devices[device]["attributes"]:
-            battery = devices[device]["attributes"]["battery"]
-          if "battery_level" in devices[device]["attributes"]:
-            battery = devices[device]["attributes"]["battery_level"]
+      if "attributes" in device:
+          if "battery" in device["attributes"]:
+            battery = device["attributes"]["battery"]
+          if "battery_level" in device["attributes"]:
+            battery = device["attributes"]["battery_level"]
           if battery != None:
             if battery < self.args["threshold"] and battery != 0:
-              low.append(device)
-            values[device] = battery
+              low.append(deviceName)
+            values[deviceName] = battery
 
     message=""
     if low:

@@ -29,6 +29,7 @@ class WaterCountersAlarm(hass.Hass):
     time = datetime.time(10, 0, 0)
     self.run_daily(self.check_checkup_dates, time)
     self.run_daily(self.check_send_dates, time)
+    # self.check_send_dates([])
 
   def check_send_dates(self, kwargs):
     if 'constraint' in self.args and not self.constrain_input_boolean(self.args['constraint']):
@@ -36,15 +37,19 @@ class WaterCountersAlarm(hass.Hass):
     devices = self.get_state()
     values = {}
     send_devices = []
-    for device in devices:
+    for deviceName in devices:
+      device = devices[deviceName]
+      if (device == None):
+        continue
+
       send_date = None
-      if "attributes" in devices[device]:
-          if "date" in devices[device]["attributes"]:
-            send_date = devices[device]["attributes"]["date"]
+      if "attributes" in device:
+          if "date" in device["attributes"]:
+            send_date = device["attributes"]["date"]
           if send_date != None:
-            self.log('found device {} with send date {}'.format(device, send_date))
+            self.log('found device {} with send date {}'.format(deviceName, send_date))
             if send_date == "":
-                send_devices.append(device)
+                send_devices.append(deviceName)
             else:
               send_date_date = None
               if '-' in send_date:
@@ -52,8 +57,8 @@ class WaterCountersAlarm(hass.Hass):
               else:
                 send_date_date = datetime.datetime.strptime(send_date, '%d.%m.%Y')
               if send_date_date < (datetime.datetime.now() - datetime.timedelta(days=self.send_threasold)):
-                send_devices.append(device)
-            values[device] = send_date
+                send_devices.append(deviceName)
+            values[deviceName] = send_date
 
     message=""
     if send_devices:
