@@ -1,49 +1,53 @@
 - platform: template
   sensors:
     counter_hot_money_monthly:
-      friendly_name: "Горячая в мес"
+      friendly_name: "Горячая в мес."
       unit_of_measurement: '₽'
       value_template: "{{ (states('sensor.counter_hot_monthly') | float * (states('sensor.counter_hot_cost') | float)) | round(2) }}"    
     counter_cold_money_monthly:
-      friendly_name: "Холодная в мес"
+      friendly_name: "Холодная в мес."
       unit_of_measurement: '₽'
       value_template: "{{ (states('sensor.counter_cold_monthly') | float * (states('sensor.counter_cold_cost') | float)) | round(2) }}"    
     power_money_monthly:
-      friendly_name: "Электричество в мес"
+      friendly_name: "Электричество в мес."
       unit_of_measurement: '₽'
       value_template: "{{ (states('sensor.power_monthly') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
     dishwasher_money_monthly:
-      friendly_name: "Посудомойка в мес"
+      friendly_name: "Посудомойка в мес."
       unit_of_measurement: '₽'
       value_template: "{{ (states('sensor.dishwasher_monthly') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
     washer_money_monthly:
-      friendly_name: "Стиралка в мес"
+      friendly_name: "Стиралка в мес."
       unit_of_measurement: '₽'
       value_template: "{{ (states('sensor.washer_monthly') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
     tv_money_monthly:
-      friendly_name: "ТВ в мес"
+      friendly_name: "ТВ в мес."
       unit_of_measurement: '₽'
       value_template: "{{ (states('sensor.tv_monthly') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
     thermopot_money_monthly:
-      friendly_name: "Термопот в мес"
+      friendly_name: "Термопот в мес."
       unit_of_measurement: '₽'
       value_template: "{{ (states('sensor.thermopot_monthly2') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
     conditioner_money_monthly:
-      friendly_name: "Кондиционер в мес"
+      friendly_name: "Кондиционер в мес."
       unit_of_measurement: '₽'
       value_template: "{{ (states('sensor.conditioner_monthly') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
     power_money_t1_monthly:
-      friendly_name: "Т1 в мес"
+      friendly_name: "Т1 в мес."
       unit_of_measurement: '₽'
       value_template: "{{ (states('sensor.power_theory_t1') | float * 1.37) | round(2) }}"    
     power_money_t2_monthly:
-      friendly_name: "Т2 в мес"
+      friendly_name: "Т2 в мес."
       unit_of_measurement: '₽'
       value_template: "{{ (states('sensor.power_theory_t2') | float * 4.37) | round(2) }}"    
     power_money_t3_monthly:
-      friendly_name: "Т3 в мес"
+      friendly_name: "Т3 в мес."
       unit_of_measurement: '₽'
       value_template: "{{ (states('sensor.power_theory_t3') | float * 5.25) | round(2) }}"    
+    power_theory_money_monthly:
+      friendly_name: "Итого в мес."
+      unit_of_measurement: '₽'
+      value_template: "{{ ((states('sensor.power_money_t1_monthly') | float) + (states('sensor.power_money_t2_monthly') | float) + (states('sensor.power_money_t3_monthly') | float)) | round(2) }}"
 
 
 

@@ -269,7 +269,8 @@ views:
           - sensor.power_theory_t3
           - sensor.power_money_t1_monthly
           - sensor.power_money_t2_monthly
-          - sensor.power_money_t3_monthly      
+          - sensor.power_money_t3_monthly
+          - sensor.power_theory_money_monthly
   - title: "Настройки"
     icon: mdi:settings
     cards:
