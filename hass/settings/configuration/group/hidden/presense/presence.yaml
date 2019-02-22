@@ -1,0 +1,6 @@
+presence:
+  name: Пристутствие
+  entities:
+  - sensor.presence_hall
+  - sensor.presence_kitchen
+  - sensor.presence_balcony

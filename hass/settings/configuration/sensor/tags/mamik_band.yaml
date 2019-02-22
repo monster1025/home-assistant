@@ -1,7 +1,6 @@
 - platform: mqtt_room
   device_id: !secret tag_mamik_band
   name: tag_mamik_band
-  friendly_name: Мама браслет
   state_topic: home/presence
   timeout: 15
   away_timeout: 120

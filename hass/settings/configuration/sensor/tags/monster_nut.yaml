@@ -1,7 +1,6 @@
 - platform: mqtt_room
   device_id: !secret tag_monster_nut
   name: tag_monster_nut
-  friendly_name: Данил метка
   state_topic: home/presence
   timeout: 15
   away_timeout: 120

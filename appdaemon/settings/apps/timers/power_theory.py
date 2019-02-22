@@ -25,9 +25,9 @@ class PowerTheory(hass.Hass):
     self.timer_tick(None)
 
   def timer_tick(self, kwargs):
-    t1 = self.time_is_between(self.datetime(), '07:00:00', '10:00:00') or self.time_is_between(self.datetime(), '17:00:00', '21:00:00')
-    t2 = self.time_is_between(self.datetime(), '23:00:00', '07:00:00')
-    t3 = self.time_is_between(self.datetime(), '10:00:00', '17:00:00') or self.time_is_between(self.datetime(), '21:00:00', '23:00:00')
+    t1 = self.time_is_between(self.datetime(), '07:00:00', '09:59:59') or self.time_is_between(self.datetime(), '17:00:00', '20:59:59')
+    t2 = self.time_is_between(self.datetime(), '23:00:00', '06:59:00')
+    t3 = self.time_is_between(self.datetime(), '10:00:00', '16:59:59') or self.time_is_between(self.datetime(), '21:00:00', '22:59:59')
     if t1:
       self.switch_to_tariff('t1')
     if t2:

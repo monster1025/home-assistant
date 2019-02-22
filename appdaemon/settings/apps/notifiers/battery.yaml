@@ -6,6 +6,6 @@ sensor_battery_low_report:
   module: battery
   constraint: input_boolean.battery_report
   always_send: 0
-  threshold: 10
+  threshold: 7
   global_dependencies:
     - globals
