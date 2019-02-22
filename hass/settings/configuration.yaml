@@ -67,3 +67,5 @@ modbus: !include configuration/modbus.yaml
 mysensors: !include configuration/mysensors.yaml
 
 utility_meter: !include_dir_merge_named configuration/utility_meter
+
+speedtestdotnet: !include configuration/speedtest.yaml
