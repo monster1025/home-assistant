@@ -20,3 +20,12 @@
       friendly_name: "Кондиционер потреблено"
       unit_of_measurement: 'kWh'
       value_template: "{{ state_attr('switch.plug_158d00010dd98d', 'power_consumed') / 1000 }}"
+    fridge_consumed:
+      friendly_name: "Холодильник потреблено"
+      unit_of_measurement: 'kWh'
+      value_template: "{{ state_attr('switch.plug_158d00020f3a29', 'power_consumed') / 1000 }}"
+    fitolamp_consumed:
+      friendly_name: "Фитолампа потреблено"
+      unit_of_measurement: 'kWh'
+      value_template: "{{ state_attr('switch.plug_158d0002924779', 'power_consumed') / 1000 }}"
+    

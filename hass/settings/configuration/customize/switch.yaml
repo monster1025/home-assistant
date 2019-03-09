@@ -12,3 +12,7 @@ switch.xiaomi_miio_switch:
   friendly_name: Удлиннитель
 switch.wifi_socket:
   friendly_name: Гирлянда-окно
+switch.plug_158d00020f3a29:
+  friendly_name: Холодильник
+switch.plug_158d0002924779:
+  friendly_name: Фитолампа

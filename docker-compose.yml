@@ -71,6 +71,7 @@ services:
     links:
       - "hass"
       - "appdaemon"
+      - "certbot"
     env_file: ./nginx/settings/nginx.env
     volumes:
         - ./hass/settings/hosts.txt:/etc/hosts:ro

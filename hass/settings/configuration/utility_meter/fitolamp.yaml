@@ -1,0 +1,9 @@
+fitolamp_hourly:
+  source: sensor.fitolamp_consumed
+  cycle: hourly
+fitolamp_daily:
+  source: sensor.fitolamp_consumed
+  cycle: daily
+fitolamp_monthly:
+  source: sensor.fitolamp_consumed
+  cycle: monthly

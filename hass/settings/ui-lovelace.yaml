@@ -40,6 +40,8 @@ views:
           - switch.plug_158d0001a68b18
           - switch.plug_158d0001a68c64
           - switch.plug_158d0001a4cfb4
+          - switch.plug_158d00020f3a29
+          - switch.plug_158d0002924779
           - switch.xiaomi_miio_switch
       - type: entities
         title: "Ванная"
@@ -260,6 +262,26 @@ views:
           - sensor.conditioner_money_hourly
           - sensor.conditioner_money_daily
           - sensor.conditioner_money_monthly
+      - type: entities
+        title: "Холодильник"
+        show_header_toggle: false
+        entities:
+          - sensor.fridge_hourly
+          - sensor.fridge_daily
+          - sensor.fridge_monthly
+          - sensor.fridge_money_hourly
+          - sensor.fridge_money_daily
+          - sensor.fridge_money_monthly
+      - type: entities
+        title: "Фитолампа"
+        show_header_toggle: false
+        entities:
+          - sensor.fitolamp_hourly
+          - sensor.fitolamp_daily
+          - sensor.fitolamp_monthly
+          - sensor.fitolamp_money_hourly
+          - sensor.fitolamp_money_daily
+          - sensor.fitolamp_money_monthly
       - type: entities
         title: "Теория трехтарифника"
         show_header_toggle: false

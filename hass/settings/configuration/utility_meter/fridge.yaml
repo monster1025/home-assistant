@@ -1,0 +1,9 @@
+fridge_hourly:
+  source: sensor.fridge_consumed
+  cycle: hourly
+fridge_daily:
+  source: sensor.fridge_consumed
+  cycle: daily
+fridge_monthly:
+  source: sensor.fridge_consumed
+  cycle: monthly

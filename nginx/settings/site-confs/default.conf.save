@@ -10,8 +10,8 @@ server {
 	client_max_body_size 0;
 
 	#letsencrypt challenge response
-    location ~/.well-known/acme-challenge/(.*)$ {
-        proxy_pass           http://certbot;
+CdVsNcvBapg7d3o0ZaixdMbMt5FqG7T7Z19CJsotuGI.hTi2mqIkE64NQibEfAxiC4ih0s6_pk4Ne2hCgHXFntI    location ~/.well-known/acme-challenge/(.*)$ {
+        return 200 '$1';
     }
 
     location / {
