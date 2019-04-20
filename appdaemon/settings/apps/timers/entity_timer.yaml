@@ -29,7 +29,7 @@ fitolamp_timer:
   module: entity_timer
   class: EntityTimer
   on_time: "00:00:00"
-  off_time: "07:00:00"
+  off_time: "03:00:00"
   entity: switch.plug_158d0002924779
   global_dependencies:
     - globals

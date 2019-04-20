@@ -22,11 +22,11 @@ views:
         entities:
           - sensor.temperature_158d0001149b3c
           - sensor.humidity_158d0001149b3c
-          - light.yeelight_rgb_34ce008fe328
-          - light.yeelight_rgb_286c071065c7
-          - light.yeelight_white_34ce0087ff33
-          - light.yeelight_white_f0b4290e5444
-          - light.yeelight_white_f0b429a8f6df
+          - light.yeelight_color1_34ce008fe328
+          - light.yeelight_color1_286c071065c7
+          - light.yeelight_mono1_34ce0087ff33
+          - light.yeelight_mono1_f0b4290e5444
+          - light.yeelight_mono1_f0b429a8f6df
           - cover.curtain_158d0002b0c46a
           - switch.plug_158d0001104a0c
           - switch.plug_158d00010dd98d
@@ -61,8 +61,8 @@ views:
         title: "Балкон"
         show_header_toggle: false
         entities:
-          - light.yeelight_white_286c07f12bed
-          - light.yeelight_white_f0b429a8d936
+          - light.yeelight_mono1_286c07f12bed
+          - light.yeelight_mono1_f0b429a8d936
           - sensor.temperature_158d000117d37a
           - sensor.humidity_158d000117d37a
       - type: entities

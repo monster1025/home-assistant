@@ -7,6 +7,7 @@ lock:
   user_65538: Света (указ)
   user_65539: Мама (указ)
   user_65540: Саня
+  ha_panel: alarm_control_panel.ha_alarm
   notify: telegram
   global_dependencies:
     - globals

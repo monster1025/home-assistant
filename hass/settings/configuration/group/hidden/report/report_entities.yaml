@@ -2,11 +2,11 @@ report_entities:
   name: Датчики для отправки отчета
   control: hidden
   entities:
-    - light.yeelight_rgb_34ce008fe328 #mainbulb1
-    - light.yeelight_rgb_286c071065c7
-    - light.yeelight_white_34ce0087ff33
-    - light.yeelight_white_f0b4290e5444
-    - light.yeelight_white_f0b429a8f6df
+    - light.yeelight_color1_34ce008fe328 #mainbulb1
+    - light.yeelight_color1_286c071065c7
+    - light.yeelight_mono1_34ce0087ff33
+    - light.yeelight_mono1_f0b4290e5444
+    - light.yeelight_mono1_f0b429a8f6df
     - light.kitchen
     - switch.kitchen_mini_light
     - light.hall

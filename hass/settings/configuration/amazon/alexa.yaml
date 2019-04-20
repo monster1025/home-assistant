@@ -35,15 +35,15 @@ smart_home:
       name: hall
     light.kitchen:
       name: kitchen
-    light.yeelight_rgb_286c071065c7:
+    light.yeelight_color1_286c071065c7:
       name: color1
-    light.yeelight_rgb_34ce008fe328:
+    light.yeelight_color1_34ce008fe328:
       name: color2
-    light.yeelight_white_34ce0087ff33:
+    light.yeelight_mono1_34ce0087ff33:
       name: living3
-    light.yeelight_white_f0b4290e5444:
+    light.yeelight_mono1_f0b4290e5444:
       name: living4
-    light.yeelight_white_f0b429a8f6df:
+    light.yeelight_mono1_f0b429a8f6df:
       name: living5
     sensor.temperature_158d00012d9ad7:
       name: "Temperature Bath"

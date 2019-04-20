@@ -10,7 +10,7 @@ entities_action:
     - switch.plug_158d0001104a0c # телевизор
     - switch.plug_158d0001a68b18 # термопот
   return_entities:
-    - light.yeelight_rgb_34ce008fe328
+    - light.yeelight_color1_34ce008fe328
     - light.hall
     - switch.plug_158d0001104a0c # телевизор
     - switch.plug_158d0001a68b18 # термопот

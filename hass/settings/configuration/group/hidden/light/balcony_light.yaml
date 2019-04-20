@@ -2,5 +2,5 @@ balcony_light:
   name: Свет (балкон)
   control: hidden
   entities:
-    - light.yeelight_white_286c07f12bed
-    - light.yeelight_white_f0b429a8d936
+    - light.yeelight_mono1_286c07f12bed
+    - light.yeelight_mono1_f0b429a8d936

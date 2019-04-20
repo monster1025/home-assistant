@@ -2,5 +2,5 @@ mainroom_color:
   name: Цветные лампы(Гостиная)
   control: hidden
   entities:
-    - light.yeelight_rgb_34ce008fe328
-    - light.yeelight_rgb_286c071065c7
+    - light.yeelight_colot1_34ce008fe328
+    - light.yeelight_color1_286c071065c7

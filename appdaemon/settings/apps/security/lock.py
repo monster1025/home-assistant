@@ -38,5 +38,13 @@ class Lock(hass.Hass):
       user_var = "user_{}".format(changed_by)
       if user_var in self.args:
         user = self.args[user_var]
+        self.disarm()
       message = "Открыта дверь пользователем: {}.".format(user)
       self.notify(message, name = self.args['notify'])
+
+  def disarm(self):
+    if "ha_panel" in self.args:
+      state = self.get_state(self.args['ha_panel'])
+      if (state == "armed_away"):
+        self.call_service("alarm_control_panel/alarm_disarm", entity_id=self.args['ha_panel'])
+
