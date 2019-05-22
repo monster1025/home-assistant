@@ -65,6 +65,7 @@ views:
           - light.yeelight_mono1_f0b429a8d936
           - sensor.temperature_158d000117d37a
           - sensor.humidity_158d000117d37a
+          - switch.plug_158d00026ea017
       - type: entities
         title: "Улица"
         show_header_toggle: false

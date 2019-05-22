@@ -20,3 +20,6 @@ devices: xxxxxxxxx
   '0x00158d0001e50ce4': xxxxxxxxx
     friendly_name: xxxxxxxxx
     retain: xxxxxxxxx
+  '0x00158d00026ea017': xxxxxxxxx
+    friendly_name: xxxxxxxxx
+    retain: xxxxxxxxx
