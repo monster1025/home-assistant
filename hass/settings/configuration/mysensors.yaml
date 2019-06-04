@@ -1,4 +1,4 @@
-gateways:
-  - device: !secret mysensors_gateway_ip
-    tcp_port: 5003
-version: '2.0'
+#gateways:
+#  - device: !secret mysensors_gateway_ip
+#    tcp_port: 5003
+#version: '2.0'

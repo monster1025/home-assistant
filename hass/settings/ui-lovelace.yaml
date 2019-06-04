@@ -52,6 +52,7 @@ views:
           - light.bath
           - light.philips_led
           - sensor.airfresher_remain
+          - sensor.toilet_presence
       - type: entities
         title: "Прихожая"
         show_header_toggle: false

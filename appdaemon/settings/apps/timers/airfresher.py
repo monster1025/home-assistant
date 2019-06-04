@@ -17,7 +17,8 @@ import datetime
 class AirFresher(hass.Hass):
   timers = []
   fresh_times = 0
-  fresh_every_mins = 15
+  fresh_times_max = 5
+  fresh_every_mins = 1
   last_fresh_date = None
 
   def initialize(self):
@@ -41,8 +42,8 @@ class AirFresher(hass.Hass):
       self.log('Start freshing timer.')
       self.last_fresh_date = self.datetime()
       self.fresh_times = 0
-      newtime = self.datetime()+datetime.timedelta(seconds=5)
-      self.timers.append(self.run_every(self.timer_tick, newtime, 4*60))
+      newtime = self.datetime()+datetime.timedelta(seconds=15)
+      self.timers.append(self.run_every(self.timer_tick, newtime, self.fresh_every_mins*60))
 
   def cancel_timers(self) -> None:
     for timer in self.timers:
@@ -50,15 +51,19 @@ class AirFresher(hass.Hass):
     timers = []
 
   def timer_tick(self, args) -> None:
-    self.fresh()
+    toilet_presence = self.get_state("sensor.toilet_presence")
+    self.log('Timer ticked, presence is: {}'.format(toilet_presence))
+    if (toilet_presence == "on"):
+      self.fresh()
 
   def fresh(self):
     self.log("current timer: {}".format(self.last_fresh_date))
 
     self.fresh_times = self.fresh_times + 1
-    if (self.fresh_times > 5):
+    if (self.fresh_times > self.fresh_times_max):
       self.log('Fresh max times is reached. Canceling timer.')
       self.cancel_timers()
       return
+
     self.log('freshing in {}'.format(self.fresh_times))
     self.call_service("mqtt/publish", topic = "home/airfresher/airfresher/fresh/set", payload = "1")

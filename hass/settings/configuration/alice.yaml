@@ -1,0 +1,18 @@
+filter:
+  include_domains:
+    - alarm_control_panel
+    - switch
+    - light
+    - vacuum
+    - cover
+  exclude_entities:
+    - switch.plug_158d00020f3a29
+    - switch.plug_158d00026ea017
+    - switch.xiaomi_miio_switch
+#    include_entities:
+#      - media_player.tv
+#  entity_config:
+#    switch.kitchen:
+#      name: CUSTOM_NAME_FOR_YANDEX_SMART_HOME
+#    light.living_room:
+#      room: LIVING_ROOM

@@ -64,11 +64,12 @@ homekit: !include configuration/homekit/homekit.yaml
 #power meter
 modbus: !include configuration/modbus.yaml
 
-mysensors: !include configuration/mysensors.yaml
+#mysensors: !include configuration/mysensors.yaml
 
 utility_meter: !include_dir_merge_named configuration/utility_meter
 
 speedtestdotnet: !include configuration/speedtest.yaml
+yandex_smart_home: !include configuration/alice.yaml
 
 # fan:
 #   - platform: xiaomi_miio
