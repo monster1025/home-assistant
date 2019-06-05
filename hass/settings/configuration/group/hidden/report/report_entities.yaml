@@ -8,7 +8,7 @@ report_entities:
     - light.yeelight_mono1_f0b4290e5444
     - light.yeelight_mono1_f0b429a8f6df
     - light.kitchen
-    - switch.kitchen_mini_light
+    - light.kitchen_mini_light
     - light.hall
     - light.bath
     - switch.plug_158d0001104a0c # телевизор

@@ -26,6 +26,7 @@ class ToiletPresence(hass.Hass):
     if 'sensor' not in self.args:
       self.error("Please provide sensor in config!")
       return
+    self.set_value("off")
     self.listen_state(self.distance_changed, self.args['sensor'])
     
   def distance_changed(self, entity, attribute, old, new, kwargs):

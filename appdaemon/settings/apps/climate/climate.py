@@ -53,21 +53,13 @@ class Climate(hass.Hass):
     self.timer = self.run_in(self.run_in_split_mode, 10, mode=mode, temp=temp, state="ON")
 
   def run_in_split_mode(self, args):
+    code = ""
+    self.log('mode: {}'.format(args['mode']))
     remote = Remote()
     code = remote.set_mode(args['mode'], "2", args['temp'], args['state'])
-    self.call_service("mqtt/publish", topic = self.ir_topic, payload = code.decode("utf-8"))
+    code = code.decode("utf-8")
+    self.call_service("mqtt/publish", topic = self.ir_topic, payload = code)
   
-  def set_color_entity(self, to):
-    if 'color_entity' not in self.args:
-        return
-    entity = self.args['color_entity']
-    if to == "hot":
-        self.turn_on(entity, rgb_color=[255,0,0], brightness = 100)
-    if to == "cold":
-        self.turn_on(entity, rgb_color=[0,0,255], brightness = 100)
-    if to == "off":
-        self.turn_off(entity)
-
   def do_action(self):
     if 'constraint' in self.args and not self.constrain_input_boolean(self.args['constraint']):
         self.log("Temperature control is disabled.")
@@ -81,13 +73,6 @@ class Climate(hass.Hass):
         self.split_off()
         return
     
-    # Проверить датчики дверей и окон
-    door_window_state = self.get_state(self.args['door_window'])
-    if (door_window_state != 'off'):
-        self.log("Balcony door is opened. Turning off split.")
-        self.split_off()
-        return
-
     nest_target_cool = self.get_state('climate.living_room', attribute="temperature")
     nest_target_hot = nest_target_cool
     if nest_target_cool == None and nest_target_hot == None:
@@ -101,26 +86,40 @@ class Climate(hass.Hass):
     nest_y1 = self.get_state('binary_sensor.nest_y1')
 
     if nest_y1 == "on":
+        if self.check_door('FAN'):
+            return
         self.split_state = "on"
         self.log("Turn on split for COOLING to {}.".format(nest_target_cool))
-        self.split_on("COOLING", 20)
-        self.set_color_entity('cold')
+        self.split_on("COOLING", 16)
 
     elif nest_w1 == "on":
+        if self.check_door('OFF'):
+            return
         self.split_state = "on"
         self.log("Turn on split for HEATING to {}".format(nest_target_hot))
         self.split_on("HEATING", 28)
-        self.set_color_entity('hot')
 
     else:
         self.log("Nest is reporting that temp is ok.")
         self.split_off()
-        self.set_color_entity('off')
 
   def terminate(self):
     if self.listen_event_handle_list != None:
       for listen_event_handle in self.listen_event_handle_list:
         self.cancel_listen_event(listen_event_handle)
+
+  def check_door(self, mode):
+    # Проверить датчики дверей и окон
+    door_window_state = self.get_state(self.args['door_window'])
+    if (door_window_state != 'off'):
+        self.log("Balcony door is opened. Set split to fan mode.")
+        if mode == "FAN":
+            self.split_on("FAN", 16)
+            return True
+        else:
+            self.split_off()
+            return True
+    return False
 
 #
 # App to control climate device (split system)
@@ -151,6 +150,7 @@ STATE = {
 MODE = {
     "HEATING": 4, # b100
     "AUTO": 3, # b011
+    "FAN": 2, # b010
     "DEHUIDIFICATION": 1, # b001
     "COOLING": 0,
     "NONE": 0,
@@ -159,8 +159,8 @@ MODE = {
 TEMPERATURE_OFFSET = 15
 
 FAN = {
-    "1": 1,
-    "2": 0,
+    "1": 0,
+    "2": 1,
     "3": 2,
     "4": 4, # b100
     "NONE": 5, # b101
@@ -197,7 +197,7 @@ class Remote(object):
         self.codes = [0] * BUFFER_SIZE
         self.crc = 0
 
-    def set_mode(self, mode, fan, temperature, state):
+    def set_mode(self, mode, fan, temperature, state, jet=0):
         """
         Generate code and put it in the buffer
         """
@@ -218,7 +218,7 @@ class Remote(object):
         else:
             self.fill_buffer(16, 4, temperature - TEMPERATURE_OFFSET)
 
-        self.fill_buffer(20, 1, 0) # jet
+        self.fill_buffer(20, 1, jet) # jet
 
         if state == 'OFF':
             self.fill_buffer(21, 3, FAN['NONE'])

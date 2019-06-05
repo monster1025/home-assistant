@@ -1,0 +1,8 @@
+curtainsecurity:
+  module: curtainsecurity
+  class: CurtainSecurity
+  curtain: cover.curtain_158d0002b0c46a
+  door: binary_sensor.door_window_sensor_158d00010f7e19
+  # constraint: input_boolean.lock_report
+  global_dependencies:
+    - globals

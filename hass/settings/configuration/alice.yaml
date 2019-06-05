@@ -1,6 +1,7 @@
 filter:
   include_domains:
     - alarm_control_panel
+    - climate
     - switch
     - light
     - vacuum
@@ -9,6 +10,9 @@ filter:
     - switch.plug_158d00020f3a29
     - switch.plug_158d00026ea017
     - switch.xiaomi_miio_switch
+    - switch.domofon_mode
+    - switch.domofon_open
+    - light.gateway_light_f0b429aa1463
 #    include_entities:
 #      - media_player.tv
 #  entity_config:

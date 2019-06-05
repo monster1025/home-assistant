@@ -6,7 +6,6 @@ entities_action:
   class: EntitiesByPresence
   away_entities:
     - group.all_lights
-    - switch.kitchen_mini_light
     - switch.plug_158d0001104a0c # телевизор
     - switch.plug_158d0001a68b18 # термопот
   return_entities:

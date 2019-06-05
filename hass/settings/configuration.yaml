@@ -9,6 +9,11 @@ homeassistant:
   customize_domain: !include customize_domain.yaml
   packages: !include_dir_named packages/
 
+logger:
+  default: info
+  # logs:
+  #   custom_components.yandex_smart_home: debug
+
 api:
 
 http:

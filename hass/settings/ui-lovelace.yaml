@@ -36,7 +36,7 @@ views:
         show_header_toggle: false
         entities:
           - light.kitchen
-          - switch.kitchen_mini_light
+          - light.kitchen_mini_light
           - switch.plug_158d0001a68b18
           - switch.plug_158d0001a68c64
           - switch.plug_158d0001a4cfb4

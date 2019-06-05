@@ -1,9 +1,0 @@
-#################################
-#         YANDEX.ALICE          #
-#################################
-alice:
-  module: alice
-  class: YandexAlice
-  global_dependencies:
-    - globals
-    

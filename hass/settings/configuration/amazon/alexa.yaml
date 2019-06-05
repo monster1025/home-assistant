@@ -69,6 +69,6 @@ smart_home:
       name: "Curtain lights"
     switch.plug_158d0001a68b18:
       name: Kettle
-    switch.kitchen_mini_light:
+    light.kitchen_mini_light:
       name: "Kitchen Mini Light"
       display_categories: LIGHT

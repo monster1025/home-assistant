@@ -24,6 +24,9 @@ light.bath:
 
 light.balcony:
   friendly_name: Свет
+  
+light.kitchen_mini_light:
+  friendly_name: Подсветка
 
 light.yeelight_mono1_286c07f12bed:
   friendly_name: Балкон1

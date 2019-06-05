@@ -5,3 +5,10 @@
   payload_on: "ON"
   payload_off: "OFF"
   optimistic: false
+
+- platform: mqtt
+  name: kitchen_mini_light
+  state_topic: "home/plug/kitchen-mini-light/status"
+  command_topic: "home/plug/kitchen-mini-light/status/set"
+  payload_on: "on"
+  payload_off: "off"
