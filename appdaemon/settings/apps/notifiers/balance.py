@@ -46,7 +46,7 @@ class Balance(Base):
           
     if low or ("always_send" in self.args and self.args["always_send"] == 1) or ("force" in kwargs and kwargs["force"] == 1):
       if message != "":
-        self.notify(message, name = "telegram_monster")
+        self.notify(message, name = "telegram") #name = "telegram_monster"
 
   def is_number(self, s):
     try:

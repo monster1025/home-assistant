@@ -32,3 +32,4 @@ class Curtain(hass.Hass):
     self.log('off_timer')
     if 'entity' in self.args:
       self.call_service("cover/close_cover", entity_id = self.args['entity'])
+      

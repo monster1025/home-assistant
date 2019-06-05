@@ -19,6 +19,8 @@ import appdaemon.plugins.hass.hassapi as hass
 
 class ToiletPresence(hass.Hass):
   state = ""
+  timers = []
+  presence_timeout = 30
 
   def initialize(self):
     if 'sensor' not in self.args:
@@ -28,13 +30,21 @@ class ToiletPresence(hass.Hass):
     
   def distance_changed(self, entity, attribute, old, new, kwargs):
     distance = int(new)
-
-    if distance > 1000 or distance < 850:
-      if self.state == "" or self.state == "off":
+    state = ""
+    if (distance > 1000 or distance < 850):
+      self.timers_off()
+      self.timers.append(self.run_in(self.run_in_presense_off, self.presence_timeout))
+      self.log('re-setting timer for {}s.'.format(self.presence_timeout))
+      if (self.state != "on"):
         self.set_value("on")
-    elif distance < 1000 and distance > 850:
-      if self.state == "" or self.state == "on":
-        self.set_value("off")
+      
+
+  def run_in_presense_off(self, args):
+    self.set_value("off")
+
+  def timers_off(self):
+    for timer in self.timers:
+      self.cancel_timer(timer)
 
   def set_value(self, state):
     self.log('Toilet presense: {}'.format(state))
