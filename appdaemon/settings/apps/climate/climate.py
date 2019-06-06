@@ -47,6 +47,7 @@ class Climate(hass.Hass):
     self.turn_off("switch.plug_158d00010dd98d")
 
   def split_on(self, mode, temp):
+    self.split_state = "on"
     self.turn_on("switch.plug_158d00010dd98d")
     if (self.timer != None):
         self.cancel_timer(self.timer)
@@ -88,14 +89,12 @@ class Climate(hass.Hass):
     if nest_y1 == "on":
         if self.check_door('FAN'):
             return
-        self.split_state = "on"
         self.log("Turn on split for COOLING to {}.".format(nest_target_cool))
         self.split_on("COOLING", 16)
 
     elif nest_w1 == "on":
         if self.check_door('OFF'):
             return
-        self.split_state = "on"
         self.log("Turn on split for HEATING to {}".format(nest_target_hot))
         self.split_on("HEATING", 28)
 

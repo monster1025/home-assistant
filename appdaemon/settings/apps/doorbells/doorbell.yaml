@@ -5,6 +5,8 @@ doorbell:
   module: doorbell
   class: Doorbell
   sensor: binary_sensor.door_window_sensor_158d0001f34374
+  camera: camera.entrance
+  rtsp: !secret rtsp_entrance
   notify: telegram
   gw_mac: !secret aqara1_mac
   global_dependencies:

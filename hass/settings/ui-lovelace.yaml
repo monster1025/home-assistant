@@ -159,9 +159,9 @@ views:
     icon: mdi:cctv
     cards:
       - type: picture-entity
-        title: enterance
-        entity: camera.enterance
-        camera_image: camera.enterance
+        title: entrance
+        entity: camera.entrance
+        camera_image: camera.entrance
         show_info: true
         tap_action: dialog
   - title: "Будильники"

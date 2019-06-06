@@ -11,8 +11,8 @@ homeassistant:
 
 logger:
   default: info
-  # logs:
-  #   custom_components.yandex_smart_home: debug
+  logs:
+    custom_components.yandex_smart_home: debug
 
 api:
 
@@ -32,6 +32,10 @@ lovelace:
 config:
 discovery:
 system_health:
+
+#enables video recording
+stream:
+
 
 # Enables support for tracking state changes over time
 recorder: !include configuration/recorder.yaml
