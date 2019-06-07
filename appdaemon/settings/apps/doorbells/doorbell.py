@@ -37,7 +37,8 @@ class Doorbell(hass.Hass):
     self.call_service("xiaomi_aqara/play_ringtone", gw_mac=self.gw_mac, ringtone_id=self.ringtone, ringtone_vol=100)
     self.notify("Звонок в дверь!!!", name = self.args['notify'])
     # for x in range(3):
-    self.send_image()
+    #   self.send_image()
+    self.send_video()
 
   def send_video(self):
     file = '/config/www/doorbell_video.mp4'
