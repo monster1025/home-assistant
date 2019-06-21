@@ -15,3 +15,5 @@ binary_sensor.door_window_sensor_158d0001e74660:
   friendly_name: Окно(Кухня)
 binary_sensor.door_window_sensor_158d0001f34374:
   friendly_name: Звонок
+binary_sensor.door_window_sensor_158d0001b711ec:
+  friendly_name: Окно(Зал)

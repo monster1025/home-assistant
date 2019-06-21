@@ -1,6 +1,7 @@
-mainroom_door_window:
-  name: Двери-Окна
+ac_door_window:
+  name: Двери-Окна-Кондей
   control: hidden
   entities:
     - binary_sensor.door_window_sensor_158d00010f7e19
     - binary_sensor.door_window_sensor_158d0001b711ec
+    - binary_sensor.door_window_sensor_158d0001e74660
