@@ -6,6 +6,10 @@ filter:
     - light
     - vacuum
     - cover
+  include_entities:
+    - input_boolean.alice_night_mode
+    - input_boolean.alice_turn_off_light
+
   exclude_entities:
     - switch.plug_158d00020f3a29
     - switch.plug_158d00026ea017
@@ -14,10 +18,10 @@ filter:
     - switch.domofon_mode
     - switch.domofon_open
     - light.gateway_light_f0b429aa1463
-#    include_entities:
-#      - media_player.tv
-#  entity_config:
+
+  # entity_config:
+  #   input_boolean.alice_night_mode:
+  #     room: SCENES
+    
 #    switch.kitchen:
 #      name: CUSTOM_NAME_FOR_YANDEX_SMART_HOME
-#    light.living_room:
-#      room: LIVING_ROOM

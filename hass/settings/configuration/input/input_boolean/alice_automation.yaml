@@ -1,0 +1,8 @@
+alice_night_mode:
+  name: Спокойной ночи
+  initial: off
+
+alice_turn_off_light:
+  name: Выключи свет
+  initial: off
+

@@ -1,0 +1,6 @@
+alice_scenes:
+  module: alice_scenes
+  class: AliceScenes
+  alice_prefix: input_boolean.alice_
+  global_dependencies:
+    - globals

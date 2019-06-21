@@ -26,7 +26,7 @@ class ToiletPresence(hass.Hass):
     if 'sensor' not in self.args:
       self.error("Please provide sensor in config!")
       return
-    self.set_value("off")
+    self.set_value("off", 0)
     self.listen_state(self.distance_changed, self.args['sensor'])
     
   def distance_changed(self, entity, attribute, old, new, kwargs):
@@ -37,22 +37,23 @@ class ToiletPresence(hass.Hass):
       self.timers.append(self.run_in(self.run_in_presense_off, self.presence_timeout))
       self.log('re-setting timer for {}s.'.format(self.presence_timeout))
       if (self.state != "on"):
-        self.set_value("on")
+        self.set_value("on", distance)
       
 
   def run_in_presense_off(self, args):
-    self.set_value("off")
+    self.set_value("off", 0)
 
   def timers_off(self):
     for timer in self.timers:
       self.cancel_timer(timer)
 
-  def set_value(self, state):
+  def set_value(self, state, distance):
     self.log('Toilet presense: {}'.format(state))
     self.state = state
     entity_id = "sensor.toilet_presence"
 
     attributes = {}
+    attributes['distance'] = distance
     attributes['description'] = 'Created and updated from appdaemon ({})'.format(__name__)
 
     self.set_state(entity_id, state = state, attributes = attributes)

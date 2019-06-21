@@ -6,6 +6,7 @@ class Climate(hass.Hass):
   ir_topic = "home/remote/rm2/code/set"
   split_state = "None"
   timer = None
+  fan_speed = "4"
 
   def initialize(self):
     self.listen_event_handle_list = []
@@ -57,7 +58,7 @@ class Climate(hass.Hass):
     code = ""
     self.log('mode: {}'.format(args['mode']))
     remote = Remote()
-    code = remote.set_mode(args['mode'], "2", args['temp'], args['state'])
+    code = remote.set_mode(args['mode'], self.fan_speed, args['temp'], args['state'])
     code = code.decode("utf-8")
     self.call_service("mqtt/publish", topic = self.ir_topic, payload = code)
   
