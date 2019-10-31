@@ -2,6 +2,9 @@ ARG VERSION
 FROM acockburn/appdaemon:${VERSION}
 
 RUN pip3 install \
+      attrs==19.1.0 \
       emp_mos_api==0.10 \
-      sqlalchemy \
-      mysqlclient
+      packaging==16.8 \
+      python-Levenshtein==0.12.0 \
+      voluptuous==0.11.5 \
+      noolite==1.4.0 && apt-get update -y && apt-get install -y libusb-1.0-0-dev && apt-get clean

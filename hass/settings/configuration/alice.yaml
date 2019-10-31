@@ -9,6 +9,8 @@ filter:
   include_entities:
     - input_boolean.alice_night_mode
     - input_boolean.alice_turn_off_light
+    - input_boolean.alice_turn_on_coffeemachine
+    - input_boolean.alice_make_coffee
 
   exclude_entities:
     - switch.plug_158d00020f3a29

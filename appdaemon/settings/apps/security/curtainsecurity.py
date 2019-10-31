@@ -13,14 +13,16 @@ import globals
 #   Initial Version
 
 class CurtainSecurity(hass.Hass):
+  listen_event_handle_list = []
   def initialize(self):
     if not globals.check_args(self, ['curtain', 'door']):
       return
-    self.listen_event(self.curtain_changed, event='call_service', entity_id = self.args['curtain'])
-    # self.listen_event_handle_list = []
-    # locks = globals.get_group_entities(self, "group.all_locks")
-    # for lock in locks:
-    #    self.listen_event_handle_list.append(self.listen_state(self.lock_state_changed, lock))
+    self.listen_event_handle_list.append(self.listen_event(self.curtain_changed, event='call_service', entity_id = self.args['curtain']))
+
+  def terminate(self):
+    if self.listen_event_handle_list != None:
+      for listen_event_handle in self.listen_event_handle_list:
+        self.cancel_listen_event(listen_event_handle)
 
   def curtain_changed(self, event_name, data, kwargs):
     if 'constraint' in self.args and not self.constrain_input_boolean(self.args['constraint']):

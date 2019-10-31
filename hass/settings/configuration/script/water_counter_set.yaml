@@ -1,10 +1,10 @@
-# water_counter_set:
-#   sequence:
-#   - service: mqtt.publish
-#     data:
-#       topic: 'home/bath/bath/cold/set'
-#       payload: 127110
-#   - service: mqtt.publish
-#     data:
-#       topic: 'home/bath/bath/hot/set'
-#       payload: 67270
+water_counter_set:
+  sequence:
+  - service: mqtt.publish
+    data:
+      topic: 'home/bath/bath/cold/set'
+      payload: 199820
+  - service: mqtt.publish
+    data:
+      topic: 'home/bath/bath/hot/set'
+      payload: 104171

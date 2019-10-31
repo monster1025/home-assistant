@@ -6,3 +6,10 @@ alice_turn_off_light:
   name: Выключи свет
   initial: off
 
+alice_turn_on_coffeemachine:
+  name: Включи кофемашину
+  initial: off
+
+alice_make_coffee:
+  name: Сделай кофе
+  initial: off

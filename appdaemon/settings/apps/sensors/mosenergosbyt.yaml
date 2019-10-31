@@ -1,47 +1,47 @@
-mosenergo_counter:
-  module: mosenergosbyt
-  class: MosEnergoSbytCounter
-  properties:
-    login: !secret mosenergo_main_login
-    pwd: !secret mosenergo_main_pwd
+# mosenergo_counter:
+#   module: mosenergosbyt
+#   class: MosEnergoSbytCounter
+#   properties:
+#     login: !secret mosenergo_main_login
+#     pwd: !secret mosenergo_main_pwd
 
-mosenergo_counter_updater:
-  module: mosenergosbyt
-  class: MosEnergoSbytUpdater
-  entity_ids:
-    mosenergosbyt_total: sensor.power_mosenergosbyt_total
-    mosenergosbyt_balance: sensor.power_mosenergosbyt_balance
-  app: mosenergo_counter
-  dependencies:
-    - mosenergo_counter
-  global_dependencies:
-    - globals
+# mosenergo_counter_updater:
+#   module: mosenergosbyt
+#   class: MosEnergoSbytUpdater
+#   entity_ids:
+#     mosenergosbyt_total: sensor.power_mosenergosbyt_total
+#     mosenergosbyt_balance: sensor.power_mosenergosbyt_balance
+#   app: mosenergo_counter
+#   dependencies:
+#     - mosenergo_counter
+#   global_dependencies:
+#     - globals
 
-mosenergo_counter_sender:
-  module: mosenergosbyt
-  class: MosEnergoSbytSender
-  entity_ids:
-    home_power_total: sensor.power_main_total
-  app: mosenergo_counter
-  dependencies:
-    - mosenergo_counter
-  global_dependencies:
-    - globals
+# mosenergo_counter_sender:
+#   module: mosenergosbyt
+#   class: MosEnergoSbytSender
+#   entity_ids:
+#     home_power_total: sensor.power_main_total
+#   app: mosenergo_counter
+#   dependencies:
+#     - mosenergo_counter
+#   global_dependencies:
+#     - globals
 
 
-mosenergo_alt:
-  module: mosenergosbyt
-  class: MosEnergoSbytCounter
-  properties:
-    login: !secret mosenergo_alt_login
-    pwd: !secret mosenergo_alt_pwd
+# mosenergo_alt:
+#   module: mosenergosbyt
+#   class: MosEnergoSbytCounter
+#   properties:
+#     login: !secret mosenergo_alt_login
+#     pwd: !secret mosenergo_alt_pwd
 
-mosenergo_alt_updater:
-  module: mosenergosbyt
-  class: MosEnergoSbytUpdater
-  app: mosenergo_alt
-  dependencies:
-    - automation
-    - mosenergo_alt
-  global_dependencies:
-    - globals
+# mosenergo_alt_updater:
+#   module: mosenergosbyt
+#   class: MosEnergoSbytUpdater
+#   app: mosenergo_alt
+#   dependencies:
+#     - automation
+#     - mosenergo_alt
+#   global_dependencies:
+#     - globals

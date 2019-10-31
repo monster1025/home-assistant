@@ -12,6 +12,8 @@ class WaterCounterSender(Automation):
     self.run_daily(self.send_mosru_counters, dt.time(12, 00, 0))
   
   def send_mosru_counters(self, kwargs):
+    if 'constraint' in self.args and not self.constrain_input_boolean(self.args['constraint']):
+      return
     self.log('Starting sending counters value to mos.ru')
     new_values = []
     self.app.update_watercounters()
@@ -47,11 +49,38 @@ class WaterCounterSender(Automation):
           self.log('error sending: {}'.format(err))
 
 
+class PowerCounterSender(Automation):
+  timezone = '+03:00'
+  def initialize(self):
+    super().initialize()
+    if 'power_total' not in self.entity_ids:
+        self.log('Please specify power_total for PowerCounterSender.')
+        return
+    self.run_daily(self.send_mosru_counters, dt.time(14, 00, 0))
+    # self.send_mosru_counters("")
+  
+  def send_mosru_counters(self, kwargs):
+    if 'constraint' in self.args and not self.constrain_input_boolean(self.args['constraint']):
+      return
+    today = datetime.today()
+    if today.day < 15 or today.day > 26:
+        self.log("We can send power values between days 15 and 26.")
+        return
+    power_total = round(float(self.get_state(self.entity_ids['power_total'])))
+    period = datetime.now().strftime('%Y-%m-%d')
+    self.log('Starting sending power counters value ({}) to mosru.'.format(power_total))
+    new_values = [{'counter_id': 'T1', 'indication': power_total, 'period': period}]
+    try:
+        result = self.app.send_electrocounters(new_values)
+        self.log(result)
+    except EmpServerException as err:
+        self.log('error sending: {}'.format(err))
+
 class WaterCounterSensor(Automation):
   timezone = '+03:00'
   def initialize(self):
     super().initialize()
-    self.timer = self.run_every(self.update_sensors, self.datetime(), 1*60*60)
+    self.timer = self.run_every(self.update_sensors, self.datetime()+timedelta(seconds=10), 1*60*60)
 
   def update_sensors(self, args) -> None:
     self.log('Updating water counters')
@@ -101,6 +130,33 @@ class WaterCounterSensor(Automation):
     attributes['description'] = 'Created and updated from appdaemon ({})'.format(__name__)
 
     self.set_state(entity_id, state = indication_max, attributes = attributes)
+
+class PowerCounterSensor(Automation):
+  timezone = '+03:00'
+  def initialize(self):
+    super().initialize()
+    self.timer = self.run_every(self.update_sensors, self.datetime()+timedelta(seconds=30), 1*60*60)
+
+  def update_sensors(self, args) -> None:
+    self.log('Updating power counters')
+    self.app.update_power()
+    if 'power_total' in self.entity_ids:
+        power_total = self.app.power_total
+        self.create_power_entity(self.entity_ids['power_total'], power_total, 'kWh', 'Счетчик')
+    if 'power_balance' in self.entity_ids:
+        power_balance = self.app.power_balance
+        self.create_power_entity(self.entity_ids['power_balance'], power_balance, '₽', 'Баланс')
+
+  def create_power_entity(self, entity_id, value, unit, description):
+    icon = "mdi:av-timer"
+    attributes = {}
+    attributes['unit_of_measurement'] = unit
+    attributes['icon'] = icon
+    attributes['friendly_name'] = "{}(mos.ru)".format(description)
+    attributes['description'] = 'Created and updated from appdaemon ({})'.format(__name__)
+
+    self.set_state(entity_id, state = value, attributes = attributes)
+
 
 class EpdBalanceSensor(Automation):
   def initialize(self):
@@ -183,6 +239,11 @@ class MosruPower(MosruBase):
   def update_power(self) -> None:
     self._check_login()
     self._power_counters = self._api.get_electrocounters(self._flat_id)
+
+  def send_electrocounters(self, new_values) -> None:
+    self._check_login()
+    self._api.send_electrocounters(self._flat_id, new_values)
+
 
 class MosruWater(MosruBase):
   _water_counters = None

@@ -46,10 +46,13 @@ services:
     build:
       context: ./appdaemon/docker
       args:
-        VERSION: 3.0.2
+        VERSION: 3.0.5
     container_name: appdaemon
     depends_on:
       - hass
+    privileged: true
+    devices:
+      - /dev/bus/usb:/dev/bus/usb
     volumes:
       - ./appdaemon/settings:/conf
       - ./hass/settings/secrets.yaml:/conf/secrets.yaml:ro

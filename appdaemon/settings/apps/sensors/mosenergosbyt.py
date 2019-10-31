@@ -58,8 +58,8 @@ class MosEnergoSbytUpdater(Automation):
         self.set_state(entity_id, state = balance, attributes = attributes)
 
 class MosEnergoSbytCounter(Base):
-  _version = 11
-  _device = "ios/12.1.2/2.14.14(221)"
+  _version = 13
+  _device = "android/11.2.6/2.9.15(105)"
   _session = None
   _profile = None
  
@@ -132,6 +132,8 @@ class MosEnergoSbytCounter(Base):
     url = "https://lkkbyt.mosenergosbyt.ru/gate/do?api_version={}&id_device={}&phone={}&ls={}&process=login&pw_abn={}&type=1".format(self._version, self._device, phone, ls, pass_md5)
     response = requests.get(url).text
     session_response = self._parse_response(response)
+    if ('ID_SESSION' not in session_response):
+    	return
     session = session_response['ID_SESSION']
     return session
 
@@ -144,9 +146,19 @@ class MosEnergoSbytCounter(Base):
         headers.append(node.text)
     for node in et.findall('./b/p'):
         values.append(node.text)
+
     result = {}
+    if len(headers) == 0:
+        return result
+
     for i in range(0, len(headers)):
+        if i>=len(headers) or i>=len(values):
+            continue
         header = headers[i]
         value = values[i]
         result[header] = value
+
+    if 'NM_RESULT' in result and 'Вышла новая версия приложения' in result['NM_RESULT']:
+        self.error('[!] new version is available. Please update: {}.'.format(result))
+
     return result

@@ -4,6 +4,7 @@ security_sensors:
   sensor: group.security_sensors
   constraint: input_boolean.security_sensors_report
   ha_panel: alarm_control_panel.ha_alarm
+  vacuum: vacuum.xiaomi_vacuum_cleaner
   notify: telegram
   global_dependencies:
     - globals

@@ -1,0 +1,3 @@
+salt_lamp:
+ module: salt_lamp
+ class: Noolite

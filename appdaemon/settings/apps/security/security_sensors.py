@@ -36,6 +36,14 @@ class SecuritySensorsReport(hass.Hass):
       alarm_panel_state = self.get_state(self.args['ha_panel'])
       if alarm_panel_state != "armed_away":
         return
+
+      vacuum_state = "docked"
+      if "vacuum" in self.args:
+        vacuum_state = self.get_state(self.args["vacuum"])
+      #Если работает пылесос и сработал датчик движения
+      if vacuum_state == 'cleaning' and 'binary_sensor.motion' in entity:
+        self.log('Motion sensor is triggered, but vacuum is cleaning.')
+        return
       self.alarm_triggered(entity, old, new)
 
   def alarm_triggered(self, entity, old, new):
