@@ -1,4 +1,5 @@
 import appdaemon.plugins.hass.hassapi as hass
+import datetime
 
 #
 # Water control application.
@@ -16,6 +17,8 @@ import appdaemon.plugins.hass.hassapi as hass
 
 class WaterValveControl(hass.Hass):
   standby_power_limit = 15
+  current_wait_cycle = 0
+  wait_cycles = 3
   timer = None
   listen_event_handle_list = []
   timers = []
@@ -51,7 +54,7 @@ class WaterValveControl(hass.Hass):
         device_names += self.friendly_name(device)
       self.notify('В доме остались требующие воды устройства ({}), подача воды не будет отключена.'.format(device_names), name = self.args['notify'])
       self.cancel_current_timer()
-      self.timers.append(self.run_every(self.wait_when_device_is_done, self.datetime(), 5*60))
+      self.timers.append(self.run_every(self.wait_when_device_is_done, self.datetime()+datetime.timedelta(seconds=5), 5*60))
     else:
       self.turn_off(self.args['water_valve'])
       for device in self.args['water_devices']:
@@ -62,12 +65,22 @@ class WaterValveControl(hass.Hass):
       return
     powered_on = self.get_turned_on_devices()
     self.log('still powered on: {}'.format(powered_on))
-    if (len(powered_on) == 0):
-      # self.turn_off(self.args['water_valve'])
-      # for device in self.args['water_devices']:
-      #   self.turn_off(device)
-      self.notify('Устройства требующие воды закончили свою работу.', name = self.args['notify'])
+    if len(powered_on) == 1:
+      self.current_wait_cycle = 0
+    elif len(powered_on) == 0 and self.current_wait_cycle<self.wait_cycles:
+      self.log("Current wait cycle: {}".format(self.current_wait_cycle))
+      self.current_wait_cycle = self.current_wait_cycle+1
+    elif len(powered_on) == 0 and self.current_wait_cycle>=self.wait_cycles:
+      self.current_wait_cycle = 0
+      self.notify('Устройства требующие воды закончили свою работу, отключаю подачу воды.', name = self.args['notify'])
+      self.turn_off_water_devices()
       self.cancel_current_timer()
+
+  def turn_off_water_devices():
+    self.log("Turning off water devices.")
+    self.turn_off(self.args['water_valve'])
+    for device in self.args['water_devices']:
+      self.turn_off(device)
 
   def get_turned_on_devices(self):
     powered_on_devices = []
@@ -80,8 +93,8 @@ class WaterValveControl(hass.Hass):
       if 'load_power' not in attributes:
         continue
       load_power = attributes['load_power']
-      self.log('{} load power is: {}'.format(device, load_power))
-      if state == 'on' and load_power < self.standby_power_limit:
+      self.log('{} state: {}, load power is: {}'.format(device, state, load_power))
+      if state == 'off' or load_power < self.standby_power_limit:
         continue
       powered_on_devices.append(device)
     return powered_on_devices

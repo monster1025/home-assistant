@@ -161,7 +161,7 @@ class PowerCounterSensor(Automation):
 class EpdBalanceSensor(Automation):
   def initialize(self):
     super().initialize()
-    self.timer = self.run_every(self.update_sensors, self.datetime(), 1*60*60)
+    self.timer = self.run_every(self.update_sensors, self.datetime()+timedelta(seconds=40), 1*60*60)
 
   def update_sensors(self, args) -> None:
     if 'epd_balance' in self.entity_ids:

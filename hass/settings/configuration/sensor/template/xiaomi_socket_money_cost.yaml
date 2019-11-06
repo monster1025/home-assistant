@@ -40,6 +40,10 @@
       friendly_name: "Фитолампа в мес."
       unit_of_measurement: '₽'
       value_template: "{{ (states('sensor.fitolamp_monthly') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
+    server_money_monthly:
+      friendly_name: "Сервер в мес."
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.server_monthly') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
     power_money_t1_monthly:
       friendly_name: "Т1 в мес."
       unit_of_measurement: '₽'
@@ -98,6 +102,10 @@
       friendly_name: "Фитолампа в день"
       unit_of_measurement: '₽'
       value_template: "{{ (states('sensor.fitolamp_daily') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
+    server_money_daily:
+      friendly_name: "Сервер в день"
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.server_daily') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
 
     counter_hot_money_hourly:
       friendly_name: "Горячая в час"
@@ -139,3 +147,7 @@
       friendly_name: "Фитолампа в час"
       unit_of_measurement: '₽'
       value_template: "{{ (states('sensor.fitolamp_hourly') | float * (states('sensor.power_cost') | float)) | round(2) }}"    
+    server_money_hourly:
+      friendly_name: "Сервер в час"
+      unit_of_measurement: '₽'
+      value_template: "{{ (states('sensor.server_hourly') | float * (states('sensor.power_cost') | float)) | round(2) }}"    

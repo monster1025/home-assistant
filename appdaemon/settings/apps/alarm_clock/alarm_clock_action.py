@@ -1,5 +1,6 @@
 import appdaemon.plugins.hass.hassapi as hass
 import globals
+import datetime
 #
 # Very special case, this will run sound 'alarm' on xiaomi gateway based on alarm clock event (alarmclock_trigger)
 # and stop it when sensor became active.
@@ -41,7 +42,7 @@ class AlarmclockAction(hass.Hass):
   def alarmclock_alarm(self, event_id, event_args, kwargs):
     self.log('Alarm triggered!')
     self.volume = 10
-    self.timer = self.run_every(self.timer_tick, self.datetime(), 17)
+    self.timer = self.run_every(self.timer_tick, self.datetime()+datetime.timedelta(seconds=15), 17)
 
   def timer_tick(self, kwargs):
     self.call_service("xiaomi_aqara/play_ringtone", gw_mac=self.gw_mac, ringtone_id=self.ringtone, ringtone_vol=self.volume)

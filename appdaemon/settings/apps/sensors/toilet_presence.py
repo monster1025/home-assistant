@@ -32,7 +32,7 @@ class ToiletPresence(hass.Hass):
   def distance_changed(self, entity, attribute, old, new, kwargs):
     distance = int(new)
     state = ""
-    if (distance > 1000 or distance < 850):
+    if (distance > 1100 or distance < 750):
       self.timers_off()
       self.timers.append(self.run_in(self.run_in_presense_off, self.presence_timeout))
       self.log('re-setting timer for {}s.'.format(self.presence_timeout))

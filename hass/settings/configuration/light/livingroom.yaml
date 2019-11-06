@@ -1,6 +1,4 @@
 ﻿# - platform: noolite
-#   channel: 0
-#   name: "salt_lamp"
-#   scan_interval: 60
-#   type: dimmer
-#   mode: noolite
+#   tx_channel: 1
+#   friendly_name: "salt_lamp"
+#   dimmable: true

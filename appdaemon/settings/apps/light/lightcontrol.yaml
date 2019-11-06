@@ -8,6 +8,8 @@ light_control_mainroom:
   control_entity: group.mainroom_light
   timeout: 60
   constraint: input_boolean.mainroom_light_control
+  ha_panel: alarm_control_panel.ha_alarm
+  vacuum: vacuum.xiaomi_vacuum_cleaner
   global_dependencies:
     - globals
 
@@ -18,6 +20,8 @@ light_control_kitchen:
   control_entity: group.kitchen_light
   timeout: 300
   constraint: input_boolean.kitchen_light_control
+  ha_panel: alarm_control_panel.ha_alarm
+  vacuum: vacuum.xiaomi_vacuum_cleaner
   global_dependencies:
     - globals
 
@@ -28,6 +32,8 @@ light_control_hall:
   control_entity: group.hall_light
   timeout: 120
   constraint: input_boolean.hall_light_control
+  ha_panel: alarm_control_panel.ha_alarm
+  vacuum: vacuum.xiaomi_vacuum_cleaner
   global_dependencies:
     - globals
     

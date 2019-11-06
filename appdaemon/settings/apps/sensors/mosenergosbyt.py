@@ -24,7 +24,7 @@ class MosEnergoSbytSender(Automation):
 class MosEnergoSbytUpdater(Automation):
   def initialize(self):
     super().initialize()
-    self.timer = self.run_every(self.update_sensors, self.datetime(), 1*60*60)
+    self.timer = self.run_every(self.update_sensors, self.datetime()+timedelta(seconds=10), 1*60*60)
     # self.send_mosenergosbyt_counters({})
 
   def update_sensors(self, args) -> None:

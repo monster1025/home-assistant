@@ -1,4 +1,5 @@
 import appdaemon.plugins.hass.hassapi as hass
+import datetime
 
 #
 # Pre alarm event.
@@ -51,7 +52,7 @@ class AlarmclockPrealarm(hass.Hass):
     self.log('Prealarm triggered!')
     self.brightness = 1
     self.color_temp = 588
-    self.timer = self.run_every(self.timer_tick, self.datetime(), 10)
+    self.timer = self.run_every(self.timer_tick, self.datetime()+datetime.timedelta(seconds=15), 10)
 
   def timer_tick(self, kwargs):
     attributes = self.get_state(self.args['entity'], attribute = "all")

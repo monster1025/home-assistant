@@ -3,7 +3,7 @@ import appdaemon.plugins.hass.hassapi as hass
 from notification import send_notification
 import datetime
 import sys, locale
-import logging, codecs
+import logging
 #import unicode
 # from automation import Automation  # type: ignore
 
@@ -14,6 +14,14 @@ Arguments:
 """
 class Test(hass.Hass):
     def initialize(self) -> None:
+        root_logger= logging.getLogger()
+        root_logger.setLevel(logging.DEBUG) # or whatever
+        handler = logging.FileHandler('test.log', 'w', 'utf-8') # or whatever
+        formatter = logging.Formatter('%(name)s %(message)s') # or whatever
+        handler.setFormatter(formatter) # Pass handler as a parameter, not assign
+        root_logger.addHandler(handler)
+        UTF8Writer = codecs.getwriter('utf8')
+        sys.stdout = UTF8Writer(sys.stdout.buffer)
         self.log(u"Привет")
         self.log(str(u'ô'))
         # id = send_notification(

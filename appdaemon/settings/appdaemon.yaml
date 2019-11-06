@@ -1,14 +1,20 @@
-log:
-  logfile: STDOUT
-  errorfile: STDERR
+logs:
+  main_log:
+    filename: STDOUT
 
 appdaemon:
   threads: 10
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  elevation: 0
+  timezone: !secret timezone
   api_port: 5000
   api_key: !secret ha_password
   time_zone: !secret timezone
   narodmon_key: !secret narodmon_key
-  
+
+  api:
+    
   plugins:
     HASS:
       type: hass

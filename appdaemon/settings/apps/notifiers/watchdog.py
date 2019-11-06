@@ -23,7 +23,7 @@ class Watchdog(hass.Hass):
   def initialize(self):
     if not globals.check_args(self, ['entity','update_interval', 'timeout']):
       return
-    self.timer = self.run_every(self.watchdog_check, self.datetime(), self.args['update_interval'])
+    self.timer = self.run_every(self.watchdog_check, self.datetime()+timedelta(seconds=10), self.args['update_interval'])
 
   def watchdog_check(self, kwargs):
     if 'constraint' in self.args and not self.constrain_input_boolean(self.args['constraint']):

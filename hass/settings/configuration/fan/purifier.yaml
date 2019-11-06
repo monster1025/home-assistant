@@ -1,0 +1,4 @@
+- platform: xiaomi_miio
+  model: zhimi.airpurifier.mc1
+  host: !secret purifier_ip
+  token: !secret purifier_key

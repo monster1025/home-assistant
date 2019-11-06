@@ -22,14 +22,17 @@ views:
         entities:
           - sensor.temperature_158d0001149b3c
           - sensor.humidity_158d0001149b3c
+          - sensor.xiaomi_airpurifier_air_quality_pm25
           - light.yeelight_color1_34ce008fe328
           - light.yeelight_color1_286c071065c7
           - light.yeelight_mono1_34ce0087ff33
           - light.yeelight_mono1_f0b4290e5444
           - light.yeelight_mono1_f0b429a8f6df
+          # - light.salt_lamp
           - cover.curtain_158d0002b0c46a
           - switch.plug_158d0001104a0c
           - switch.plug_158d00010dd98d
+          - fan.xiaomi_miio_device
           - climate.living_room
       - type: entities
         title: "Кухня"
@@ -286,6 +289,16 @@ views:
           - sensor.fitolamp_money_daily
           - sensor.fitolamp_money_monthly
       - type: entities
+        title: "Сервер"
+        show_header_toggle: false
+        entities:
+          - sensor.server_hourly
+          - sensor.server_daily
+          - sensor.server_monthly
+          - sensor.server_money_hourly
+          - sensor.server_money_daily
+          - sensor.server_money_monthly
+      - type: entities
         title: "Теория трехтарифника"
         show_header_toggle: false
         entities:
@@ -296,6 +309,12 @@ views:
           - sensor.power_money_t2_monthly
           - sensor.power_money_t3_monthly
           - sensor.power_theory_money_monthly
+      - type: history-graph
+        title: Качество воздуха
+        hours_to_show: 80
+        refresh_interval: 60
+        entities:
+          - sensor.xiaomi_airpurifier_air_quality_pm25
   - title: "Настройки"
     icon: mdi:settings
     cards:

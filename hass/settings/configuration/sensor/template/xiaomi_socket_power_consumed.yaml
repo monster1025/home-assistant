@@ -28,4 +28,7 @@
       friendly_name: "Фитолампа потреблено"
       unit_of_measurement: 'kWh'
       value_template: "{{ state_attr('switch.plug_158d0002924779', 'power_consumed') / 1000 }}"
-    
+    server_consumed:
+      friendly_name: "Сервер потреблено"
+      unit_of_measurement: 'kWh'
+      value_template: "{{ state_attr('switch.plug_158d00026ea017', 'power_consumed') / 1000 }}"

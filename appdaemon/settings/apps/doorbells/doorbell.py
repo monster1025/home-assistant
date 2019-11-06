@@ -39,11 +39,11 @@ class Doorbell(hass.Hass):
     self.notify("Звонок в дверь!!!", name = self.args['notify'])
     result = self.send_video()
 
-  def send_video(self):    
+  def send_video(self):
     file = '/config/www/doorbell_video.mp4'
     if os.path.exists(file):
       os.remove(file)
-    
+
     self.call_service("stream/record", stream_source=self.args['rtsp'], filename=file, duration=10)
     self.timer = self.run_in(self.run_in_send_video, 20, file=file)
 

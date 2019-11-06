@@ -34,6 +34,17 @@ class LightControl(hass.Hass):
       # self.log('Sun is up, and we will turn it only after sundown.')
       return
 
+    vacuum_state = "docked"
+    ha_panel_state = ""
+    if "vacuum" in self.args:
+        vacuum_state = self.get_state(self.args["vacuum"])
+    if "ha_panel" in self.args:
+    	ha_panel_state = self.get_state(self.args["ha_panel"])
+    #Если работает пылесос и сработал датчик движения
+    if ha_panel_state == "armed_away" and vacuum_state == 'cleaning':
+      self.log('Motion sensor is triggered, but vacuum is cleaning.')
+      return
+
     #sensor is off
     if new == 'off' and old == 'on':
       self.log('Sensor is off - running timer for {}s.'.format(self.args['timeout']))

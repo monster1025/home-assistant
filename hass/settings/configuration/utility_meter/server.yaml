@@ -1,0 +1,9 @@
+server_hourly:
+  source: sensor.server_consumed
+  cycle: hourly
+server_daily:
+  source: sensor.server_consumed
+  cycle: daily
+server_monthly:
+  source: sensor.server_consumed
+  cycle: monthly

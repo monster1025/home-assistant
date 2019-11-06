@@ -19,7 +19,7 @@ services:
       - /srv/mysql:/var/lib/mysql
 
   hass:
-    image: homeassistant/home-assistant
+    image: homeassistant/home-assistant:0.100.2
     container_name: hass
     volumes:
       - ./hass/settings:/config
@@ -46,7 +46,7 @@ services:
     build:
       context: ./appdaemon/docker
       args:
-        VERSION: 3.0.5
+        BASE_IMAGE: dlashua/appdaemon:dev #acockburn/appdaemon:3.0.5 
     container_name: appdaemon
     depends_on:
       - hass

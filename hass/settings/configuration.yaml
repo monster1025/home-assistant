@@ -23,6 +23,8 @@ http:
   trusted_proxies:
     - 172.19.0.0/24
 
+# noolite:
+
 # Enables the frontend
 frontend:
 lovelace:
@@ -44,11 +46,12 @@ logbook:
 
 # Components
 automation: !include_dir_merge_list configuration/automation
-apple_tv: !include_dir_merge_list configuration/appletv
-alexa: !include configuration/amazon/alexa.yaml
+#apple_tv: !include_dir_merge_list configuration/appletv
+#alexa: !include configuration/amazon/alexa.yaml
 alarm_control_panel: !include_dir_merge_list configuration/alarm_control_panel
 binary_sensor: !include_dir_merge_list configuration/binary_sensor
 camera: !include_dir_merge_list configuration/camera
+fan: !include_dir_merge_list configuration/fan
 #climate: !include_dir_merge_list configuration/climate
 group: !include_dir_merge_named configuration/group
 input_boolean: !include_dir_merge_named configuration/input/input_boolean
@@ -78,10 +81,4 @@ modbus: !include configuration/modbus.yaml
 utility_meter: !include_dir_merge_named configuration/utility_meter
 
 speedtestdotnet: !include configuration/speedtest.yaml
-yandex_smart_home: !include configuration/alice.yaml
-
-# fan:
-#   - platform: xiaomi_miio
-#     host: 192.168.1.14
-#     token: '411cf70bb69052c0121813388f30e193'
-#     model: zhimi.airpurifier.mc1
+yandex_smart_home: !include configuration/alice.yaml    
