@@ -2,5 +2,6 @@ alice_scenes:
   module: alice_scenes
   class: AliceScenes
   alice_prefix: input_boolean.alice_
+  ha_panel: alarm_control_panel.ha_alarm
   global_dependencies:
     - globals

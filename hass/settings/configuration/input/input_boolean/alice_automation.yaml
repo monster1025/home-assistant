@@ -13,3 +13,7 @@ alice_turn_on_coffeemachine:
 alice_make_coffee:
   name: Сделай кофе
   initial: off
+
+alice_away_mode:
+  name: Я ушёл
+  initial: off

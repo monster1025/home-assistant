@@ -10,8 +10,7 @@ filter:
   include_entities:
     - input_boolean.alice_night_mode
     - input_boolean.alice_turn_off_light
-    - input_boolean.alice_turn_on_coffeemachine
-    - input_boolean.alice_make_coffee
+    - input_boolean.alice_away_mode
 
   exclude_entities:
     - switch.plug_158d00020f3a29
@@ -21,10 +20,83 @@ filter:
     - switch.domofon_mode
     - switch.domofon_open
     - light.gateway_light_f0b429aa1463
-
-  # entity_config:
-  #   input_boolean.alice_night_mode:
-  #     room: SCENES
-    
-#    switch.kitchen:
-#      name: CUSTOM_NAME_FOR_YANDEX_SMART_HOME
+  
+entity_config:
+  input_boolean.alice_away_mode:
+    name: "Я ушёл"
+    room: "Сценарии"
+  input_boolean.alice_night_mode:
+    name: "Спокойной ночи"
+    room: "Сценарии"
+  input_boolean.alice_turn_off_light:
+    name: "Выключи свет"
+    room: "Сценарии"
+  climate.living_room:
+    name: "Термостат"
+    room: "Гостиная"
+  light.yeelight_mono1_f0b429a8f6df:
+    name: "Люстра"
+    room: "Гостиная"
+  light.yeelight_color1_34ce008fe328:
+    name: "Люстра"
+    room: "Гостиная"
+  light.yeelight_color1_286c071065c7:
+    name: "Люстра"
+    room: "Гостиная"
+  light.yeelight_mono1_f0b4290e5444:
+    name: "Люстра"
+    room: "Гостиная"
+  light.yeelight_mono1_34ce0087ff33:
+    name: "Люстра"
+    room: "Гостиная"
+  switch.wifi_socket:
+    name: "Гирлянда"
+    room: "Гостиная"
+  fan.xiaomi_miio_device:
+    name: "Воздухоочиститель"
+    room: "Гостиная"
+  switch.plug_158d0001104a0c:
+    name: "Телевизор"
+    room: "Гостиная"
+  cover.curtain_158d0002b0c46a:
+    name: "Шторы"
+    room: "Гостиная"
+  light.bath:
+    name: "Люстра"
+    room: "Туалет"
+  light.philips_led:
+    name: "Люстра"
+    room: "Туалет"
+  light.kitchen_mini_light:
+    name: "Подсветка"
+    room: "Кухня"
+  light.kitchen:
+    name: "Люстра"
+    room: "Кухня"
+  switch.plug_158d0001a68c64:
+    name: "Посудомойка"
+    room: "Кухня"
+  switch.plug_158d0001a4cfb4:
+    name: "Стиралка"
+    room: "Кухня"    
+  light.hall:
+    name: "Люстра"
+    room: "Коридор"
+  switch.plug_158d0001a68b18:
+    name: "Термопот"
+    room: "Кухня"
+  light.yeelight_mono1_f0b429a8d936:
+    name: "Люстра"
+    room: "Балкон"
+  light.yeelight_mono1_286c07f12bed:
+    name: "Люстра"
+    room: "Балкон"
+  switch.plug_158d0002924779:
+    name: "Фитолампа"
+    room: "Балкон"
+  vacuum.xiaomi_vacuum_cleaner:
+    name: "Пылесос"
+    room: "Дом"
+  switch.water_valve:
+    name: "Подача воды"
+    room: "Дом"

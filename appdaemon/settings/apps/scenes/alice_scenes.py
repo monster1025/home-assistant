@@ -36,12 +36,12 @@ class AliceScenes(hass.Hass):
       self.turn_off_light()
     if (entity_name == "night_mode"):
       self.night_mode()
-    if (entity_name == "turn_on_coffeemachine"):
-      self.turn_on_coffeemachine()
-    if (entity_name == "turn_on_coffeemachine"):
-      self.turn_on_coffeemachine()
-    if (entity_name == "make_coffee"):
-      self.make_coffee()
+    if (entity_name == "away_mode"):
+      self.away_mode()
+    # if (entity_name == "turn_on_coffeemachine"):
+    #   self.turn_on_coffeemachine()
+    # if (entity_name == "make_coffee"):
+    #   self.make_coffee()
 
   def terminate(self):
     if self.listen_event_handle_list != None:
@@ -55,6 +55,9 @@ class AliceScenes(hass.Hass):
     self.turn_off('switch.plug_158d0001104a0c') #tv
     self.turn_off('group.all_lights')
     self.call_service("cover/close_cover", entity_id = 'cover.curtain_158d0002b0c46a')
+
+  def away_mode(self):
+  	self.call_service("alarm_control_panel/alarm_arm_away", entity_id = self.args['ha_panel'])
 
   def turn_on_coffeemachine(self):
     self.log('Turn on coffeemachine')
