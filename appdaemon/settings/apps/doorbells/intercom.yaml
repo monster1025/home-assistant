@@ -6,5 +6,6 @@ intercom:
   class: Intercom
   notify: telegram
   gw_mac: !secret aqara1_mac
+  chat_id: !secret telegram_group_chat
   global_dependencies:
     - globals

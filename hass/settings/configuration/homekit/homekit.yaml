@@ -6,6 +6,9 @@ filter:
     - light
     - vacuum
     - cover
+    - fan
+    - climate
+    - camera
   include_entities:
     - sensor.humidity_158d0001149b3c
     - sensor.humidity_158d000117d37a
@@ -15,6 +18,9 @@ filter:
     - sensor.temperature_158d000117d37a
     - sensor.temperature_158d00012d9ad7
     - sensor.temperature_158d000149c128
+    - input_boolean.monster_work
+    - input_boolean.monster_home
+    - input_boolean.homekit_presense
   exclude_entities:
     - switch.plug_158d00010dd98d
     - switch.xiaomi_miio_switch

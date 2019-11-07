@@ -1,0 +1,13 @@
+#################################
+#        WORK PRESENSE          #
+#################################
+monster_worktime:
+  module: worktime
+  class: WorkTime
+  notify: telegram_monster
+  arrive_event: monster_work_arrive
+  leave_event: monster_work_leave
+  work_to_home_time: sensor.monster_travel_time_work_to_home
+  constraint: input_boolean.work_presence_report
+  global_dependencies:
+    - globals

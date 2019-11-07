@@ -1,0 +1,11 @@
+#################################
+#        WORK PRESENSE          #
+#################################
+intercom_auto_open:
+  module: intercom_switch
+  class: IntercomSwitch
+  entity_id: switch.domofon_mode
+  arrive_event: homekit_home_arrive
+  leave_event: homekit_home_leave
+  global_dependencies:
+    - globals

@@ -1,0 +1,3 @@
+telegram_test:
+ module: telegram_test
+ class: TelegramTest

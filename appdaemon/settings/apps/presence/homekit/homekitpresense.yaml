@@ -1,0 +1,35 @@
+#################################
+#      HOMEKIT PRESENSE         #
+#################################
+monster_home_presence:
+  module: homekitpresense
+  class: HomekitPresense
+  notify: telegram_monster
+  sensor: input_boolean.monster_home
+  arrive_event: monster_home_arrive
+  leave_event: monster_home_leave
+  constraint: input_boolean.presence_control
+  global_dependencies:
+    - globals
+
+monster_work_presence:
+  module: homekitpresense
+  class: HomekitPresense
+  notify: telegram_monster
+  sensor: input_boolean.monster_work
+  arrive_event: monster_work_arrive
+  leave_event: monster_work_leave
+  constraint: input_boolean.presence_control
+  global_dependencies:
+    - globals
+
+homekit_home_presence:
+  module: homekitpresense
+  class: HomekitPresense
+  notify: telegram_monster
+  sensor: input_boolean.homekit_presense
+  arrive_event: homekit_home_arrive
+  leave_event: homekit_home_leave
+  constraint: input_boolean.presence_control
+  global_dependencies:
+    - globals

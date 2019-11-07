@@ -55,7 +55,6 @@ views:
           - light.bath
           - light.philips_led
           - sensor.airfresher_remain
-          - sensor.toilet_presence
       - type: entities
         title: "Прихожая"
         show_header_toggle: false
@@ -145,6 +144,7 @@ views:
           - sensor.presence_hall
           - sensor.presence_kitchen
           - sensor.presence_balcony
+          - sensor.toilet_presence
       - type: entities
         title: "Электропитание"
         show_header_toggle: false
@@ -339,8 +339,7 @@ views:
           - input_boolean.mainroom_climate_control
           - switch.domofon_mode
       - type: entities
-        title: "Настройки от\
-          четов"
+        title: "Настройки отчетов"
         show_header_toggle: true
         entities:
           - input_boolean.security_sensors_report
@@ -357,6 +356,17 @@ views:
           - input_boolean.tag_nut_blue
           - input_boolean.tag_nut_white
           - input_boolean.tag_nut_guest
+      - type: entities
+        title: "Аптайм"
+        show_header_toggle: false
+        entities:
+          - sensor.uptime_airfresher
+          - sensor.uptime_bath
+          - sensor.uptime_domofon
+          - sensor.uptime_kitchen_led
+          - sensor.uptime_nest
+          - sensor.uptime_bathlight
+          - sensor.uptime_kitchen
   - title: "Информация"
     icon: mdi:monitor-multiple
     cards:

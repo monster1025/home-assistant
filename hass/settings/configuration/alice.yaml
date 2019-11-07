@@ -6,6 +6,7 @@ filter:
     - light
     - vacuum
     - cover
+    - fan
   include_entities:
     - input_boolean.alice_night_mode
     - input_boolean.alice_turn_off_light

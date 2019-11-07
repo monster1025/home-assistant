@@ -14,7 +14,11 @@ appdaemon:
   narodmon_key: !secret narodmon_key
 
   api:
-    
+
+  namespaces:
+    worktime_namespace:
+      writeback: safe
+      
   plugins:
     HASS:
       type: hass

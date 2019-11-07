@@ -1,0 +1,6 @@
+monster_work:
+  name: Монстр на работе
+monster_home:
+  name: Монстр дома
+homekit_presense:
+  name: Присутсиве по HomeKit
