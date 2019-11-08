@@ -4,3 +4,172 @@ uptime:
   friendly_name: Аптайм
   device_type: sensor
   entity_part: "uptime_"
+
+control_tags:
+  module: groups
+  class: Groups
+  device_type: input_boolean
+  entity_part: "tag_"
+
+sensor_tags:
+  module: groups
+  class: Groups
+  device_type: sensor
+  entity_part: "tag_"
+
+light_control:
+  module: groups
+  class: Groups
+  device_type: input_boolean
+  entity_part: "_light_control"
+
+report_control:
+  module: groups
+  class: Groups
+  device_type: input_boolean
+  entity_part: "_report"
+
+automation_control:
+  module: groups
+  class: Groups
+  device_type: input_boolean
+  entities:
+    - input_boolean.presence_control
+    - input_boolean.water_control
+    - input_boolean.water_leak_control
+    - input_boolean.mainroom_climate_control
+    - switch.domofon_mode
+
+door_sensors:
+  module: groups
+  class: Groups
+  device_type: binary_sensor
+  entity_part: "door_window_sensor_"
+  orderby: friendly_name
+
+smoke_sensors:
+  module: groups
+  class: Groups
+  device_type: binary_sensor
+  entity_part: "smoke_sensor_"
+
+water_leak_sensors:
+  module: groups
+  class: Groups
+  device_type: binary_sensor
+  entity_part: "water_leak_sensor_"
+  orderby: friendly_name
+
+motion_sensors:
+  module: groups
+  class: Groups
+  device_type: binary_sensor
+  entity_part: "motion_sensor_"
+  orderby: friendly_name
+
+presence_sensors:
+  module: groups
+  class: Groups
+  device_type: sensor
+  entities:
+    - sensor.presence_
+    - sensor.toilet_presence
+
+epd_water_counters:
+  module: groups
+  class: Groups
+  device_type: sensor
+  entities:
+    - sensor.epd_balance
+    - sensor.counter_hot
+    - sensor.counter_cold
+    - sensor.counter_mosru_hot
+    - sensor.counter_mosru_cold
+
+power_sensors:
+  module: groups
+  class: Groups
+  device_type: sensor
+  entities:
+    - sensor.power_mosenergosbyt_balance
+    - sensor.power_main_total
+    - sensor.power_mosenergosbyt_total
+    - sensor.power_total
+    - sensor.power_voltage
+    - sensor.power_current
+    - sensor.power_frequency
+    - sensor.power_active_power
+    - sensor.power_reactive_power
+    - sensor.power_power_factor
+
+home_entities:
+  module: groups
+  class: Groups
+  entities:
+    - alarm_control_panel.ha_alarm
+    - switch.water_valve
+    - vacuum.xiaomi_vacuum_cleaner
+    - switch.domofon_open
+    - switch.wifi_socket
+
+room_livingroom_entities:
+  module: groups
+  class: Groups
+  expand_group: True
+  entities:
+    - sensor.temperature_158d0001149b3c
+    - sensor.humidity_158d0001149b3c
+    - sensor.xiaomi_airpurifier_air_quality_pm25
+    - group.mainroom_light
+    - light.salt_lamp
+    - cover.curtain_158d0002b0c46a
+    - switch.plug_158d0001104a0c
+    - switch.plug_158d00010dd98d
+    - fan.xiaomi_miio_device
+    - climate.living_room
+
+room_kitchen_entities:
+  module: groups
+  class: Groups
+  expand_group: True
+  entities:
+    - group.kitchen_light
+    - switch.plug_158d0001a68b18
+    - switch.plug_158d0001a68c64
+    - switch.plug_158d0001a4cfb4
+    - switch.plug_158d00020f3a29
+    - switch.plug_158d0002924779
+    - switch.xiaomi_miio_switch
+
+room_bath_entities:
+  module: groups
+  class: Groups
+  entities:
+    - sensor.temperature_158d00012d9ad7
+    - sensor.humidity_158d00012d9ad7
+    - light.bath
+    - light.philips_led
+    - sensor.airfresher_remain
+
+room_hall_entities:
+  module: groups
+  class: Groups
+  entities:
+    - light.hall
+
+room_balcony_entities:
+  module: groups
+  class: Groups
+  expand_group: True
+  entities:
+    - sensor.temperature_158d000117d37a
+    - sensor.humidity_158d000117d37a
+    - group.balcony_light
+    - switch.plug_158d00026ea017
+
+room_outside_entities:
+  module: groups
+  class: Groups
+  entities:
+    - sensor.temperature_158d000149c128
+    - sensor.humidity_158d000149c128

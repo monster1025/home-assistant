@@ -49,6 +49,9 @@ entity_config:
   light.yeelight_mono1_34ce0087ff33:
     name: "Люстра"
     room: "Гостиная"
+  light.salt_lamp:
+    name: "Соляная лампа"
+    room: "Гостиная"
   switch.wifi_socket:
     name: "Гирлянда"
     room: "Гостиная"

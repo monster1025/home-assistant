@@ -5,6 +5,8 @@ import logging
 import os
 import re
 import noolite
+import queue
+import threading
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -23,7 +25,29 @@ config = {
 
 Homie = homie.Homie(config)
 nodes = {}
-n = noolite.NooLite()
+q = queue.Queue()
+t = None
+
+def queuee_worker():
+    n = noolite.NooLite()
+    while True:
+        item = q.get()
+        if item is None:
+            break
+        command = item.get('command', None)
+        channel = item.get('channel', None)
+        args = item.get('args', None)
+        if command == 'on':
+            n.on(channel)
+        elif command == 'off':
+            n.off(channel)
+        elif command == 'set':
+            n.set(channel, args)
+        elif command == 'bind':
+            n.bind(channel)
+        elif command == 'quit':
+            q.task_done()
+        time.sleep(0.3)
 
 def brightnessHandler(mqttc, obj, msg):
     try:
@@ -41,7 +65,7 @@ def brightnessHandler(mqttc, obj, msg):
         brightness = int(payload)
         ch_num = int(channel.replace('ch',''))
         logger.info("[{}] brightness: {}".format(channel, brightness))
-        n.set(ch_num, brightness)
+        q.put({'command':'set', 'channel':ch_num,'args':brightness})
         node.setProperty("brightness").send(brightness)
     except Exception as e:
         logger.error("Something gone wrong in brightnessHandler: {}!".format(e))
@@ -57,7 +81,7 @@ def bindHandler(mqttc, obj, msg):
             return true
         node = nodes[channel]
         ch_num = int(channel.replace('ch',''))
-        n.bind(ch_num)
+        q.put({'command':'bind', 'channel':ch_num})
     except Exception as e:
         logger.error("Something gone wrong in bindHandler: {}!".format(e))
 
@@ -74,11 +98,11 @@ def powerHandler(mqttc, obj, msg):
         ch_num = int(channel.replace('ch',''))
         if payload == 'on' or payload == 'true':
             logger.info("[{}] Power: on".format(channel))
-            n.on(ch_num)
+            q.put({'command':'on', 'channel':ch_num})
             node.setProperty("power").send("on")
         else:
             logger.info("[{}] Power: off".format(channel))
-            n.off(ch_num)
+            q.put({'command':'off', 'channel':ch_num})
             node.setProperty("power").send("off")
     except Exception as e:
         logger.error("Something gone wrong in powerHandler: {}!".format(e))
@@ -102,6 +126,8 @@ def main():
       nodes[nodeName]=node
       
     Homie.setup()
+    t = threading.Thread(target=queuee_worker)
+    t.start()
 
     while True:
         time.sleep(1)
@@ -110,4 +136,6 @@ if __name__ == '__main__':
     try:
         main()
     except (KeyboardInterrupt, SystemExit):
+        q.put({'command':'quit'})
+        t.join()
         logger.info("Quitting.")

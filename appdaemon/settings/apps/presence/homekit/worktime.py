@@ -54,9 +54,10 @@ class WorkTime(hass.Hass):
   def run_timer(self):
     if self.arrive_time == None:
       return
-    if self.notify_time<self.datetime():
-      self.notify_time=self.datetime()+datetime.timedelta(seconds=self.notify_every_seconds)
-    self.timers.append(self.run_every(self.timer_tick, self.notify_time, self.notify_every_seconds))
+    timer_start = self.notify_time
+    if timer_start<self.datetime():
+      timer_start=self.datetime()+datetime.timedelta(seconds=self.notify_every_seconds)
+    self.timers.append(self.run_every(self.timer_tick, timer_start, self.notify_every_seconds))
 
   def leave_event(self, event_id, event_args, kwargs):
     if 'constraint' in self.args and not self.constrain_input_boolean(self.args['constraint']):
@@ -78,6 +79,7 @@ class WorkTime(hass.Hass):
       self.log("Monster leave work at {} - {}".format(self.arrive_time, self.datetime))
       message = "Рабочий день окончен ({}-{}). Приятной дороги домой.{}".format(self.format_time(self.arrive_time), self.format_time(self.datetime()), travelTime)
     self.notify(message, name = self.args['notify'])
+    # self.reset_timer_tick(None)
     
   def timer_tick(self, args) -> None:
     self.log('timer tick')

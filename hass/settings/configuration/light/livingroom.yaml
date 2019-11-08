@@ -5,6 +5,7 @@
     payload_not_available: "false"
     state_topic: "home/noolite/ch0/power"
     command_topic: "home/noolite/ch0/power/set"
+    on_command_type: first
     payload_on: "on"
     payload_off: "off"
     brightness_state_topic: "home/noolite/ch0/brightness"
