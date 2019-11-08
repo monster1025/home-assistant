@@ -1,7 +1,9 @@
 
 #custom cards
 resources:
-  - url: /community_plugin/group-card/group-card.js
+  - url: /community_plugin/auto-entities/auto-entities.js
+    type: module
+  - url: /community_plugin/lovelace-auto-entities/auto-entities.js
     type: module
 
 title: Home
@@ -9,99 +11,178 @@ views:
   - title: "Статус"
     icon: mdi:home
     cards:
-      - type: custom:group-card
-        group: group.home_entities
+      - type: custom:auto-entities
         card:
           type: entities
           title: "Дом"
           show_header_toggle: false
-      - type: custom:group-card
-        group: group.room_livingroom_entities
-        card:
-          type: entities
-          title: "Гостиная"
-          show_header_toggle: false
-      - type: custom:group-card
-        group: group.room_kitchen_entities
-        card:
-          type: entities
-          title: "Кухня"
-          show_header_toggle: false
-      - type: custom:group-card
-        group: group.room_bath_entities
+        entities:
+          - alarm_control_panel.ha_alarm
+          - switch.water_valve
+          - vacuum.xiaomi_vacuum_cleaner
+          - switch.domofon_open
+          - switch.wifi_socket
+      - type: custom:auto-entities
         card:
           type: entities
           title: "Ванная"
           show_header_toggle: false
-      - type: custom:group-card
-        group: group.room_hall_entities
-        card:
-          type: entities
-          title: "Прихожая"
-          show_header_toggle: false
-      - type: custom:group-card
-        group: group.room_balcony_entities
-        card:
-          type: entities
-          title: "Балкон"
-          show_header_toggle: false
-      - type: custom:group-card
-        group: group.room_outside_entities
+        entities:
+          - sensor.temperature_158d00012d9ad7
+          - sensor.humidity_158d00012d9ad7
+          - light.bath
+          - light.philips_led
+          - sensor.airfresher_remain
+      - type: custom:auto-entities
         card:
           type: entities
           title: "Улица"
           show_header_toggle: false
+        entities:
+          - sensor.temperature_158d000149c128
+          - sensor.humidity_158d000149c128
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: "Гостиная"
+          show_header_toggle: false
+        entities:
+          - sensor.temperature_158d0001149b3c
+          - sensor.humidity_158d0001149b3c
+          - sensor.xiaomi_airpurifier_air_quality_pm25
+          - light.yeelight_color1_34ce008fe328
+          - light.yeelight_color1_286c071065c7
+          - light.yeelight_mono1_34ce0087ff33
+          - light.yeelight_mono1_f0b4290e5444
+          - light.yeelight_mono1_f0b429a8f6df          
+          - light.salt_lamp
+          - cover.curtain_158d0002b0c46a
+          - switch.plug_158d0001104a0c
+          - switch.plug_158d00010dd98d
+          - fan.xiaomi_miio_device
+          - climate.living_room
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: "Кухня"
+          show_header_toggle: false
+        entities:
+          - light.kitchen
+          - light.kitchen_mini_light
+          - switch.plug_158d0001a68b18
+          - switch.plug_158d0001a68c64
+          - switch.plug_158d0001a4cfb4
+          - switch.plug_158d00020f3a29
+          - switch.plug_158d0002924779
+          - switch.xiaomi_miio_switch
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: "Прихожая"
+          show_header_toggle: false
+        entities:
+          - light.hall
+      - type: custom:auto-entities
+        card:
+          type: entities
+          title: "Балкон"
+          show_header_toggle: false
+        entities:
+          - light.yeelight_mono1_286c07f12bed
+          - light.yeelight_mono1_f0b429a8d936
+          - sensor.temperature_158d000117d37a
+          - sensor.humidity_158d000117d37a
+          - switch.plug_158d00026ea017
   - title: "Датчики"
     icon: mdi:nfc
     cards:
-      - type: custom:group-card
-        group: group.motion_sensors
+      - type: custom:auto-entities
         card:
           type: entities
           title: "Движение"
           show_header_toggle: false
-      - type: custom:group-card
-        group: group.water_leak_sensors
+        filter:
+          include:
+            - entity_id: "/sensor.motion_sensor_.*/"
+        sort:
+          method: name
+      - type: custom:auto-entities
         card:
           type: entities
           title: "Протечка"
           show_header_toggle: false
-      - type: custom:group-card
-        group: group.smoke_sensors
+        filter:
+          include:
+            - entity_id: "/sensor.water_leak_sensor_.*/"
+        sort:
+          method: name
+      - type: custom:auto-entities
         card:
           type: entities
           title: "Датчики дыма"
           show_header_toggle: false
-      - type: custom:group-card
-        group: group.door_sensors
+        filter:
+          include:
+            - entity_id: "/sensor.smoke_sensor_.*/"
+        sort:
+          method: name
+      - type: custom:auto-entities
         card:
           type: entities
           title: "Двери"
           show_header_toggle: false
-      - type: custom:group-card
-        group: group.epd_water_counters
+        filter:
+          include:
+            - entity_id: "/sensor.door_window_sensor_.*/"
+        sort:
+          method: name
+      - type: custom:auto-entities
         card:
           type: entities
           title: "Счетчики воды"
           show_header_toggle: false
-      - type: custom:group-card
-        group: group.sensor_tags
+        entities:
+          - sensor.epd_balance
+          - sensor.counter_hot
+          - sensor.counter_cold
+          - sensor.counter_mosru_hot
+          - sensor.counter_mosru_cold
+      - type: custom:auto-entities
         card:
           type: entities
           title: "Метки"
           show_header_toggle: false
-      - type: custom:group-card
-        group: group.presence_sensors
+        filter:
+          include:
+            - entity_id: "/sensor.tag_.*/"
+      - type: custom:auto-entities
         card:
           type: entities
           title: "Пристутствие"
           show_header_toggle: false
-      - type: custom:group-card
-        group: group.power_sensors
+        entities:
+          - sensor.toilet_presence
+        filter:
+          include:
+            - entity_id: "/sensor.presence_.*/"
+        sort:
+          method: name
+      - type: custom:auto-entities
         card:
           type: entities
           title: "Электропитание"
           show_header_toggle: false
+        entities:
+          - sensor.power_mosenergosbyt_balance
+          - sensor.power_main_total
+          - sensor.power_mosenergosbyt_total
+          - sensor.power_total
+          - sensor.power_voltage
+          - sensor.power_current
+          - sensor.power_frequency
+          - sensor.power_active_power
+          - sensor.power_reactive_power
+          - sensor.power_power_factor
   - title: "Камеры"
     icon: mdi:cctv
     cards:
@@ -259,37 +340,49 @@ views:
   - title: "Настройки"
     icon: mdi:settings
     cards:
-      - type: custom:group-card
-        group: group.light_control
+      - type: custom:auto-entities
         card:
           type: entities
           title: "Контроль света"
           show_header_toggle: false
-      - type: custom:group-card
-        group: group.automation_control
+        filter:
+          include:
+            - entity_id: "/input_boolean..*_light_control/"
+      - type: custom:auto-entities
         card:
           type: entities
           title: "Настройки автоматики"
           show_header_toggle: true
-      - type: custom:group-card
-        group: group.report_control
+        entities:
+          - input_boolean.presence_control
+          - input_boolean.water_control
+          - input_boolean.water_leak_control
+          - input_boolean.mainroom_climate_control
+          - switch.domofon_mode
+      - type: custom:auto-entities
         card:
           type: entities
           title: "Настройки отчетов"
           show_header_toggle: true
-      - type: custom:group-card
-        group: group.control_tags
+        filter:
+          include:
+            - entity_id: "/input_boolean..*_report/"
+      - type: custom:auto-entities
         card:
           type: entities
           title: "Метки"
           show_header_toggle: true
-      - type: custom:group-card
-        group: group.uptime
+        filter:
+          include:
+            - entity_id: "/input_boolean.tag_.*/"
+      - type: custom:auto-entities
         card:
           type: entities
           title: "Аптайм"
           show_header_toggle: false
-
+        filter:
+          include:
+            - entity_id: "/sensor.uptime_.*/"
   - title: "Информация"
     icon: mdi:monitor-multiple
     cards:
