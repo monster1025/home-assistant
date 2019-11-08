@@ -18,6 +18,9 @@ update_secrets_sample:
 	@sed -i "s/powerstrip_key:.*/powerstrip_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/g" hass/settings/secrets.yaml.sample #len 32
 	@sed -i "s/telegram_chat:.*/telegram_chat: 0/g" hass/settings/secrets.yaml.sample #must be a number
 	@sed -i "s/timezone:.*/timezone: Europe\/London/g" hass/settings/secrets.yaml.sample #must be valid
+	@sed -i "s/chat_id:.*/chat_id: 12312312/g" hass/settings/secrets.yaml.sample #must be valid
+	@sed -i "s/token:.*/token: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/g" hass/settings/secrets.yaml.sample #must be valid
+
 	@echo "Masking env files..."
 	@find . -name *.env | xargs -I{} cp {} {}.sample
 	@find . -name *.env.sample | xargs -I{} sed -i "s/\=.*/\=xxxxxxxxx/g" {}
