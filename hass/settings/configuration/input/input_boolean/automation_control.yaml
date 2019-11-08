@@ -47,3 +47,8 @@ lock_report:
   name: Отчет замка
   icon: mdi:lock-alert
   initial: on
+
+watchdog_report:
+  name: Отчет watchdog
+  icon: mdi:lock-alert
+  initial: on

@@ -4,6 +4,7 @@
 watchdog_sensor_power_active_power:
   class: Watchdog
   module: watchdog
+  constraint: input_boolean.watchdog_report
   entity: sensor.power_active_power
   check_interval: 60
   timeout: 360
@@ -16,6 +17,7 @@ watchdog_sensor_power_active_power:
 watchdog_wemos_uptime:
   class: Watchdog
   module: watchdog
+  constraint: input_boolean.watchdog_report
   entities:
     - sensor.uptime_airfresher
     - sensor.uptime_bath
@@ -30,6 +32,7 @@ watchdog_wemos_uptime:
 watchdog_sonoff_uptime:
   class: Watchdog
   module: watchdog
+  constraint: input_boolean.watchdog_report
   entities:
     - sensor.uptime_bathlight
     - sensor.uptime_kitchen

@@ -26,4 +26,4 @@ class HomekitPresense(hass.Hass):
     elif new == "off" and old == "on":
         self.fire_event(self.args['leave_event'])
     self.log("{} turned {}".format(entity, new))
-    self.notify("{} turned {}".format(entity, new), name = self.args['notify'])
+    #self.notify("{} turned {}".format(entity, new), name = self.args['notify'])

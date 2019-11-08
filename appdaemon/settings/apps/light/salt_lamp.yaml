@@ -1,3 +1,4 @@
 salt_lamp:
  module: salt_lamp
  class: Noolite
+ entity_id: light.salt_lamp

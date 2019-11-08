@@ -8,6 +8,18 @@ services:
       - "1883:1883"
     restart: always
 
+  noolite:
+    build: ./noolite/
+    container_name: noolite
+    privileged: true
+    depends_on:
+      - mosquitto
+    env_file: ./mosquitto/settings/mqtt.env
+    environment:
+      - MQTT_SERVER=mosquitto
+      - TOPIC=home
+      - CHANNELS=1
+
   mysql:
     image: mariadb
     container_name: mysql
@@ -50,9 +62,6 @@ services:
     container_name: appdaemon
     depends_on:
       - hass
-    privileged: true
-    devices:
-      - /dev/bus/usb:/dev/bus/usb
     volumes:
       - ./appdaemon/settings:/conf
       - ./hass/settings/secrets.yaml:/conf/secrets.yaml:ro

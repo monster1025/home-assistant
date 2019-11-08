@@ -1,4 +1,12 @@
-﻿# - platform: noolite
-#   tx_channel: 1
-#   friendly_name: "salt_lamp"
-#   dimmable: true
+﻿  - platform: mqtt
+    name: "salt_lamp"
+    availability_topic: "home/noolite/$online"
+    payload_available: "true"
+    payload_not_available: "false"
+    state_topic: "home/noolite/ch0/power"
+    command_topic: "home/noolite/ch0/power/set"
+    payload_on: "on"
+    payload_off: "off"
+    brightness_state_topic: "home/noolite/ch0/brightness"
+    brightness_command_topic: "home/noolite/ch0/brightness/set"
+    brightness_scale: 120

@@ -1,11 +1,8 @@
 import appdaemon.plugins.hass.hassapi as hass
-import noolite
 
 class Noolite(hass.Hass):
-  noolite = noolite.NooLite()
   brightness = 25
   force = False
-  channel = 0
 
   def initialize(self):
     self.run_at_sunrise(self.sunrise_cb)
@@ -25,11 +22,11 @@ class Noolite(hass.Hass):
 
   def noolite_off(self):
     self.log("Turning off salt lamp.")
-    self.noolite.off(self.channel)
+    self.turn_off(self.args['entity_id'])
 
   def noolite_on(self, brightness=120):
     self.log("Turning on salt lamp for brightness {}.".format(brightness))
-    self.noolite.set(self.channel, brightness)
+    self.turn_on(self.args['entity_id'], brightness=self.brightness)
 
   def sunset_cb(self, kwargs):
     self.noolite_on(self.brightness)

@@ -28,7 +28,7 @@ views:
           - light.yeelight_mono1_34ce0087ff33
           - light.yeelight_mono1_f0b4290e5444
           - light.yeelight_mono1_f0b429a8f6df
-          # - light.salt_lamp
+          - light.salt_lamp
           - cover.curtain_158d0002b0c46a
           - switch.plug_158d0001104a0c
           - switch.plug_158d00010dd98d
@@ -347,6 +347,7 @@ views:
           - input_boolean.water_counters_report
           - input_boolean.work_presence_report
           - input_boolean.lock_report
+          - input_boolean.watchdog_report
       - type: entities
         title: "Метки"
         show_header_toggle: true
@@ -378,7 +379,7 @@ views:
           - sensor.memory_free
           - sensor.swap_use_percent
           - sensor.disk_use_percent
-          - sensor.ssl_certificate_expiry
+          - sensor.ssl_certificate_expiry_2
       - type: entities
         title: "Сеть"
         show_header_toggle: false
