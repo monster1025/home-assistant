@@ -18,7 +18,8 @@ update_secrets_sample:
 	@sed -i "s/powerstrip_key:.*/powerstrip_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/g" hass/settings/secrets.yaml.sample #len 32
 	@sed -i "s/telegram_chat:.*/telegram_chat: 0/g" hass/settings/secrets.yaml.sample #must be a number
 	@sed -i "s/timezone:.*/timezone: Europe\/London/g" hass/settings/secrets.yaml.sample #must be valid
-	@sed -i "s/chat_id:.*/chat_id: 12312312/g" hass/settings/secrets.yaml.sample #must be valid
+	@sed -i "s/telegram_group_chat:.*/telegram_group_chat: 0/g" hass/settings/secrets.yaml.sample #must be valid
+	@sed -i "s/telegram_monster_chat:.*/telegram_monster_chat: 0/g" hass/settings/secrets.yaml.sample #must be valid
 	@sed -i "s/purifier_key:.*/purifier_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/g" hass/settings/secrets.yaml.sample #must be valid
 
 	@echo "Masking env files..."
