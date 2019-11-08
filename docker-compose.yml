@@ -7,6 +7,10 @@ services:
     ports:
       - "1883:1883"
     restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: 50m 
 
   noolite:
     build: ./noolite/docker
@@ -34,6 +38,10 @@ services:
     restart: unless-stopped
     volumes:
       - /srv/mysql:/var/lib/mysql
+    logging:
+      driver: json-file
+      options:
+        max-size: 50m 
 
   hass:
     image: homeassistant/home-assistant:0.100.2
@@ -139,7 +147,7 @@ services:
     logging:
       driver: json-file
       options:
-        max-size: 50m  
+        max-size: 50m
 
   zigbee2mqtt:
     image: koenkk/zigbee2mqtt:latest-dev

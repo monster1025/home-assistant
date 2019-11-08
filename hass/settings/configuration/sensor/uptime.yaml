@@ -19,3 +19,6 @@
 - platform: mqtt
   state_topic: 'tele/kitchen/UPTIME'
   name: 'uptime_kitchen'
+- platform: mqtt
+  state_topic: 'home/noolite/$stats/uptime'
+  name: 'uptime_salt_lamp'

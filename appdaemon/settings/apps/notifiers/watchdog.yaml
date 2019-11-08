@@ -24,6 +24,7 @@ watchdog_wemos_uptime:
     - sensor.uptime_domofon
     - sensor.uptime_kitchen_led
     - sensor.uptime_nest
+    - sensor.uptime_salt_lamp
   check_interval: 60
   timeout: 360
   global_dependencies:
@@ -40,4 +41,3 @@ watchdog_sonoff_uptime:
   timeout: 7200
   global_dependencies:
     - globals
-

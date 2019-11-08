@@ -30,5 +30,9 @@ light.kitchen_mini_light:
 
 light.yeelight_mono1_286c07f12bed:
   friendly_name: Балкон1
+
 light.yeelight_mono1_f0b429a8d936:
   friendly_name: Балкон2
+
+light.salt_lamp:
+  friendly_name: Соляная лампа
