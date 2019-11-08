@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 config = {
     "HOST": os.environ.get('MQTT_SERVER', 'mosquitto'),
     "PORT": os.environ.get('MQTT_PORT', 1883),
-    "KEEPALIVE": 10,
+    "KEEPALIVE": os.environ.get('KEEPALIVE', 10),
     "USERNAME": os.environ.get('USERNAME', ''),
     "PASSWORD": os.environ.get('PASS', ''),
     "CA_CERTS": os.environ.get('CA_CERTS', ''),
@@ -45,7 +45,22 @@ def brightnessHandler(mqttc, obj, msg):
         node.setProperty("brightness").send(brightness)
     except Exception as e:
         logger.error("Something gone wrong in brightnessHandler: {}!".format(e))
-        
+
+def bindHandler(mqttc, obj, msg):
+    try:
+        payload = msg.payload.decode("UTF-8").lower()
+        topic = msg.topic
+        channel = parse_channel(topic)
+        logger.info("payload: {}, topic: {}, channel: {}".format(payload, topic, channel))
+        if channel not in nodes:
+            logger.error("Cannot find channel {}".format(channel))
+            return true
+        node = nodes[channel]
+        ch_num = int(channel.replace('ch',''))
+        n.bind(ch_num)
+    except Exception as e:
+        logger.error("Something gone wrong in bindHandler: {}!".format(e))
+
 def powerHandler(mqttc, obj, msg):
     try:
         payload = msg.payload.decode("UTF-8").lower()
@@ -83,7 +98,7 @@ def main():
       node = Homie.Node(nodeName, nodeName)
       node.advertise("power").settable(powerHandler)
       node.advertise("brightness").settable(brightnessHandler)
-      #node.advertise("bind").settable(switchOnHandler)
+      node.advertise("bind").settable(bindHandler)
       nodes[nodeName]=node
       
     Homie.setup()
