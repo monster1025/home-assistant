@@ -12,6 +12,7 @@ services:
     build: ./noolite/docker
     container_name: noolite
     privileged: true
+    restart: always
     depends_on:
       - mosquitto
     env_file: ./mosquitto/settings/mqtt.env
@@ -19,6 +20,10 @@ services:
       - MQTT_SERVER=mosquitto
       - TOPIC=home
       - CHANNELS=1
+    logging:
+      driver: json-file
+      options:
+        max-size: 50m
 
   mysql:
     image: mariadb
