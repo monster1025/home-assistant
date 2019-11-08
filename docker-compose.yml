@@ -9,7 +9,7 @@ services:
     restart: always
 
   noolite:
-    build: ./noolite/
+    build: ./noolite/docker
     container_name: noolite
     privileged: true
     depends_on:
