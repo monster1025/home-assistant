@@ -19,7 +19,7 @@ update_secrets_sample:
 	@sed -i "s/telegram_chat:.*/telegram_chat: 0/g" hass/settings/secrets.yaml.sample #must be a number
 	@sed -i "s/timezone:.*/timezone: Europe\/London/g" hass/settings/secrets.yaml.sample #must be valid
 	@sed -i "s/chat_id:.*/chat_id: 12312312/g" hass/settings/secrets.yaml.sample #must be valid
-	@sed -i "s/token:.*/token: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/g" hass/settings/secrets.yaml.sample #must be valid
+	@sed -i "s/purifier_key:.*/purifier_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/g" hass/settings/secrets.yaml.sample #must be valid
 
 	@echo "Masking env files..."
 	@find . -name *.env | xargs -I{} cp {} {}.sample
