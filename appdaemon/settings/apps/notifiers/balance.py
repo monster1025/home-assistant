@@ -17,7 +17,6 @@ from automation import Automation, Base  # type: ignore
 #   Initial Version
 
 class Balance(Base):
-  
   def initialize(self):
     super().initialize()
     self.check_balance({"force": 1})

@@ -55,7 +55,7 @@ class Groups(hass.Hass):
       entitylist.sort(key=self.sortByFriendlyName)
 
     self.log("Creating group {} with entities: {}".format(name, entitylist))
-    self.set_state(name,state="on",attributes={"view": view,"hidden": hidden,"assumed_state": assumed_state,"friendly_name": friendly_name,"entity_id": entitylist})
+    self.set_state(name,state="on",attributes={"view": view,"hidden": hidden,"assumed_state": assumed_state,"friendly_name": friendly_name,"entity_id": entitylist, 'description': 'Created and updated from appdaemon ({})'.format(__name__)})
   
   def sortByFriendlyName(self, entity):
     return self.get_state(entity, 'friendly_name')

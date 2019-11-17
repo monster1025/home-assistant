@@ -10,6 +10,13 @@ serial: xxxxxxxxx
   disable_led: xxxxxxxxx
 advanced: xxxxxxxxx
   cache_state: xxxxxxxxx
+# Optional: xxxxxxxxx
+# unstable when executing many commands
+queue: xxxxxxxxx
+  # Optional: xxxxxxxxx
+  delay: xxxxxxxxx
+  # Optional: xxxxxxxxx
+  simultaneously: xxxxxxxxx
 devices: xxxxxxxxx
   '0x00158d0001e065e8': xxxxxxxxx
     friendly_name: xxxxxxxxx
@@ -23,3 +30,7 @@ devices: xxxxxxxxx
   '0x00158d00026ea017': xxxxxxxxx
     friendly_name: xxxxxxxxx
     retain: xxxxxxxxx
+  '0x000d6ffffe2c61ce': xxxxxxxxx
+    friendly_name: xxxxxxxxx
+    debounce: xxxxxxxxx
+    retrieve_state: xxxxxxxxx

@@ -1,0 +1,8 @@
+- platform: synologydsm
+  host: !secret syno_ip
+  port: 5000
+  ssl: false
+  username: !secret syno_user
+  password: !secret syno_pass
+  monitored_conditions:
+    - cpu_total_load

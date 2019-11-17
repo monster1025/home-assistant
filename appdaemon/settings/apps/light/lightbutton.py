@@ -53,7 +53,9 @@ class LightButton(hass.Hass):
       self.set_on(entity_id)
 
   def set_on(self, entity_id):
-    if entity_id.startswith("light"):
+    if entity_id.startswith("light") and 'color' in entity_id:
+      self.call_service("light/turn_on", entity_id = entity_id, transition = 1, brightness = 255, color_temp=204)
+    elif entity_id.startswith("light"):
       self.call_service("light/turn_on", entity_id = entity_id, transition = 1, brightness = 255)
     else:
       self.turn_on(entity_id)

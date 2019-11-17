@@ -4,5 +4,6 @@ purifier_timer:
   on_time: "06:45:00"
   off_time: "23:00:00"
   entity: fan.xiaomi_miio_device
+  ha_panel: alarm_control_panel.ha_alarm
   global_dependencies:
     - globals

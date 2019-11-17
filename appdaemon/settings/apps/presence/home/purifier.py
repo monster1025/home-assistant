@@ -34,6 +34,10 @@ class Purifier(hass.Hass):
     self.listen_event_handle_list.append(self.listen_state(self.state_change, self.args['entity'], attribute='illuminance'))
 
   def state_change(self, entity, attribute, old, new, kwargs):
+    presence_state = self.get_state(self.args['ha_panel'])
+    if presence_state != "disarmed":
+      # self.log('Nobody home, ignoring illuminance changes.')
+      return
     self.log("{} changed from {} to {}".format(attribute, old, new))
     if old > 0 and new == 0 and self.time_is_between(self.datetime(), self.args["on_time"], self.args["off_time"]):
       self.night_mode()
@@ -61,7 +65,7 @@ class Purifier(hass.Hass):
       self.call_service("fan/set_speed", entity_id = self.args['entity'], speed='favorite')
       self.call_service("fan/xiaomi_miio_set_favorite_level", entity_id = self.args['entity'], level=self.away_fan_speed)
       self.call_service("fan/xiaomi_miio_set_led_on", entity_id = self.args['entity'])
-      self.call_service("fan/xiaomi_miio_set_buzzer_on", entity_id = self.args['entity'])
+      # self.call_service("fan/xiaomi_miio_set_buzzer_on", entity_id = self.args['entity'])
  
   def auto_mode(self):
     self.mode='auto'
@@ -69,7 +73,7 @@ class Purifier(hass.Hass):
     if 'entity' in self.args:
       self.call_service("fan/set_speed", entity_id = self.args['entity'], speed='auto')
       self.call_service("fan/xiaomi_miio_set_led_on", entity_id = self.args['entity'])
-      self.call_service("fan/xiaomi_miio_set_buzzer_on", entity_id = self.args['entity'])
+      # self.call_service("fan/xiaomi_miio_set_buzzer_on", entity_id = self.args['entity'])
 
   def night_mode(self):
     self.mode='night'

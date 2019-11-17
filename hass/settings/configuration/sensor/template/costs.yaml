@@ -11,4 +11,4 @@
     power_cost:
       friendly_name: "Стоимость квт/ч"
       unit_of_measurement: 'Р'
-      value_template: "4.37"
+      value_template: "4.65"

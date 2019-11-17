@@ -28,6 +28,8 @@ class IntercomSwitch(hass.Hass):
     entity_id = self.args['entity_id']
     self.log("Somebody come home, turn on {}".format(entity_id))
     self.turn_on(entity_id)
+    self.notify("Кто-то вернулся домой, включаю домофон.", name = self.args['notify'])
+
 
   def leave_event(self, event_id, event_args, kwargs):
     if 'constraint' in self.args and not self.constrain_input_boolean(self.args['constraint']):
@@ -35,3 +37,4 @@ class IntercomSwitch(hass.Hass):
     entity_id = self.args['entity_id']
     self.log("All persons leave home, turn off {}".format(entity_id))
     self.turn_off(entity_id)
+    self.notify("Все ушли из дома, выключаю домофон", name = self.args['notify'])

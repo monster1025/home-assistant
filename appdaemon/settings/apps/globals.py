@@ -72,3 +72,18 @@ def turn_off(self, entity_id, state):
 def notification(self, to, message):
   self.notify(message, name = "telegram")
   
+
+def get_arg(args, key):
+    key = args[key]
+    return key
+
+
+def get_arg_list(args, key):
+    arg_list = []
+    if isinstance(args[key], list):
+        arg = args[key]
+    else:
+        arg = (args[key]).split(",")
+    for key in arg:
+        arg_list.append(key)
+    return arg_list

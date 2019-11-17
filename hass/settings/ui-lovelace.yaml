@@ -168,6 +168,11 @@ views:
         camera_image: camera.entrance
         show_info: true
         tap_action: dialog
+      - type: entities
+        title: "Электропитание"
+        show_header_toggle: false
+        entities:
+          - media_player.mpd
   - title: "Будильники"
     icon: mdi:alarm
     cards:
@@ -302,6 +307,7 @@ views:
         title: "Теория трехтарифника"
         show_header_toggle: false
         entities:
+          - utility_meter.power_theory
           - sensor.power_theory_t1
           - sensor.power_theory_t2
           - sensor.power_theory_t3

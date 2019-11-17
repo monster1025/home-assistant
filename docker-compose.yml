@@ -44,7 +44,7 @@ services:
         max-size: 50m 
 
   hass:
-    image: homeassistant/home-assistant:0.100.2
+    image: homeassistant/home-assistant:0.100.3
     container_name: hass
     volumes:
       - ./hass/settings:/config
@@ -61,6 +61,11 @@ services:
       - broadlink
     network_mode: "host"
     restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8123"]
+      interval: 30s
+      timeout: 10s
+      retries: 6
     logging:
       driver: json-file
       options:
@@ -181,3 +186,8 @@ services:
       driver: json-file
       options:
         max-size: 50m
+
+networks:
+  traefik:
+    external:
+      name: my-pre-existing-network

@@ -26,22 +26,22 @@ class WaterCountersAlarm(hass.Hass):
     self.send_threasold = self.args['send_threasold']
     
     self.check_send_dates({"force": 1})
-    time = datetime.time(10, 0, 0)
-    self.run_daily(self.check_checkup_dates, time)
-    self.run_daily(self.check_send_dates, time)
-    # self.check_send_dates([])
+    self.run_daily(self.check_checkup_dates, datetime.time(10, 0, 0))
+    self.run_daily(self.check_send_dates, datetime.time(10, 1, 0))
+    #self.check_checkup_dates([])
 
   def check_send_dates(self, kwargs):
     if 'constraint' in self.args and not self.constrain_input_boolean(self.args['constraint']):
       return
     devices = self.get_state()
+    if devices == None:
+      return
     values = {}
     send_devices = []
     for deviceName in devices:
       device = devices[deviceName]
       if (device == None):
         continue
-
       send_date = None
       if "attributes" in device:
           if "date" in device["attributes"]:
@@ -75,20 +75,27 @@ class WaterCountersAlarm(hass.Hass):
     if 'constraint' in self.args and not self.constrain_input_boolean(self.args['constraint']):
       return
 
-    devices = self.get_state()
+    entities = self.get_state()
+    if entities == None:
+      return
+      
     values = {}
     checkup_devices = []
-    for device in devices:
+    for entity_id in entities:
+      entity = entities[entity_id]
+      if entity == None:
+        # self.log('not found {} in entities list.'.format(entity_id))
+        continue
       checkup = None
-      if "attributes" in devices[device]:
-          if "checkup" in devices[device]["attributes"]:
-            checkup = devices[device]["attributes"]["checkup"]
+      if "attributes" in entity:
+          if "checkup" in entity["attributes"]:
+            checkup = entity["attributes"]["checkup"]
           if checkup != None:
-            self.log('found device {} with checkup date {}'.format(device, checkup))
+            self.log('found device {} with checkup date {}'.format(entity_id, checkup))
             checkup_date = datetime.datetime.strptime(checkup, '%Y-%m-%d')
             if (checkup_date - datetime.timedelta(days=self.checkup_threasold)) < datetime.datetime.now():
-              checkup_devices.append(device)
-            values[device] = checkup
+              checkup_devices.append(entity_id)
+            values[entity_id] = checkup
 
     message=""
     if checkup_devices:

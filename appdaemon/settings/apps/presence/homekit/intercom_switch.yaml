@@ -4,6 +4,7 @@
 intercom_auto_open:
   module: intercom_switch
   class: IntercomSwitch
+  notify: telegram_monster
   entity_id: switch.domofon_mode
   arrive_event: homekit_home_arrive
   leave_event: homekit_home_leave

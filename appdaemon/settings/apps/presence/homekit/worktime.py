@@ -35,8 +35,6 @@ class WorkTime(hass.Hass):
     self.run_timer()
 
   def arrive_event(self, event_id, event_args, kwargs):
-    if 'constraint' in self.args and not self.constrain_input_boolean(self.args['constraint']):
-      return
     if self.arrive_time != None:
       self.log('You have already arrived to the work today at {}'.format(self.arrive_time))
       self.run_timer()
@@ -49,6 +47,9 @@ class WorkTime(hass.Hass):
     self.run_timer()
     self.log("Monster has arrived to work at {}, work till {}, will notify at {}.".format(self.arrive_time, self.leave_time, self.notify_time))
     self.timers.append(self.run_every(self.timer_tick, self.notify_time, self.notify_every_seconds))
+
+    if 'constraint' in self.args and not self.constrain_input_boolean(self.args['constraint']):
+      return
     self.notify("Добро пожаловать в офис. Сегодня работаешь до {}.".format(self.format_time(self.leave_time)), name = self.args['notify'])
 
   def run_timer(self):
@@ -60,8 +61,6 @@ class WorkTime(hass.Hass):
     self.timers.append(self.run_every(self.timer_tick, timer_start, self.notify_every_seconds))
 
   def leave_event(self, event_id, event_args, kwargs):
-    if 'constraint' in self.args and not self.constrain_input_boolean(self.args['constraint']):
-      return
     if self.arrive_time == None:
       return
     self.cancel_timers()
@@ -78,14 +77,17 @@ class WorkTime(hass.Hass):
     else:
       self.log("Monster leave work at {} - {}".format(self.arrive_time, self.datetime))
       message = "Рабочий день окончен ({}-{}). Приятной дороги домой.{}".format(self.format_time(self.arrive_time), self.format_time(self.datetime()), travelTime)
+
+    if 'constraint' in self.args and not self.constrain_input_boolean(self.args['constraint']):
+      return
     self.notify(message, name = self.args['notify'])
     # self.reset_timer_tick(None)
     
   def timer_tick(self, args) -> None:
     self.log('timer tick')
-    if 'constraint' in self.args and not self.constrain_input_boolean(self.args['constraint']):
+    if self.notify_time == None or self.datetime()<self.notify_time:
       return
-    if self.datetime()<self.notify_time:
+    if 'constraint' in self.args and not self.constrain_input_boolean(self.args['constraint']):
       return
     message = "Ты пришел на работу в {}, работаешь до {}. Пора домой!".format(self.format_time(self.arrive_time), self.format_time(self.leave_time))
     self.notify(message, name = self.args['notify'])
