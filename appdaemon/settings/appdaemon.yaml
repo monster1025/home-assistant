@@ -2,6 +2,10 @@ logs:
   main_log:
     filename: STDOUT
 
+namespaces:
+  - worktime_namespace:
+      writeback: safe
+
 appdaemon:
   threads: 10
   latitude: !secret home_latitude

@@ -58,7 +58,7 @@ class Groups(hass.Hass):
     self.set_state(name,state="on",attributes={"view": view,"hidden": hidden,"assumed_state": assumed_state,"friendly_name": friendly_name,"entity_id": entitylist, 'description': 'Created and updated from appdaemon ({})'.format(__name__)})
   
   def sortByFriendlyName(self, entity):
-    return self.get_state(entity, 'friendly_name')
+    return self.get_state(entity, attribute='friendly_name')
 
   def append_entity(self, entitylist, entity, expand_group):
     entity = entity.lower()

@@ -4,10 +4,10 @@
 balance_low_report:
   class: Balance
   module: balance
+  constraint: input_boolean.balance_report
   entity_ids:
     mosenergosbyt_balance: sensor.power_mosenergosbyt_balance
     epd_balance: sensor.epd_balance
-
   always_send: 0
   threshold: -100
   notify: telegram_monster

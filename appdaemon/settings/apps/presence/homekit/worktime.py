@@ -23,20 +23,25 @@ class WorkTime(hass.Hass):
   notify_before_leave_in_minutes = 15
   notify_every_seconds = 300
   timers = []
-
+  listen_event_handle_list = []
+  
   def initialize(self):
     if 'notify' not in self.args or "arrive_event" not in self.args or "leave_event" not in self.args:
       self.error("Please provide arrive_event, leave_event in config!")
       return
-    self.listen_event(self.arrive_event, self.args['arrive_event'])
-    self.listen_event(self.leave_event, self.args['leave_event'])
+    self.listen_event_handle_list.append(self.listen_event(self.arrive_event, self.args['arrive_event']))
+    self.listen_event_handle_list.append(self.listen_event(self.leave_event, self.args['leave_event']))
     self.run_daily(self.reset_timer_tick, self.parse_time("23:59:59"))
     self.load_state()
     self.run_timer()
 
+  def terminate(self):
+    self.cancel_timers()
+
   def arrive_event(self, event_id, event_args, kwargs):
     if self.arrive_time != None:
       self.log('You have already arrived to the work today at {}'.format(self.arrive_time))
+      self.notify("Добро пожаловать в офис еще раз. Сегодня работаешь до {}.".format(self.format_time(self.leave_time)), name = self.args['notify'])
       self.run_timer()
       return
 
@@ -58,6 +63,9 @@ class WorkTime(hass.Hass):
     timer_start = self.notify_time
     if timer_start<self.datetime():
       timer_start=self.datetime()+datetime.timedelta(seconds=self.notify_every_seconds)
+    timers_count = len(self.timers)
+    self.cancel_timers()
+    self.log("Canceling previous timers({}), start notify timer at: {}".format(timers_count, timer_start))
     self.timers.append(self.run_every(self.timer_tick, timer_start, self.notify_every_seconds))
 
   def leave_event(self, event_id, event_args, kwargs):

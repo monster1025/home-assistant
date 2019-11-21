@@ -353,6 +353,7 @@ views:
           - input_boolean.water_counters_report
           - input_boolean.work_presence_report
           - input_boolean.lock_report
+          - input_boolean.balance_report
       - type: entities
         title: "Метки"
         show_header_toggle: true

@@ -17,7 +17,7 @@ logger:
 api:
 
 http:
-  api_password: !secret ha_password
+  # api_password: !secret ha_password
   base_url: !secret base_url
   use_x_forwarded_for: true
   trusted_proxies:

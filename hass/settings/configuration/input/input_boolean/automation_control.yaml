@@ -28,6 +28,11 @@ water_counters_report:
   icon: mdi:alert-octagon
   initial: on
 
+balance_report:
+  name: Отчет о балансе
+  icon: mdi:alert-octagon
+  initial: on
+
 work_presence_report:
   name: Отчет 'пора домой'
   icon: mdi:account-alert

@@ -44,7 +44,7 @@ services:
         max-size: 50m 
 
   hass:
-    image: homeassistant/home-assistant:0.100.3
+    image: homeassistant/home-assistant:latest #0.100.3
     container_name: hass
     volumes:
       - ./hass/settings:/config
@@ -187,7 +187,7 @@ services:
       options:
         max-size: 50m
 
-networks:
-  traefik:
-    external:
-      name: my-pre-existing-network
+# networks:
+#   traefik:
+#     external:
+#       name: my-pre-existing-network
