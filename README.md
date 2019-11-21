@@ -1,5 +1,5 @@
 # home-assistant-config
-[![Build Status](https://travis-ci.org/monster1025/hass-config.svg?branch=master)](https://travis-ci.org/monster1025/hass-config)
+[![Build Status](https://travis-ci.org/monster1025/home-assistant.svg?branch=master)](https://travis-ci.org/monster1025/home-assistant)
 
 My Home Assistant Configuration
 
