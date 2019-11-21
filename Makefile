@@ -22,6 +22,7 @@ update_secrets_sample:
 	@sed -i "s/telegram_monster_chat:.*/telegram_monster_chat: 0/g" hass/settings/secrets.yaml.sample #must be valid
 	@sed -i "s/purifier_key:.*/purifier_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/g" hass/settings/secrets.yaml.sample #must be valid
 	@sed -i "s/philips_downlight_token:.*/philips_downlight_token: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/g" hass/settings/secrets.yaml.sample #must be valid
+	@sed -i "s/wifi_socket_key:.*/wifi_socket_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/g" hass/settings/secrets.yaml.sample #must be valid
 	@sed -i "s/modbus_host:.*/modbus_host: modbus.host/g" hass/settings/secrets.yaml.sample #must be valid
 	@sed -i "s/modbus_port:.*/modbus_port: 9977/g" hass/settings/secrets.yaml.sample #must be valid
 
