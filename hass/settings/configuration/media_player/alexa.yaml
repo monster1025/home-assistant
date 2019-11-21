@@ -1,6 +1,0 @@
-- platform: alexa
-  email: !secret amazon_mail
-  password: !secret amazon_pass
-  url: amazon.com
-  exclude_devices:
-    - "This Device"
