@@ -25,6 +25,8 @@ update_secrets_sample:
 	@sed -i "s/wifi_socket_key:.*/wifi_socket_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/g" hass/settings/secrets.yaml.sample #must be valid
 	@sed -i "s/modbus_host:.*/modbus_host: modbus.host/g" hass/settings/secrets.yaml.sample #must be valid
 	@sed -i "s/modbus_port:.*/modbus_port: 9977/g" hass/settings/secrets.yaml.sample #must be valid
+	@sed -i "s/xiaomi_remote_token:.*/xiaomi_remote_token: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/g" hass/settings/secrets.yaml.sample #must be valid
+	
 
 	@echo "Masking env files..."
 	@find . -name *.env | xargs -I{} cp {} {}.sample
