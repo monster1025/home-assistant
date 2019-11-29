@@ -1,0 +1,38 @@
+logger:
+  baud_rate: 0
+
+esphome:
+  name: senseair
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: !secret wifi_24_name
+  password: !secret wifi_24_pass
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Senseair Fallback Hotspot"
+    password: "FVFA2EoK8phQ"
+
+captive_portal:
+
+# Enable Home Assistant API
+api:
+  password: !secret esphome_pass
+
+ota:
+  password: !secret esphome_pass
+
+
+uart:
+  rx_pin: D7
+  tx_pin: D8
+  baud_rate: 9600
+
+sensor:
+  - platform: senseair
+    co2:
+      name: "SenseAir CO2 Value"
+    update_interval: 60s
+

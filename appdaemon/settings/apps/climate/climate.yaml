@@ -10,5 +10,6 @@ mainroom_climate:
   ha_panel: alarm_control_panel.ha_alarm
   door_window: group.ac_door_window
   color_entity: light.gateway_light_f0b429aa1463
+  remote: remote.xiaomi_miio_192_168_1_52
   global_dependencies:
     - globals

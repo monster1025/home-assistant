@@ -187,6 +187,22 @@ services:
       options:
         max-size: 50m
 
+  esphome:
+    image: esphome/esphome
+    container_name: esphome
+    # ports:
+    #   - "6052:6052"
+    volumes:
+      - ./esphome/settings:/config
+      - ./hass/settings/secrets.yaml:/config/secrets.yaml:ro
+    network_mode: "host"
+    logging:
+      driver: json-file
+      options:
+          max-size: "10m"
+          max-file: "5"
+
+
 # networks:
 #   traefik:
 #     external:

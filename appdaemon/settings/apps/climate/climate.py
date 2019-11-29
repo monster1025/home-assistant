@@ -1,6 +1,7 @@
 import appdaemon.plugins.hass.hassapi as hass
 import struct
 import binascii
+import codecs
 
 class Climate(hass.Hass):
   ir_topic = "home/remote/rm2/code/set"
@@ -38,7 +39,8 @@ class Climate(hass.Hass):
         return
     remote = Remote()
     code = remote.set_mode("NONE", "NONE", 18, "OFF")
-    self.call_service("mqtt/publish", topic = self.ir_topic, payload = code.decode("utf-8"))
+    self.log("command: {}".format(code))
+    self.call_service("remote/send_command", entity_id=self.args['remote'], command = code)
     self.split_state = "off"
     if (self.timer != None):
         self.cancel_timer(self.timer)
@@ -52,15 +54,17 @@ class Climate(hass.Hass):
     self.turn_on("switch.plug_158d00010dd98d")
     if (self.timer != None):
         self.cancel_timer(self.timer)
-    self.timer = self.run_in(self.run_in_split_mode, 10, mode=mode, temp=temp, state="ON")
+    self.timer = self.run_in(self.run_in_split_mode, 1, mode=mode, temp=temp, state="ON")
 
   def run_in_split_mode(self, args):
     code = ""
     self.log('mode: {}'.format(args['mode']))
     remote = Remote()
     code = remote.set_mode(args['mode'], self.fan_speed, args['temp'], args['state'])
-    code = code.decode("utf-8")
-    self.call_service("mqtt/publish", topic = self.ir_topic, payload = code)
+    self.log("command: {}".format(code))
+    # code = code.decode("utf-8")
+    self.call_service("remote/send_command", entity_id=self.args['remote'], command = code)
+    #self.call_service("mqtt/publish", topic = self.ir_topic, payload = code)
   
   def do_action(self):
     if 'constraint' in self.args and not self.constrain_input_boolean(self.args['constraint']):
@@ -227,8 +231,33 @@ class Remote(object):
 
         self.fill_buffer(24, 4, self.crc)
         self.codes[BUFFER_SIZE - 1] = ZERO_AND_ONE_HIGH
-        self.codes = binascii.hexlify(self.lirc2broadlink(self.codes))
-        return self.codes
+
+        pronto = self.lirc2pronto(self.codes)
+        # print(pronto)
+        # self.codes = binascii.hexlify(self.lirc2broadlink(self.codes))
+        # base64code = codecs.encode(codecs.decode(self.codes, 'hex'), 'base64').decode()
+        # print(base64code)
+
+        return pronto
+
+    def lirc2pronto(self, pulses, ff=0x6d):
+        frequency=1/(float(ff)*0.241246)
+        prontoByte = []
+        prontoByte.append(int(0))
+        prontoByte.append(ff)
+        prontoByte.append(int(0))
+        prontoByte.append(int(33))
+        for i in range(0,len(pulses)):
+            prontoByte.append(int(round(float(pulses[i])*frequency)))
+        prontoByte[3] = int(len(prontoByte)/2 - 2)
+
+        prontoCode = []
+        for i in range(0,len(prontoByte)):
+            beB = struct.pack('>I', prontoByte[i])
+            c = str(binascii.hexlify(beB)[4:8])[2:6]
+            prontoCode.append(c)
+        codeStr = "pronto: {}".format(' '.join(prontoCode))
+        return codeStr
 
     def lirc2broadlink(self, pulses):
         array = bytearray()

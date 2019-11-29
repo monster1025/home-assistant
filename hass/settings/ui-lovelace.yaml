@@ -23,6 +23,7 @@ views:
           - sensor.temperature_158d0001149b3c
           - sensor.humidity_158d0001149b3c
           - sensor.xiaomi_airpurifier_air_quality_pm25
+          - sensor.senseair_co2_value
           - light.yeelight_color1_34ce008fe328
           - light.yeelight_color1_286c071065c7
           - light.yeelight_mono1_34ce0087ff33
@@ -321,6 +322,7 @@ views:
         refresh_interval: 60
         entities:
           - sensor.xiaomi_airpurifier_air_quality_pm25
+          - sensor.senseair_co2_value
   - title: "Настройки"
     icon: mdi:settings
     cards:

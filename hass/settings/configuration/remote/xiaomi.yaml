@@ -1,3 +1,4 @@
 - platform: xiaomi_miio
+  name: xiaomi_remote
   host: !secret xiaomi_remote_host
   token: !secret xiaomi_remote_token

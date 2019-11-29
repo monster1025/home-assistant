@@ -2,3 +2,4 @@ salt_lamp:
  module: salt_lamp
  class: Noolite
  entity_id: light.salt_lamp
+ ha_panel: alarm_control_panel.ha_alarm
