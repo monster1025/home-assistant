@@ -1,3 +1,4 @@
+# Need to turn off logging because senseair uses uart and have conflicts with logging
 logger:
   baud_rate: 0
 
@@ -24,12 +25,13 @@ api:
 ota:
   password: !secret esphome_pass
 
-
+# senseair communication uart
 uart:
   rx_pin: D7
   tx_pin: D8
   baud_rate: 9600
 
+# hass sensor =)
 sensor:
   - platform: senseair
     co2:
