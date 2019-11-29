@@ -14,7 +14,7 @@ wifi:
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "Senseair Fallback Hotspot"
-    password: "FVFA2EoK8phQ"
+    password: !secret esphome_captive_pass
 
 captive_portal:
 
