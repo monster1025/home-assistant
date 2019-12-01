@@ -14,7 +14,7 @@ views:
           - alarm_control_panel.ha_alarm
           - switch.water_valve
           - vacuum.xiaomi_vacuum_cleaner
-          - switch.domofon_open
+          - switch.domofon_force_open
           - switch.wifi_socket
       - type: entities
         title: "Гостиная"
@@ -345,7 +345,8 @@ views:
           - input_boolean.water_control
           - input_boolean.water_leak_control
           - input_boolean.mainroom_climate_control
-          - switch.domofon_mode
+          - switch.domofon_automatically_open
+          - switch.domofon_automatically_open_once
       - type: entities
         title: "Настройки отчетов"
         show_header_toggle: true
@@ -369,9 +370,9 @@ views:
         title: "Аптайм"
         show_header_toggle: false
         entities:
-          - sensor.uptime_airfresher
+          - sensor.airfresher_uptime
           - sensor.uptime_bath
-          - sensor.uptime_domofon
+          - sensor.domofon_uptime
           - sensor.uptime_kitchen_led
           - sensor.uptime_nest
           - sensor.uptime_bathlight

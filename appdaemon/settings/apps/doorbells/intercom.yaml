@@ -5,6 +5,7 @@ intercom:
   module: intercom
   class: Intercom
   notify: telegram
+  sensor: binary_sensor.domofon_incoming_call
   gw_mac: !secret aqara1_mac
   chat_id: !secret telegram_group_chat
   global_dependencies:

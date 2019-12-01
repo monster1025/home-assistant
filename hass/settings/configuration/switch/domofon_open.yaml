@@ -1,7 +1,0 @@
-- platform: mqtt
-  name: domofon_open
-  state_topic: "home/domofon/domofon/open"
-  command_topic: "home/domofon/domofon/open/set"
-  payload_on: "1"
-  payload_off: "2"
-  retain: false

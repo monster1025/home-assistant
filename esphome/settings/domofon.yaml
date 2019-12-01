@@ -1,0 +1,119 @@
+esphome:
+  name: domofon
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: !secret wifi_24_name
+  password: !secret wifi_24_pass
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Domofon Fallback Hotspot"
+    password: !secret esphome_captive_pass
+
+captive_portal:
+
+# Enable Home Assistant API
+api:
+  password: !secret esphome_pass
+
+ota:
+  password: !secret esphome_pass
+
+logger:
+
+binary_sensor:
+  - platform: gpio
+    pin: 
+      number: 14
+      mode: INPUT_PULLUP
+      inverted: true
+    name: "Domofon incoming call"
+    id: incoming_call
+    device_class: lock
+    on_press:
+      then:
+        - script.execute: state_call
+
+sensor:
+  - platform: uptime
+    name: Domofon Uptime
+
+switch:
+  - platform: gpio
+    pin: 
+      number: 13
+      inverted: yes
+    id: trubka
+
+  - platform: gpio
+    pin: 
+      number: 12
+      inverted: yes
+    id: door
+
+  # Automatically open door switch
+  - platform: template
+    name: "Domofon automatically open"
+    id: auto_open
+    icon: "mdi:door-open"
+    optimistic: true
+    restore_state: true
+    on_turn_on:
+      - switch.turn_off: auto_open_once
+
+  # Automatically open door once switch
+  - platform: template
+    name: "Domofon automatically open once"
+    id: auto_open_once
+    icon: "mdi:door-open"
+    optimistic: true
+    restore_state: true
+    on_turn_on:
+      - switch.turn_off: auto_open
+
+  - platform: template
+    name: "Domofon force open"
+    id: open_force
+    icon: "mdi:door-open"
+    turn_on_action:
+      - script.execute: call_accept
+
+  - platform: template
+    id: domofon_call_emulation
+    name: "Domofon call emulation"
+    turn_on_action:
+      - script.execute: state_call
+
+script:
+  # Accept incoming call
+  - id: call_accept
+    then:
+      - logger.log: "Accept call"
+      - delay: 1000ms #mandatory 1s delay between hang-on - bacause system goes to error otherwise
+      - switch.turn_on: trubka
+      - delay: 200ms
+      - switch.turn_on: door
+      - delay: 200ms
+      - switch.turn_off: door
+      - delay: 100ms
+      - switch.turn_off: trubka
+      - delay: 200ms
+
+  # Call state
+  - id: state_call
+    then:
+      - logger.log: "Set state 'Incoming call'"
+      - if:
+          condition:
+            switch.is_on: auto_open
+          then:
+            script.execute: call_accept
+      - if:
+          condition:
+            switch.is_on: auto_open_once
+          then:
+            - script.execute: call_accept
+            - delay: 1s
+            - switch.turn_off: auto_open_once

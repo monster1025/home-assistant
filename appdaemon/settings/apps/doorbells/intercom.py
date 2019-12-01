@@ -29,7 +29,14 @@ class Intercom(hass.Hass):
       self.ringtone = self.args['ringtone']
     self.listen_event(self.domofon_call, "domofon_call")
     self.listen_event(self.receive_telegram_callback, 'telegram_callback')
-    # self.domofon_call(None, None, None)
+    self.listen_state(self.sensor_trigger, self.args['sensor'])
+
+  def sensor_trigger(self, entity, attribute, old, new, kwargs):
+    if new != "off":
+      return
+    self.log("domofon_call")
+    self.domofon_call(None, None, None)
+
 
   def domofon_call(self, event_id, event_args, kwargs):
     self.log("domofon_call")
