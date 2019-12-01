@@ -1,5 +1,14 @@
+############# User configuration #############
+substitutions:
+  call_sensor_pin: "14"
+  trubka_pin: "13"
+  door_pin: "12"
+
+  board_name: domofon
+########### End user configuration ###########
+
 esphome:
-  name: domofon
+  name: $board_name
   platform: ESP8266
   board: d1_mini
 
@@ -26,7 +35,7 @@ logger:
 binary_sensor:
   - platform: gpio
     pin: 
-      number: 14
+      number: $call_sensor_pin
       mode: INPUT_PULLUP
       inverted: true
     name: "Domofon incoming call"
@@ -43,13 +52,13 @@ sensor:
 switch:
   - platform: gpio
     pin: 
-      number: 13
+      number: $trubka_pin
       inverted: yes
     id: trubka
 
   - platform: gpio
     pin: 
-      number: 12
+      number: $door_pin
       inverted: yes
     id: door
 
