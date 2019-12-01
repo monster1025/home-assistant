@@ -1,0 +1,63 @@
+# Need to turn off logging because senseair uses uart and have conflicts with logging
+logger:
+
+esphome:
+  name: airfresher
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: !secret wifi_24_name
+  password: !secret wifi_24_pass
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Airfresher Fallback Hotspot"
+    password: !secret esphome_captive_pass
+
+captive_portal:
+
+# Enable Home Assistant API
+api:
+  password: !secret esphome_pass
+
+ota:
+  password: !secret esphome_pass
+
+
+globals:
+ - id: remain
+   type: int
+   restore_value: yes
+   initial_value: '2000'
+
+sensor:
+  - platform: uptime
+    name: Airfresher Uptime
+
+  - platform: template
+    name: "Airfresher Remain"
+    icon: "mdi:battery-80"
+    lambda: |-
+      return id(remain);
+    update_interval: 60s
+
+switch:
+  - platform: gpio
+    pin: D1
+    id: fresh_motor
+  
+  - platform: template
+    name: "Airfresher fresh"
+    icon: "mdi:air-humidifier"
+    turn_on_action:
+      - lambda: 'id(remain) -= 1;'
+      - switch.turn_on: fresh_motor
+      - delay: 300ms
+      - switch.turn_off: fresh_motor
+
+  - platform: template
+    name: "Airfresher reset"
+    icon: "mdi:backup-restore"
+    turn_on_action:
+      - lambda: 'id(remain) = 2000;'

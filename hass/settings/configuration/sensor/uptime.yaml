@@ -11,9 +11,6 @@
   state_topic: 'home/nest/$uptime'
   name: 'uptime_nest'
 - platform: mqtt
-  state_topic: 'home/airfresher/$uptime'
-  name: 'uptime_airfresher'
-- platform: mqtt
   state_topic: 'tele/bathlight/UPTIME'
   name: 'uptime_bathlight'
 - platform: mqtt

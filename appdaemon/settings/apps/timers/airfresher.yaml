@@ -1,8 +1,6 @@
 airfresher:
   module: airfresher
   class: AirFresher
-  # on_time: "09:00:00"
-  # off_time: "22:00:00"
-  # entity: switch.ledstrip
+  entity_id: switch.airfresher_fresh
   global_dependencies:
     - globals

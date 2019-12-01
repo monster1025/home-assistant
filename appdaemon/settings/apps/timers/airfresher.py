@@ -66,4 +66,5 @@ class AirFresher(hass.Hass):
       return
 
     self.log('freshing in {}'.format(self.fresh_times))
-    self.call_service("mqtt/publish", topic = "home/airfresher/airfresher/fresh/set", payload = "1")
+    self.turn_on(self.args['entity_id'])
+    # self.call_service("mqtt/publish", topic = "home/airfresher/airfresher/fresh/set", payload = "1")

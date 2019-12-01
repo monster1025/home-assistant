@@ -19,7 +19,7 @@ watchdog_wemos_uptime:
   module: watchdog
   constraint: input_boolean.watchdog_report
   entities:
-    - sensor.uptime_airfresher
+    # - sensor.uptime_airfresher
     - sensor.uptime_bath
     - sensor.uptime_domofon
     - sensor.uptime_kitchen_led
