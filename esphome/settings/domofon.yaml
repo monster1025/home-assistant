@@ -80,12 +80,6 @@ switch:
     turn_on_action:
       - script.execute: call_accept
 
-  - platform: template
-    id: domofon_call_emulation
-    name: "Domofon call emulation"
-    turn_on_action:
-      - script.execute: state_call
-
 script:
   # Accept incoming call
   - id: call_accept

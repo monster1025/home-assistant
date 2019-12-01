@@ -57,8 +57,7 @@ class Intercom(hass.Hass):
       chat_id = payload_event['chat_id']
 
       if data_callback == '/domofon_open':
-        self.turn_on("switch.domofon_open")
-        self.turn_off("switch.domofon_open")
+        self.turn_on(self.args['force_open_switch'])
         self.call_service('telegram_bot/answer_callback_query',
                   message='Готово',
                   callback_query_id=callback_id)

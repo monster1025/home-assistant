@@ -6,6 +6,7 @@ intercom:
   class: Intercom
   notify: telegram
   sensor: binary_sensor.domofon_incoming_call
+  force_open_switch: switch.domofon_force_open
   gw_mac: !secret aqara1_mac
   chat_id: !secret telegram_group_chat
   global_dependencies:
