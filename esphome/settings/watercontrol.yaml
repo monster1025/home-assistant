@@ -1,0 +1,116 @@
+# Need to turn off logging because senseair uses uart and have conflicts with logging
+logger:
+
+esphome:
+  name: watercontrol
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: !secret wifi_24_name
+  password: !secret wifi_24_pass
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Watercontrol Fallback Hotspot"
+    password: !secret esphome_captive_pass
+
+captive_portal:
+
+# Enable Home Assistant API
+api:
+  password: !secret esphome_pass
+
+ota:
+  password: !secret esphome_pass
+
+
+globals:
+ - id: water_state
+   type: bool
+   restore_value: yes
+   initial_value: 'true'
+ - id: cold_value
+   type: float
+   restore_value: yes
+   initial_value: '210.29'
+ - id: hot_value
+   type: float
+   restore_value: yes
+   initial_value: '109.74'
+
+binary_sensor:
+  - platform: gpio
+    name: pulse_cold
+    pin: 
+      number: D1
+      mode: INPUT_PULLUP
+    filters:
+      - delayed_off: 100ms
+    on_press:
+      then:
+        - lambda: 'id(cold_value) += 0.01;'
+  
+  - platform: gpio
+    name: pulse_hot
+    pin: 
+      number: D2
+      mode: INPUT_PULLUP
+    filters:
+      - delayed_off: 100ms
+    on_press:
+      then:
+        - lambda: 'id(hot_value) += 0.01;'
+
+sensor:
+  - platform: uptime
+    name: "Watercontrol Uptime"
+  
+  - platform: template
+    name: "counter hot"
+    lambda: |-
+      return id(hot_value);
+    update_interval: 60s
+  
+  - platform: template
+    name: "counter cold"
+    lambda: |-
+      return id(cold_value);
+    update_interval: 60s
+
+  - platform: ultrasonic
+    trigger_pin: D7
+    echo_pin: D6
+    name: "Toilet Distance"
+    update_interval: 5s
+
+switch:
+  - platform: gpio
+    pin: 
+      number: D5
+      inverted: yes
+    id: water_open
+    interlock: [water_close]
+
+  - platform: gpio
+    pin: 
+      number: D3
+      inverted: yes
+    id: water_close
+    interlock: [water_open]
+  
+  - platform: template
+    name: "Water valve"
+    icon: "mdi:cup-water"
+    lambda: |-
+      return id(water_state);
+    turn_on_action:
+      - switch.turn_on: water_open
+      - delay: 5s
+      - switch.turn_off: water_open
+      - lambda: 'id(water_state) = true;'
+    turn_off_action:
+      - switch.turn_on: water_close
+      - delay: 5s
+      - switch.turn_off: water_close
+      - lambda: 'id(water_state) = false;'

@@ -32,7 +32,7 @@ class Intercom(hass.Hass):
     self.listen_state(self.sensor_trigger, self.args['sensor'])
 
   def sensor_trigger(self, entity, attribute, old, new, kwargs):
-    if new != "off":
+    if new != "on":
       return
     self.log("domofon_call")
     self.domofon_call(None, None, None)

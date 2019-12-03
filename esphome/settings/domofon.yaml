@@ -41,6 +41,8 @@ binary_sensor:
     name: "Domofon incoming call"
     id: incoming_call
     device_class: lock
+    filters:
+      - delayed_off: 5s
     on_press:
       then:
         - script.execute: state_call

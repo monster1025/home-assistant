@@ -1,8 +1,8 @@
-- platform: mqtt
-  name: water_valve
-  state_topic: "home/bath/bath/valve"
-  command_topic: "home/bath/bath/valve/set"
-  payload_on: "open"
-  payload_off: "close"
-  optimistic: false
-  retain: false
+# - platform: mqtt
+#   name: water_valve
+#   state_topic: "home/bath/bath/valve"
+#   command_topic: "home/bath/bath/valve/set"
+#   payload_on: "open"
+#   payload_off: "close"
+#   optimistic: false
+#   retain: false
