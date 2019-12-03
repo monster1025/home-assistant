@@ -371,7 +371,7 @@ views:
         show_header_toggle: false
         entities:
           - sensor.airfresher_uptime
-          - sensor.uptime_bath
+          - sensor.watercontrol_uptime
           - sensor.domofon_uptime
           - sensor.uptime_kitchen_led
           - sensor.uptime_nest

@@ -30,9 +30,12 @@ class ToiletPresence(hass.Hass):
     self.listen_state(self.distance_changed, self.args['sensor'])
     
   def distance_changed(self, entity, attribute, old, new, kwargs):
-    distance = int(new)
+    if new == 'unknown':
+      return
+    
+    distance = float(new)
     state = ""
-    if (distance > 1100 or distance < 750):
+    if (distance > 1.100 or distance < 0.750):
       self.timers_off()
       self.timers.append(self.run_in(self.run_in_presense_off, self.presence_timeout))
       self.log('re-setting timer for {}s.'.format(self.presence_timeout))

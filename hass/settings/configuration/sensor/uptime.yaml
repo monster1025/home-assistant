@@ -1,10 +1,4 @@
 - platform: mqtt
-  state_topic: 'home/domofon/$uptime'
-  name: 'uptime_domofon'
-- platform: mqtt
-  state_topic: 'home/bath/$uptime'
-  name: 'uptime_bath'
-- platform: mqtt
   state_topic: 'home/kitchen-led/$uptime'
   name: 'uptime_kitchen-led'
 - platform: mqtt
