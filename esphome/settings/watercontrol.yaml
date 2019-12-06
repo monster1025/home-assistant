@@ -1,8 +1,22 @@
+# ----------- User configutaion ------------------
+substitutions:
+  devicename: domofon
+  upper_devicename: Domofon
+  pin_cold: D1
+  init_cold: '210.29'
+  pin_hot: D2
+  init_hot: '109.74'
+  water_open_pin: D5
+  water_close_pin: D3
+  ultrasonic_echo_pin: D6
+  ultrasonic_trig_pin: D7
+# ----------- /User configutaion ------------------
+
 # Need to turn off logging because senseair uses uart and have conflicts with logging
 logger:
 
 esphome:
-  name: watercontrol
+  name: $devicename
   platform: ESP8266
   board: d1_mini
 
@@ -12,7 +26,7 @@ wifi:
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "Watercontrol Fallback Hotspot"
+    ssid: "$upper_devicename Fallback Hotspot"
     password: !secret esphome_captive_pass
 
 captive_portal:
@@ -24,7 +38,6 @@ api:
 ota:
   password: !secret esphome_pass
 
-
 globals:
  - id: water_state
    type: bool
@@ -33,17 +46,17 @@ globals:
  - id: counter_cold_value
    type: float
    restore_value: yes
-   initial_value: '210.29'
+   initial_value: $init_cold
  - id: counter_hot_value
    type: float
    restore_value: yes
-   initial_value: '109.74'
+   initial_value: $init_hot
 
 binary_sensor:
   - platform: gpio
     name: pulse_cold
     pin: 
-      number: D1
+      number: $pin_cold
       mode: INPUT_PULLUP
     filters:
       - delayed_off: 100ms
@@ -54,7 +67,7 @@ binary_sensor:
   - platform: gpio
     name: pulse_hot
     pin: 
-      number: D2
+      number: $pin_hot
       mode: INPUT_PULLUP
     filters:
       - delayed_off: 100ms
@@ -64,7 +77,7 @@ binary_sensor:
 
 sensor:
   - platform: uptime
-    name: "Watercontrol Uptime"
+    name: "$upper_devicename Uptime"
   
   - platform: template
     name: "counter_hot"
@@ -79,22 +92,22 @@ sensor:
     update_interval: 60s
 
   - platform: ultrasonic
-    trigger_pin: D7
-    echo_pin: D6
+    trigger_pin: $ultrasonic_trig_pin
+    echo_pin: $ultrasonic_echo_pin
     name: "Toilet Distance"
     update_interval: 5s
 
 switch:
   - platform: gpio
     pin: 
-      number: D5
+      number: $water_open_pin
       inverted: yes
     id: water_open
     interlock: [water_close]
 
   - platform: gpio
     pin: 
-      number: D3
+      number: $water_close_pin
       inverted: yes
     id: water_close
     interlock: [water_open]

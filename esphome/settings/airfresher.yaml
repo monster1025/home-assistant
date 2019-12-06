@@ -1,8 +1,16 @@
+# ----------- User configutaion ------------------
+substitutions:
+  devicename: airfresher
+  upper_devicename: Airfresher
+  fresh_motor_pin: D1
+  remain_init: '2000'
+# ----------- /User configutaion ------------------
+
 # Need to turn off logging because senseair uses uart and have conflicts with logging
 logger:
 
 esphome:
-  name: airfresher
+  name: $devicename
   platform: ESP8266
   board: d1_mini
 
@@ -12,10 +20,11 @@ wifi:
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "Airfresher Fallback Hotspot"
+    ssid: "$upper_devicename Fallback Hotspot"
     password: !secret esphome_captive_pass
 
 captive_portal:
+
 
 # Enable Home Assistant API
 api:
@@ -29,14 +38,14 @@ globals:
  - id: remain
    type: int
    restore_value: yes
-   initial_value: '2000'
+   initial_value: $remain_init
 
 sensor:
   - platform: uptime
-    name: Airfresher Uptime
+    name: "$upper_devicename Uptime"
 
   - platform: template
-    name: "Airfresher Remain"
+    name: "$upper_devicename Remain"
     icon: "mdi:battery-80"
     lambda: |-
       return id(remain);
@@ -44,11 +53,11 @@ sensor:
 
 switch:
   - platform: gpio
-    pin: D1
+    pin: $fresh_motor_pin
     id: fresh_motor
   
   - platform: template
-    name: "Airfresher fresh"
+    name: "$upper_devicename fresh"
     icon: "mdi:air-humidifier"
     turn_on_action:
       - lambda: 'id(remain) -= 1;'
@@ -57,7 +66,7 @@ switch:
       - switch.turn_off: fresh_motor
 
   - platform: template
-    name: "Airfresher reset"
+    name: "$upper_devicename reset"
     icon: "mdi:backup-restore"
     turn_on_action:
       - lambda: 'id(remain) = 2000;'

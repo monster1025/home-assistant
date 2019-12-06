@@ -1,14 +1,14 @@
-############# User configuration #############
+# ----------- User configutaion ------------------
 substitutions:
+  devicename: domofon
+  upper_devicename: Domofon
   call_sensor_pin: "14"
   trubka_pin: "13"
   door_pin: "12"
-
-  board_name: domofon
-########### End user configuration ###########
+# ----------- /User configutaion ------------------
 
 esphome:
-  name: $board_name
+  name: $devicename
   platform: ESP8266
   board: d1_mini
 
@@ -18,7 +18,7 @@ wifi:
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "Domofon Fallback Hotspot"
+    ssid: "$upper_devicename Fallback Hotspot"
     password: !secret esphome_captive_pass
 
 captive_portal:
@@ -38,7 +38,7 @@ binary_sensor:
       number: $call_sensor_pin
       mode: INPUT_PULLUP
       inverted: true
-    name: "Domofon incoming call"
+    name: "$upper_devicename incoming call"
     id: incoming_call
     device_class: lock
     filters:
@@ -49,7 +49,7 @@ binary_sensor:
 
 sensor:
   - platform: uptime
-    name: Domofon Uptime
+    name: "$upper_devicename Uptime"
 
 switch:
   - platform: gpio
@@ -66,7 +66,7 @@ switch:
 
   # Automatically open door switch
   - platform: template
-    name: "Domofon automatically open"
+    name: "$upper_devicename automatically open"
     id: auto_open
     icon: "mdi:door-open"
     optimistic: true
@@ -76,7 +76,7 @@ switch:
 
   # Automatically open door once switch
   - platform: template
-    name: "Domofon automatically open once"
+    name: "$upper_devicename automatically open once"
     id: auto_open_once
     icon: "mdi:door-open"
     optimistic: true
@@ -85,7 +85,7 @@ switch:
       - switch.turn_off: auto_open
 
   - platform: template
-    name: "Domofon force open"
+    name: "$upper_devicename force open"
     id: open_force
     icon: "mdi:door-open"
     turn_on_action:
