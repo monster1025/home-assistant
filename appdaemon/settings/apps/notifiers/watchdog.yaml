@@ -35,7 +35,7 @@ watchdog_sonoff_uptime:
   module: watchdog
   constraint: input_boolean.watchdog_report
   entities:
-    - sensor.uptime_bathlight
+    #- sensor.uptime_bathlight
     - sensor.uptime_kitchen
   check_interval: 60
   timeout: 7200

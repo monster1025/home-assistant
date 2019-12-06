@@ -23,7 +23,7 @@ http:
   trusted_proxies:
     - 172.19.0.0/24
 
-# noolite:
+mobile_app:
 
 # Enables the frontend
 frontend:
