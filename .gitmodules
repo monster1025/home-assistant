@@ -1,4 +1,3 @@
 [submodule "secrets"]
-        path = secrets
-        url = https://github.com/monster1025/secrets
-
+	path = secrets
+	url = git@github.com:monster1025/secrets.git
