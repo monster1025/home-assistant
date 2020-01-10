@@ -25,11 +25,15 @@ class Curtain(hass.Hass):
 
   def on_timer_tick(self, kwargs):
     self.log('on_timer')
+    if 'constraint' in self.args and not self.constrain_input_boolean(self.args['constraint']):
+      return
     if 'entity' in self.args:
       self.call_service("cover/open_cover", entity_id = self.args['entity'])
 
   def off_timer_tick(self, kwargs):
     self.log('off_timer')
+    if 'constraint' in self.args and not self.constrain_input_boolean(self.args['constraint']):
+      return
     if 'entity' in self.args:
       self.call_service("cover/close_cover", entity_id = self.args['entity'])
       

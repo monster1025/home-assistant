@@ -3,4 +3,5 @@
   allowed_chat_ids:
     - !secret telegram_group_chat
     - !secret telegram_monster_chat
+    - !secret telegram_sveta_chat
   proxy_url: !secret proxy_url

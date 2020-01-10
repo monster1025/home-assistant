@@ -2,10 +2,6 @@
 
 ARGS = `arg="$(filter-out $@,$(MAKECMDGOALS))" && echo $${arg:-${1}}`
 
-lint:
-	@echo "Checking python syntax with pyflakes"
-	@pyflakes appdaemon
-
 update_secrets_sample:
 	@echo "Masking passwords..."
 	#hass
@@ -26,7 +22,6 @@ update_secrets_sample:
 	@sed -i "s/modbus_host:.*/modbus_host: modbus.host/g" hass/settings/secrets.yaml.sample #must be valid
 	@sed -i "s/modbus_port:.*/modbus_port: 9977/g" hass/settings/secrets.yaml.sample #must be valid
 	@sed -i "s/xiaomi_remote_token:.*/xiaomi_remote_token: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/g" hass/settings/secrets.yaml.sample #must be valid
-	
 
 	@echo "Masking env files..."
 	@find . -name *.env | xargs -I{} cp {} {}.sample
@@ -34,7 +29,11 @@ update_secrets_sample:
 
 	@cat zigbee2mqtt/settings/configuration.yaml | sed "s/\:.*/\: xxxxxxxxx/g" > zigbee2mqtt/settings/configuration.yaml.sample #mask passwords
 
-commit: update_secrets_sample
+copy_secrets:
+	@echo "Copying secrets"
+	@cp hass/settings/secrets.yaml secrets/hass/settings/secrets.yaml
+
+commit: copy_secrets update_secrets_sample
 	git add .
 	git commit -m "$(call ARGS,\"updating configuration\")"
 	git push

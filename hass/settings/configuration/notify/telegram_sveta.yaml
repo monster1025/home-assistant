@@ -1,0 +1,4 @@
+- platform: telegram
+  name: telegram_sveta
+  chat_id: !secret telegram_sveta_chat
+  parse_mode: html

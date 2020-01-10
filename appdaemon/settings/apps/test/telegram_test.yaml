@@ -1,3 +1,5 @@
 telegram_test:
  module: telegram_test
  class: TelegramTest
+ alice_login: !secret alice_login
+ alice_pwd: !secret alice_pwd

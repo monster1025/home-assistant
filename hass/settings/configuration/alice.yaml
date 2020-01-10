@@ -1,6 +1,5 @@
 filter:
   include_domains:
-    - alarm_control_panel
     - climate
     - switch
     - light
@@ -20,6 +19,14 @@ filter:
     - switch.domofon_mode
     - switch.domofon_open
     - light.gateway_light_f0b429aa1463
+    - switch.domofon_automatically_open
+    - switch.domofon_automatically_open_once
+    - switch.domofon_force_open
+    - switch.wled_sync_receive
+    - switch.wled_sync_send
+    - switch.airfresher_fresh
+    - switch.airfresher_reset
+
   
 entity_config:
   input_boolean.alice_away_mode:
@@ -103,3 +110,6 @@ entity_config:
   switch.water_valve:
     name: "Подача воды"
     room: "Дом"
+  light.wled:
+    name: "Ёлка"
+    room: "Гостиная"

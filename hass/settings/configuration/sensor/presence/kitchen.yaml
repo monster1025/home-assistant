@@ -1,3 +1,0 @@
-# - platform: mqtt
-#   state_topic: 'home/presence/controller/kitchen'
-#   name: 'presence_kitchen'

@@ -1,7 +1,7 @@
 # ----------- User configutaion ------------------
 substitutions:
-  devicename: domofon
-  upper_devicename: Domofon
+  devicename: watercontrol
+  upper_devicename: Watercontrol
   pin_cold: D1
   init_cold: '210.29'
   pin_hot: D2
@@ -81,12 +81,14 @@ sensor:
   
   - platform: template
     name: "counter_hot"
+    accuracy_decimals: 2
     lambda: |-
       return id(counter_hot_value);
     update_interval: 60s
   
   - platform: template
     name: "counter_cold"
+    accuracy_decimals: 2
     lambda: |-
       return id(counter_cold_value);
     update_interval: 60s

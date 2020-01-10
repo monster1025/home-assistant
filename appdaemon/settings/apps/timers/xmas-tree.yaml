@@ -1,0 +1,6 @@
+xmas-tree:
+  module: xmas-tree
+  class: XmasTreeTimer
+  global_dependencies:
+    - globals
+

@@ -1,4 +1,0 @@
-# - platform: mqtt
-#   state_topic: 'home/bath/bath/distance'
-#   name: 'toilet_distance'
-#   unit_of_measurement: 'cm'

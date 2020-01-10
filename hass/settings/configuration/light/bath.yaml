@@ -5,8 +5,3 @@
   payload_on: "ON"
   payload_off: "OFF"
   optimistic: false
-
-- platform: xiaomi_miio
-  name: "Свет2"
-  host: !secret philips_downlight_ip
-  token: !secret philips_downlight_token

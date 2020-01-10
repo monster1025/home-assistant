@@ -38,10 +38,6 @@ class AliceScenes(hass.Hass):
       self.night_mode()
     if (entity_name == "away_mode"):
       self.away_mode()
-    # if (entity_name == "turn_on_coffeemachine"):
-    #   self.turn_on_coffeemachine()
-    # if (entity_name == "make_coffee"):
-    #   self.make_coffee()
 
   def terminate(self):
     if self.listen_event_handle_list != None:
@@ -54,14 +50,11 @@ class AliceScenes(hass.Hass):
   def night_mode(self):
     self.turn_off('switch.plug_158d0001104a0c') #tv
     self.turn_off('group.all_lights')
+    self.turn_on('light.wled', brightness=5)
     self.call_service("cover/close_cover", entity_id = 'cover.curtain_158d0002b0c46a')
 
   def away_mode(self):
   	self.call_service("alarm_control_panel/alarm_arm_away", entity_id = self.args['ha_panel'])
-
-  def turn_on_coffeemachine(self):
-    self.log('Turn on coffeemachine')
-    self.call_service("mqtt/publish", topic = 'home/coffee/coffee/power/set', payload = 'on')
 
   def make_coffee(self):
     self.log('Make coffee')

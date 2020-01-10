@@ -1,73 +1,65 @@
 import appdaemon.plugins.hass.hassapi as hass
+import requests
+import json
 
 class TelegramTest(hass.Hass):
   def initialize(self):
       """Listen to Telegram Bot events of interest."""
       self.listen_event(self.receive_telegram_text, 'telegram_text')
-      self.listen_event(self.receive_telegram_callback, 'telegram_callback')
 
   def receive_telegram_text(self, event_id, payload_event, *args):
       """Text repeater."""
       assert event_id == 'telegram_text'
       user_id = payload_event['user_id']
-      msg = 'You said: ``` %s ```' % payload_event['text']
-      keyboard = [[("Edit message", "/edit_msg"),
-                   ("Don't", "/do_nothing")], 
-                  [("Remove this button", "/remove button")]]
-      self.call_service('telegram_bot/send_message',
-                        title='*Dumb automation*',
-                        target=user_id,
-                        message=msg,
-                        disable_notification=True,
-                        inline_keyboard=keyboard)
+      msg = payload_event['text']
+      self.log('got msg: {}'.format(msg))
+      if msg.startswith('https://www.youtube.com/watch') or msg.startswith('https://youtube.com/watch'):
+        self.sendToScreen(payload_event['text'])
+  
+  def sendToScreen(self, video_url):
+      auth_data = {
+              'login': self.args.get('alice_login', ''),
+              'passwd': self.args.get('alice_pwd', '')
+              }
+      # self.log('auth_data: {}'.format(auth_data))
 
-  def receive_telegram_callback(self, event_id, payload_event, *args):
-      """Event listener for Telegram callback queries."""
-      assert event_id == 'telegram_callback'
-      data_callback = payload_event['data']
-      callback_id = payload_event['id']
-      chat_id = payload_event['chat_id']
-      self.log(payload_event)
-      # keyboard = ["Edit message:/edit_msg, Don't:/do_nothing",
-      #             "Remove this button:/remove button"]
-      keyboard = [[("Edit message", "/edit_msg"),
-                   ("Don't", "/do_nothing")],
-                  [("Remove this button", "/remove button")]]
+      s = requests.Session()
+      s.get("https://passport.yandex.ru/")
+      s.post("https://passport.yandex.ru/passport?mode=auth&retpath=https://yandex.ru", data=auth_data)
+      
+      Session_id = s.cookies["Session_id"]
+      self.log('session: {}'.format(Session_id))
+      
+      # Getting x-csrf-token
+      token = s.get('https://frontend.vh.yandex.ru/csrf_token').text
+      self.log('token: {}'.format(token))
 
-      if data_callback == '/edit_msg':  # Message editor:
-          # Answer callback query
-          self.call_service('telegram_bot/answer_callback_query',
-                            message='Editing the message!',
-                            callback_query_id=callback_id,
-                            show_alert=True)
+      # Detting devices info TODO: device selection here
+      devices_online_stats = s.get("https://quasar.yandex.ru/devices_online_stats").text
+      devices = json.loads(devices_online_stats)["items"]
+      self.log('devices: {}'.format(devices))
+      if not devices[0].get('screen_present', False):
+        self.log('Device has no screen present.')
+        return
 
-          # Edit the message origin of the callback query
-          msg_id = payload_event['message']['message_id']
-          user = payload_event['from_first']
-          title = '*Message edit*'
-          msg = 'Callback received from %s. Message id: %s. Data: ``` %s ```'
-          self.call_service('telegram_bot/edit_message',
-                            chat_id=chat_id,
-                            message_id=msg_id,
-                            title=title,
-                            message=msg % (user, msg_id, data_callback),
-                            inline_keyboard=keyboard)
+      # Preparing request
+      headers = {
+          "x-csrf-token": token,
+      }
 
-      elif data_callback == '/remove button':  # Keyboard editor:
-          # Answer callback query
-          self.call_service('telegram_bot/answer_callback_query',
-                            message='Callback received for editing the '
-                                    'inline keyboard!',
-                            callback_query_id=callback_id)
+      data = {
+          "msg": {
+              "provider_item_id": video_url
+          },
+          "device": devices[0]["id"]
+      }
 
-          # Edit the keyboard
-          new_keyboard = keyboard[:1]
-          self.call_service('telegram_bot/edit_replymarkup',
-                            chat_id=chat_id,
-                            message_id='last',
-                            inline_keyboard=new_keyboard)
+      if "https://www.youtube" in video_url:
+          data["msg"]["player_id"] = "youtube"
+          
+      self.log('sending data: {}'.format(data))
 
-      elif data_callback == '/do_nothing':  # Only Answer to callback query
-          self.call_service('telegram_bot/answer_callback_query',
-                            message='OK, you said no!',
-                            callback_query_id=callback_id)
+      # Sending command with video to device
+      res = s.post("https://yandex.ru/video/station", data=json.dumps(data), headers=headers)
+
+      return res.text

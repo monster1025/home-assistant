@@ -16,6 +16,7 @@ views:
           - vacuum.xiaomi_vacuum_cleaner
           - switch.domofon_force_open
           - switch.wifi_socket
+          - light.wled
       - type: entities
         title: "Гостиная"
         show_header_toggle: false
@@ -23,7 +24,7 @@ views:
           - sensor.temperature_158d0001149b3c
           - sensor.humidity_158d0001149b3c
           - sensor.xiaomi_airpurifier_air_quality_pm25
-          - sensor.senseair_co2_value
+          # - sensor.senseair_co2_value
           - light.yeelight_color1_34ce008fe328
           - light.yeelight_color1_286c071065c7
           - light.yeelight_mono1_34ce0087ff33
@@ -33,7 +34,7 @@ views:
           - cover.curtain_158d0002b0c46a
           - switch.plug_158d0001104a0c
           - switch.plug_158d00010dd98d
-          - fan.xiaomi_miio_device
+          # - fan.xiaomi_miio_device
           - climate.living_room
       - type: entities
         title: "Кухня"
@@ -54,7 +55,6 @@ views:
           - sensor.temperature_158d00012d9ad7
           - sensor.humidity_158d00012d9ad7
           - light.bath
-          - light.philips_led
           - sensor.airfresher_remain
       - type: entities
         title: "Прихожая"
@@ -322,7 +322,6 @@ views:
         refresh_interval: 60
         entities:
           - sensor.xiaomi_airpurifier_air_quality_pm25
-          - sensor.senseair_co2_value
   - title: "Настройки"
     icon: mdi:settings
     cards:
@@ -388,7 +387,7 @@ views:
           - sensor.memory_free
           - sensor.swap_use_percent
           - sensor.disk_use_percent
-          - sensor.ssl_certificate_expiry_2
+          - sensor.ssl_certificate_expiry
       - type: entities
         title: "Сеть"
         show_header_toggle: false
