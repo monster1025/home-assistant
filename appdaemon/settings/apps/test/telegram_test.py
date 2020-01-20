@@ -42,6 +42,9 @@ class TelegramTest(hass.Hass):
         self.log('Device has no screen present.')
         return
 
+      if "&feature=share" in video_url:
+        video_url = video_url.replace("&feature=share", '')
+
       # Preparing request
       headers = {
           "x-csrf-token": token,

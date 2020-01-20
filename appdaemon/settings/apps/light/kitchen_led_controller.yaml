@@ -8,11 +8,3 @@ kitchen_led_controller:
   topic: home/kitchen-led/kitchen-led/state/set
   global_dependencies:
     - globals
-
-bath_led_controller:
-  module: kitchen_led_controller
-  class: KitchenLedController
-  watch_entity: light.bath
-  control_entity: light.philips_led
-  global_dependencies:
-    - globals

@@ -16,7 +16,6 @@ views:
           - vacuum.xiaomi_vacuum_cleaner
           - switch.domofon_force_open
           - switch.wifi_socket
-          - light.wled
       - type: entities
         title: "Гостиная"
         show_header_toggle: false

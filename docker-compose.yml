@@ -48,6 +48,7 @@ services:
     container_name: hass
     volumes:
       - ./hass/settings:/config
+      - ./secrets/hass/settings/secrets.yaml:/config/secrets.yaml:ro
       - ./hass/settings/hosts.txt:/etc/hosts:ro
       - /etc/localtime:/etc/localtime:ro
     ports:
@@ -59,6 +60,7 @@ services:
       - mysql
       - mosquitto
       - broadlink
+      - tor
     network_mode: "host"
     restart: always
     healthcheck:
@@ -71,6 +73,14 @@ services:
       options:
         max-size: 50m
 
+  tor:
+   build: 
+    context: ./tor/docker
+   container_name: tor
+   ports:
+      - "9150:9150"
+   restart: always
+
   appdaemon:
     image: monster1025/appdaemon
     build:
@@ -82,7 +92,7 @@ services:
       - hass
     volumes:
       - ./appdaemon/settings:/conf
-      - ./hass/settings/secrets.yaml:/conf/secrets.yaml:ro
+      - ./secrets/hass/settings/secrets.yaml:/conf/secrets.yaml:ro
       - ./hass/settings/hosts.txt:/etc/hosts:ro
       - /etc/localtime:/etc/localtime:ro
     restart: always
@@ -194,7 +204,7 @@ services:
     #   - "6052:6052"
     volumes:
       - ./esphome/settings:/config
-      - ./hass/settings/secrets.yaml:/config/secrets.yaml:ro
+      - ./secrets/hass/settings/secrets.yaml:/config/secrets.yaml:ro
     network_mode: "host"
     logging:
       driver: json-file

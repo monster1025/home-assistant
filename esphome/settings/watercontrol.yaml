@@ -3,9 +3,9 @@ substitutions:
   devicename: watercontrol
   upper_devicename: Watercontrol
   pin_cold: D1
-  init_cold: '210.29'
+  init_cold: '216.08'
   pin_hot: D2
-  init_hot: '109.74'
+  init_hot: '112.3'
   water_open_pin: D5
   water_close_pin: D3
   ultrasonic_echo_pin: D6
@@ -54,23 +54,25 @@ globals:
 
 binary_sensor:
   - platform: gpio
-    name: pulse_cold
+    id: pulse_cold
     pin: 
       number: $pin_cold
       mode: INPUT_PULLUP
     filters:
-      - delayed_off: 100ms
+      - delayed_on: 1s
+      - delayed_off: 1s
     on_press:
       then:
         - lambda: 'id(counter_cold_value) += 0.01;'
   
   - platform: gpio
-    name: pulse_hot
+    id: pulse_hot
     pin: 
       number: $pin_hot
       mode: INPUT_PULLUP
     filters:
-      - delayed_off: 100ms
+      - delayed_on: 1s
+      - delayed_off: 1s
     on_press:
       then:
         - lambda: 'id(counter_hot_value) += 0.01;'
@@ -129,3 +131,12 @@ switch:
       - delay: 5s
       - switch.turn_off: water_close
       - lambda: 'id(water_state) = false;'
+
+  - platform: template
+    name: "Reset"
+    turn_on_action:
+      - lambda: 'id(counter_cold_value) = 216.08;'
+      - lambda: 'id(counter_hot_value) = 112.3;'
+    turn_off_action:
+      - lambda: 'id(counter_cold_value) = 216.08;'
+      - lambda: 'id(counter_hot_value) = 112.3;'

@@ -50,17 +50,17 @@ water_sensor:
   global_dependencies:
     - globals
 
-water_sender:
-  class: WaterCounterSender
-  module: mosru
-  entity_ids:
-    hot: sensor.counter_hot
-    cold: sensor.counter_cold
-  app: mosru_client
-  dependencies:
-    - mosru_client
-  global_dependencies:
-    - globals
+# water_sender:
+#   class: WaterCounterSender
+#   module: mosru
+#   entity_ids:
+#     hot: sensor.counter_hot
+#     cold: sensor.counter_cold
+#   app: mosru_client
+#   dependencies:
+#     - mosru_client
+#   global_dependencies:
+#     - globals
 
 power_sender:
   class: PowerCounterSender
