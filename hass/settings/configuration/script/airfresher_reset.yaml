@@ -1,6 +1,0 @@
-airfresher_reset:
-  sequence:
-  - service: mqtt.publish
-    data:
-      topic: 'home/airfresher/airfresher/remain/set'
-      payload: 1500

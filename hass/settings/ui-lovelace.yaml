@@ -13,7 +13,6 @@ views:
         entities:
           - alarm_control_panel.ha_alarm
           - switch.water_valve
-          - vacuum.xiaomi_vacuum_cleaner
           - switch.domofon_force_open
           - switch.wifi_socket
       - type: entities
@@ -22,17 +21,17 @@ views:
         entities:
           - sensor.temperature_158d0001149b3c
           - sensor.humidity_158d0001149b3c
-          - sensor.xiaomi_airpurifier_air_quality_pm25
+          # - sensor.xiaomi_airpurifier_air_quality_pm25
           # - sensor.senseair_co2_value
-          - light.yeelight_color1_34ce008fe328
-          - light.yeelight_color1_286c071065c7
-          - light.yeelight_mono1_34ce0087ff33
-          - light.yeelight_mono1_f0b4290e5444
-          - light.yeelight_mono1_f0b429a8f6df
-          - light.salt_lamp
-          - cover.curtain_158d0002b0c46a
-          - switch.plug_158d0001104a0c
-          - switch.plug_158d00010dd98d
+          # - light.yeelight_color1_34ce008fe328
+          # - light.yeelight_color1_286c071065c7
+          # - light.yeelight_mono1_34ce0087ff33
+          # - light.yeelight_mono1_f0b4290e5444
+          # - light.yeelight_mono1_f0b429a8f6df
+          # - light.salt_lamp
+          # - cover.curtain_158d0002b0c46a
+          # - switch.plug_158d0001104a0c
+          # - switch.plug_158d00010dd98d
           # - fan.xiaomi_miio_device
           - climate.living_room
       - type: entities
@@ -42,17 +41,17 @@ views:
           - light.kitchen
           - light.kitchen_mini_light
           - switch.plug_158d0001a68b18
-          - switch.plug_158d0001a68c64
+          # - switch.plug_158d0001a68c64
           - switch.plug_158d0001a4cfb4
-          - switch.plug_158d00020f3a29
-          - switch.plug_158d0002924779
+          # - switch.plug_158d00020f3a29
+          # - switch.plug_158d0002924779
           - switch.xiaomi_miio_switch
       - type: entities
         title: "Ванная"
         show_header_toggle: false
         entities:
-          - sensor.temperature_158d00012d9ad7
-          - sensor.humidity_158d00012d9ad7
+          # - sensor.temperature_158d00012d9ad7
+          # - sensor.humidity_158d00012d9ad7
           - light.bath
           - sensor.airfresher_remain
       - type: entities
@@ -60,21 +59,21 @@ views:
         show_header_toggle: false
         entities:
           - light.hall
-      - type: entities
-        title: "Балкон"
-        show_header_toggle: false
-        entities:
-          - light.yeelight_mono1_286c07f12bed
-          - light.yeelight_mono1_f0b429a8d936
-          - sensor.temperature_158d000117d37a
-          - sensor.humidity_158d000117d37a
-          - switch.plug_158d00026ea017
-      - type: entities
-        title: "Улица"
-        show_header_toggle: false
-        entities:
-          - sensor.temperature_158d000149c128
-          - sensor.humidity_158d000149c128
+      # - type: entities
+      #   title: "Балкон"
+      #   show_header_toggle: false
+      #   entities:
+      #     - light.yeelight_mono1_286c07f12bed
+      #     - light.yeelight_mono1_f0b429a8d936
+      #     - sensor.temperature_158d000117d37a
+      #     - sensor.humidity_158d000117d37a
+      #     - switch.plug_158d00026ea017
+      # - type: entities
+      #   title: "Улица"
+      #   show_header_toggle: false
+      #   entities:
+      #     - sensor.temperature_158d000149c128
+      #     - sensor.humidity_158d000149c128
   - title: "Датчики"
     icon: mdi:nfc
     cards:
@@ -82,15 +81,15 @@ views:
         title: "Движение"
         show_header_toggle: false
         entities:
-          - binary_sensor.motion_sensor_158d0000e7c7ad
+          # - binary_sensor.motion_sensor_158d0000e7c7ad
           - binary_sensor.motion_sensor_158d0002044548
-          - binary_sensor.motion_sensor_158d0000fbc664
+          # - binary_sensor.motion_sensor_158d0000fbc664
           - binary_sensor.motion_sensor_158d0001535c97
-          - binary_sensor.motion_sensor_158d0000f9546b
+          # - binary_sensor.motion_sensor_158d0000f9546b
           - binary_sensor.motion_sensor_158d000165fed5
           - binary_sensor.motion_sensor_158d0001537e21
           - binary_sensor.motion_sensor_158d0000f6b2fa
-          - binary_sensor.motion_sensor_158d0001e50ce4
+          # - binary_sensor.motion_sensor_158d0001e50ce4
           - binary_sensor.motion_sensor_158d0001e80f0d
       - type: entities
         title: "Протечка"
@@ -98,7 +97,7 @@ views:
         entities:
           - binary_sensor.water_leak_sensor_158d0001d594fa
           - binary_sensor.water_leak_sensor_158d0001c34960
-          - binary_sensor.water_leak_sensor_158d0002150c07
+          # - binary_sensor.water_leak_sensor_158d0002150c07
           - binary_sensor.water_leak_sensor_158d0002112b98
           - binary_sensor.water_leak_sensor_158d0002113158
           - binary_sensor.water_leak_sensor_158d00023a48f0

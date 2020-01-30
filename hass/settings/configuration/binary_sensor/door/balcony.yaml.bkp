@@ -1,6 +1,0 @@
-- platform: mqtt
-  state_topic: "home/magnet/balcony/status"
-  name: "door_window_sensor_158d00010f7e19"
-  payload_on: "open"
-  payload_off: "close"
-  device_class: opening

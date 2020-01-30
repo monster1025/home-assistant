@@ -11,8 +11,6 @@ homeassistant:
 
 logger:
   default: info
-  logs:
-    custom_components.yandex_smart_home: debug
 
 api:
 
@@ -68,7 +66,7 @@ remote: !include_dir_merge_list configuration/remote
 #one item
 mqtt: !include configuration/mqtt/mqtt.yaml
 telegram_bot: !include configuration/bot/telegram_bot.yaml
-vacuum: !include configuration/xiaomi_aqara/vacuum.yaml
+# vacuum: !include configuration/xiaomi_aqara/vacuum.yaml
 xiaomi_aqara: !include configuration/xiaomi_aqara/xiaomi_aqara.yaml
 nest: !include configuration/nest/nest.yaml
 homekit: !include configuration/homekit/homekit.yaml
@@ -81,4 +79,4 @@ modbus: !include configuration/modbus.yaml
 utility_meter: !include_dir_merge_named configuration/utility_meter
 
 speedtestdotnet: !include configuration/speedtest.yaml
-yandex_smart_home: !include configuration/alice.yaml    
+# yandex_smart_home: !include configuration/alice.yaml    

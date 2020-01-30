@@ -1,6 +1,0 @@
-- platform: mqtt
-  state_topic: "home/sensor_wleak.aq1/kitchen/status"
-  name: "water_leak_sensor_158d0001d594fa"
-  payload_on: "leak"
-  payload_off: "no_leak"
-  device_class: moisture

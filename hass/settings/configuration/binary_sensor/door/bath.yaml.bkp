@@ -1,6 +1,0 @@
-- platform: mqtt
-  state_topic: "home/magnet/bath/status"
-  name: "door_window_sensor_158d000111a469"
-  payload_on: "open"
-  payload_off: "close"
-  device_class: opening

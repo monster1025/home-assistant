@@ -1,7 +1,0 @@
-﻿# - platform: mqtt
-#   name: "balcony"
-#   state_topic: "stat/BALCONYV2/POWER"
-#   command_topic: "cmnd/BALCONYV2/POWER"
-#   payload_on: "ON"
-#   payload_off: "OFF"
-#   optimistic: false

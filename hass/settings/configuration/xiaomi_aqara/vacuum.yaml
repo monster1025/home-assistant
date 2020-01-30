@@ -1,3 +1,0 @@
-- platform: xiaomi_miio
-  host: !secret mirobot_ip
-  token: !secret mirobot_key
